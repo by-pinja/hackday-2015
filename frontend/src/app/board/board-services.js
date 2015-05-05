@@ -29,7 +29,7 @@
         {
           name: 'Protacon video',
           directive: 'widget-protacon-video',
-          containerClass: 'widget-no-resize'
+          enableVerticalResize: false
         }
       ];
     })
