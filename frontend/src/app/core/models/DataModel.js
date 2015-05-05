@@ -160,7 +160,7 @@
          *          [previous]: {}
          *        }}  message
          */
-        DataModel.prototype.handlerDeleted = function handlerDeleted(message) {
+        DataModel.prototype.handlerDestroyed = function handlerDestroyed(message) {
           var self = this;
 
           $log.log('Object deleted', self.endpoint, message);

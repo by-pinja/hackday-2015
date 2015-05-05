@@ -24,21 +24,25 @@
     ])
   ;
 
+  // Widget data model factory
   angular.module('frontend.board')
     .factory('WidgetWormsLadderModel', [
       'WidgetDataModel',
       'WormsLadderModel',
+      '_',
       function factory(
         WidgetDataModel,
-        WormsLadderModel
+        WormsLadderModel,
+        _
       ) {
+        var data = [];
+
         function DataModel() {}
 
         DataModel.prototype = Object.create(WidgetDataModel.prototype);
 
         DataModel.prototype.init = function init() {
           var _this = this;
-          var data = [];
 
           WormsLadderModel
             .load()
@@ -50,22 +54,6 @@
               }
             )
           ;
-
-          // Custom handler for created objects
-          WormsLadderModel.handlerCreated = function handlerCreated(message) {
-            data.push(message.data);
-          };
-
-          // Custom handler for updated objects
-          WormsLadderModel.handlerUpdated = function handlerUpdated(message) {
-            var match = _.find(data, function iterator(item) {
-              return item.id === message.id;
-            });
-
-            if (match) {
-              _.merge(match, message.data);
-            }
-          };
         };
 
         DataModel.prototype.destroy = function destroy() {
@@ -74,11 +62,35 @@
           WidgetDataModel.prototype.destroy.call(_this);
         };
 
+        // Custom handler for created objects
+        WormsLadderModel.handlerCreated = function handlerCreated(message) {
+          data.push(message.data);
+        };
+
+        // Custom handler for updated objects
+        WormsLadderModel.handlerUpdated = function handlerUpdated(message) {
+          var match = _.find(data, function iterator(item) {
+            return item.id === message.id;
+          });
+
+          if (match) {
+            _.merge(match, message.data);
+          }
+        };
+
+        // Custom handler for destroyed objects
+        WormsLadderModel.handlerDestroyed = function handlerDestroyed(message) {
+          _.remove(data, function iterator(item) {
+            return item.id === message.id;
+          });
+        };
+
         return DataModel;
       }
     ])
   ;
 
+  // Backend (sails.js) data model factory
   angular.module('frontend.board')
     .factory('WormsLadderModel', [
       'DataModel',
