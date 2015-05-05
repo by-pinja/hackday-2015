@@ -1,0 +1,54 @@
+@import "../styles/mixins";
+
+.widget-container {
+  &.widget-no-resize {
+    .widget-ew-resizer,
+    .widget-s-resizer {
+      display: none;
+    }
+  }
+
+  .widget {
+    @include box-shadow(1px, 1px, 10px, #666666);
+    border: 1px solid #666666;
+
+    &:hover {
+      .widget-header {
+        display: block;
+      }
+
+      .widget-content {
+        opacity: .25;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    .widget-header {
+      line-height: 1;
+      position: absolute;
+      width: 100%;
+      display: none;
+      z-index: 1;
+      cursor: move;
+
+      .widget-actions {
+        i {
+          cursor: pointer;
+          margin-left: 5px;
+          opacity: .3;
+          font-size: 20px;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .widget-content {
+    }
+  }
+}

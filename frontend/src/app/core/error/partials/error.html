@@ -1,0 +1,20 @@
+<h3>Error occurred</h3>
+
+<p>
+    Damn gerbils have stopped running again! Someone has been dispatched to poke them with a sharp stick.
+</p>
+
+<pre>{{error | json}}</pre>
+
+<!--
+TODO:
+ 1) show stack trace?
+-->
+
+<p data-ng-show="error.fromState.name">
+    <a href="#"
+        data-ng-click="goToPrevious()"
+    >
+        Back to previous page
+    </a>
+</p>

@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h3>
+        <i class="fa fa-times pull-right close"
+            data-dismiss="modal"
+            data-ng-click="cancel()"
+        ></i>
+
+        Widget options <small>{{widget.name}}</small>
+    </h3>
+</div>
+
+<div class="modal-body">
+    <form name="form" novalidate class="form-horizontal">
+        <div class="form-group"><label for="widgetTitle" class="col-xs-3 control-label">Title</label>
+            <div class="col-xs-9">
+                <input id="widgetTitle" name="widgetTitle" type="text" class="form-control"
+                    data-ng-model="result.title"
+                />
+            </div>
+        </div>
+
+        <div
+            data-ng-if="widget.settingsModalOptions.partialTemplateUrl"
+            data-ng-include="widget.settingsModalOptions.partialTemplateUrl"
+        ></div>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-default pull-left"
+        data-ng-click="cancel()"
+    >Cancel</button>
+
+    <button type="button" class="btn btn-sm btn-primary pull-right"
+        data-ng-click="ok()"
+    >Save</button>
+</div>

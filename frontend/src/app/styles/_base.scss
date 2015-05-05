@@ -1,0 +1,40 @@
+/** This file contains main CSS definitions for application */
+
+@import "mixins";
+@import "components";
+@import "forms";
+@import "bootstrap";
+@import "angular";
+@import "modal";
+
+header,
+footer {
+  .navbar {
+    height: 40px;
+    min-height: 40px;
+    line-height: 40px;
+
+    .navbar-brand {
+      height: 40px;
+      line-height: 40px;
+      padding: 0 15px;
+    }
+
+    .navbar-nav {
+      margin: 0;
+
+      > li > a {
+        padding: 0;
+      }
+    }
+
+    .navbar-toggle {
+      padding: 5px;
+      margin-top: 7px;
+    }
+  }
+}
+
+#container {
+  margin: 50px 0;
+}

@@ -1,0 +1,27 @@
+<div class="widget-worms-ladder">
+
+    <h1 class="pull-left">Player ranking</h1>
+    <h1 class="pull-right">won / played</h1>
+
+    <div class="clearfix"></div>
+
+    <hr />
+
+    <ol>
+        <li data-ng-repeat="player in players | orderBy : '-gamesWon'">
+            <span class="text-nowrap pull-right">
+                {{player.gamesWon}} / {{player.gamesAttended}}
+
+                <span data-ng-if="player.gamesAttended > 0">
+                    ({{(player.gamesWon / player.gamesAttended) * 100 | number : 1}}%)
+                </span>
+            </span>
+
+            <h1>
+                {{player.playerName}}
+            </h1>
+
+            <div class="clearfix"></div>
+        </li>
+    </ol>
+</div>

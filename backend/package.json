@@ -1,0 +1,42 @@
+{
+  "name": "backend",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "dependencies": {
+    "async": "0.9.0",
+    "bluebird": "2.9.25",
+    "include-all": "0.1.6",
+    "lodash": "3.7.0",
+    "moment-timezone": "0.3.1",
+    "rc": "0.5.1",
+    "sails": "0.11.0",
+    "sails-disk": "0.10.7",
+    "validator": "3.19.0"
+  },
+  "devDependencies": {
+    "supertest": "0.13.0",
+    "mocha": "1.21.4",
+    "should": "4.0.4",
+    "chai": "1.9.1"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "debug": "node debug app.js",
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "author": "Protacon Solutions",
+  "license": "MIT"
+}

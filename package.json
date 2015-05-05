@@ -1,0 +1,22 @@
+{
+    "name": "",
+    "version": "0.0.0",
+    "description": "",
+    "keywords": [],
+    "main": "",
+    "dependencies": {},
+    "devDependencies": {},
+    "scripts": {
+        "install": "cd backend && npm install && cd ../frontend && npm install",
+        "test": "cd backend && mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+        "url": ""
+    },
+    "author": "Protacon Solutions",
+    "license": "MIT"
+}
