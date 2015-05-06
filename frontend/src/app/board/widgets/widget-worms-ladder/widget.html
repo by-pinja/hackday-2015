@@ -7,6 +7,12 @@
 
     <hr />
 
+    <div class="text-muted text-center"
+        data-ng-if="players.length === 0"
+    >
+        <em>Oh noes, there isn't any data to show...</em>
+    </div>
+
     <ol>
         <li data-ng-repeat="player in players | orderBy : '-gamesWon'">
             <span class="text-nowrap pull-right">
