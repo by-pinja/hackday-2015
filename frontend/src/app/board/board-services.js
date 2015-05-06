@@ -12,12 +12,12 @@
       return [
         {
           name: 'URL viewer',
-          directive: 'widget-i-frame',
+          directive: 'widget-url-viewer',
           settingsModalOptions: {
-            partialTemplateUrl: '/frontend/board/widgets/widget-i-frame/settings.html'
+            partialTemplateUrl: '/frontend/board/widgets/widget-url-viewer/settings.html'
           },
           dataModelOptions: {
-            url: 'http://wunder.sytes.net/'
+            url: 'http://www.protacon.com/'
           }
         },
         {

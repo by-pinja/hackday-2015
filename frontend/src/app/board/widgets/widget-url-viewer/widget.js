@@ -1,16 +1,16 @@
-// This file contains all necessary for widget-i-frame
+// This file contains all necessary for widget-url-viewer
 (function() {
   'use strict';
 
   // Controller for generic error handling.
   angular.module('frontend.board')
-    .directive('widgetIFrame', [
+    .directive('widgetUrlViewer', [
       function directive() {
         return {
           restrict: 'A',
           scope: {},
           replace: true,
-          templateUrl: '/frontend/board/widgets/widget-i-frame/widget.html',
+          templateUrl: '/frontend/board/widgets/widget-url-viewer/widget.html',
           controller: [
             '$scope', '$sce',
             function controller($scope, $sce) {
