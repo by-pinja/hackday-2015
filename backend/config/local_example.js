@@ -29,6 +29,7 @@ module.exports = {
 
     // MySQL is the world's most popular relational database.
     // Learn more: http://en.wikipedia.org/wiki/MySQL
+    // Remember also install sails-mysql adapter
     mysql: {
       adapter: 'sails-mysql',
       host: 'localhost',
@@ -40,10 +41,7 @@ module.exports = {
     }
   },
   models: {
-    connection: 'mysql' // Change this to be one of your connections key
-  },
-  session: {
-    secret: '' // Add your own SECRET string here
+    //connection: 'mysql' // Change this to be one of your connections key
   },
   port: 1337,
   environment: 'development',
