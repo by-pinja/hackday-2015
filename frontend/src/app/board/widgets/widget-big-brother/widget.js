@@ -25,7 +25,8 @@
                */
               $scope.loossit = [
                 {name: "Sauna", width: 2, type: 'sauna', people: [
-                  {"direction":"2","name":"Mynttinen Jari","time":"2015-05-06 16:04:00","usename":"jmy","id":"248"}
+                  {"direction":"2","name":"Mynttinen Jari","time":"2015-05-06 16:04:00","usename":"jmy","id":"248"},
+                  {"direction":"1","name":"Lajunen Olli","time":"2015-04-17 12:32:00","usename":"oll","id":"257"}
                 ]},
                 {
                   name: "IT", width: 2, type: 'it', people: [
@@ -289,6 +290,19 @@
                         if (data[i].id == person.id) {
 
                           $scope.loossit[number].people[index] = data[i];
+
+
+                          var d = new Date();
+                          d.setDate(d.getDate() -2);
+                          var stamp = new Date(data[i].time.replace(' ', 'T'));
+
+                          var personsLastActivityAsInt = parseInt(stamp.getTime());
+                          var dayBeforeYesterDayAsInt= parseInt(d.getTime());
+
+                          if(personsLastActivityAsInt < dayBeforeYesterDayAsInt){
+                            $scope.loossit[number].people[index].direction = 2;
+                          }
+
                           data.splice(i, 1);
                           break;
                         }

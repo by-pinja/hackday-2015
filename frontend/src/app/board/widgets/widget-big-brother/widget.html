@@ -11,11 +11,7 @@
           <h4 ng-bind="loossi.name"></h4>
 
           <ul  ng-show="loossi.people.length < 9" class="persons">
-            <li class="btn {{person.direction == 1 ? 'btn-success' : 'btn-danger'}}" ng-repeat="person in loossi.people">
-                <span ng-bind="person.name"></span>
-                <span> <i class="glyphicon glyphicon-ok" ng-show="person.direction === 1"></i></span>
-                <span> <i class="glyphicon glyphicon-ban-circle" ng-show="person.direction === 2"></i></span>
-            </li>
+            <li ng-bind="person.name" class="btn {{person.direction == 1 ? 'btn-success' : 'btn-danger'}}" ng-repeat="person in loossi.people"></li>
           </ul>
 
           <h4 class="alert-danger" ng-show="loossi.people.length > 8"> {{loossi.people.length}} työntekijää kahvilla!</h4>
