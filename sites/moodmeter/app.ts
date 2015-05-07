@@ -13,9 +13,10 @@ import {MoodSvc} from 'service'
 
 class MoodComponent {
     currentMood: number;
+    private timer;
 
     constructor(svc: MoodSvc) {
-        this.currentMood = Math.min(Math.floor(svc.currentMood()*4+1), 4);
+        this.timer = setInterval(() => {this.currentMood = Math.min(Math.floor(svc.currentMood()*4+1), 4);}, 2000);
     }
 
     toggle() {
