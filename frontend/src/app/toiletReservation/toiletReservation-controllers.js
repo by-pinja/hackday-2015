@@ -51,9 +51,11 @@
                     if (type === 1) {
                         freePeeSlot.reservationEndTime = endTime.add(2, 'minutes').toDate();
                         ToiletReservationModel.update(freePeeSlot.id, freePeeSlot);
+                        freePeeSlot.avoidingWork = false;
                         $scope.canReservePee = false;
                     } else if (type === 2) {
                         freePooSlot.reservationEndTime = endTime.add(7, 'minutes').toDate();
+                        freePooSlot.avoidingWork = nakkisuoja;
                         ToiletReservationModel.update(freePooSlot.id, freePooSlot);
                         $scope.canReservePoo = false;
                     }
