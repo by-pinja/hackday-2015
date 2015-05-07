@@ -30,6 +30,11 @@
           name: 'Protacon video',
           directive: 'widget-protacon-video',
           enableVerticalResize: false
+        },
+        {
+          name: 'LiukkoClock',
+          directive: 'widgetLiukkoClock',
+          enableVerticalResize: false
         }
       ];
     })
