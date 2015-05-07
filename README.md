@@ -98,6 +98,7 @@ Protacon Solutions
 - [Heikki-Jussi Niemi](https://github.com/Hekku2)
 - [Mika Vilpas](https://github.com/sp3ctum)
 - [Ville Pelho](https://github.com/vilbertti)
+- [Sami Ristinen](https://github.com/ristisami)
 
 
 ## License
