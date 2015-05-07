@@ -53,7 +53,6 @@ CoolClock.config = {
 
 // Define the CoolClock object's methods
 CoolClock.prototype = {
-
   // Initialise using the parameters parsed from the colon delimited class
   init: function(options) {
     // Parse and store the options
@@ -85,7 +84,8 @@ CoolClock.prototype = {
     this.ctx = this.canvas.getContext("2d");
     this.ctx.scale(this.scale,this.scale);
 
-    this.timeMotionEnabled = false;
+
+
     // Keep track of this object
     CoolClock.config.clockTracker[this.canvasId] = this;
 
@@ -93,7 +93,7 @@ CoolClock.prototype = {
     this.coffeeBreak = {
       // Start and end times of coffeebreaks
       times:  [],
-
+      motion: "none",
       // How much time we want more
       timeBonus: 0,
 
@@ -131,25 +131,25 @@ CoolClock.prototype = {
           if(     dayStartMs >= this.times[i].start-this.timeBonus &&
             dayStartMs <= this.times[i].start-this.timeBonus/2)
           {   // Speeup the time. hurry for coffee break
-            this.timeMotion = "hurry";
+            this.motion = "hurry";
             return {timeSpantype: 1, timeDiff: dayStartMs - (this.times[i].start-this.timeBonus) };
           }
           else if(dayStartMs >= this.times[i].start - this.timeBonus/2 &&
             dayStartMs <= this.times[i].start + this.timeBonus/2)
           {
-            this.timeMotion = "slow";
+            this.motion = "slow";
             return {timeSpanType: 2, timeDiff: this.timeBonus/2 - (dayStartMs - (this.times[i].start - this.timeBonus/2))/2};
           }
           else if(dayStartMs >= this.times[i].end - this.timeBonus/2 &&
             dayStartMs < this.times[i].end + this.timeBonus/2)
           {
-            this.timeMotion = "slow";
+            this.motion = "slow";
             return {timeSpantype: 3, timeDiff: (dayStartMs - (this.times[i].end - this.timeBonus/2))/-2};
           }
           else if(dayStartMs >= this.times[i].end + this.timeBonus/2 &&
             dayStartMs <= this.times[i].end + this.timeBonus)
           {
-            this.timeMotion = "hurry"
+            this.motion = "hurry";
             return {timeSpanType: 4, timeDiff: -1*(this.timeBonus/2 - (dayStartMs - (this.times[i].end + this.timeBonus/2)))};
           }
         }
@@ -304,16 +304,16 @@ CoolClock.prototype = {
     if (this.showSecondHand && skin.secondHand) {
       this.radialLineAtAngle(this.tickAngle(ms), skin.secondHand);
 
-      if(this.timeMotion === "hurry") {
+      if(this.coffeeBreak.motion === "hurry") {
         this.radialLineAtAngle(this.tickAngle(ms - 400), skin.secondHand1);
         this.radialLineAtAngle(this.tickAngle(ms - 800), skin.secondHand2);
+        console.log("hurry")
       }
-      else if(this.timeMotion === "slow") {
+      else if(this.coffeeBreak.motion === "slow") {
         this.radialLineAtAngle(this.tickAngle(ms + 400), skin.secondHand1);
         this.radialLineAtAngle(this.tickAngle(ms + 800), skin.secondHand2);
+        console.log("slow")
      }
-
-
     }
   },
 
