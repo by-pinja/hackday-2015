@@ -95,6 +95,7 @@ Protacon Solutions
 ### People behind this
 - [Tarmo Leppänen](https://github.com/tarlepp)
 - [Jaakko Kaski](https://github.com/ajaskaFIN)
+- [Aki Syri](https://github.com/akisy)
 
 ## License
 The MIT License (MIT)
