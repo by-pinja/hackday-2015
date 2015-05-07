@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
@@ -10,35 +11,53 @@
 
 <body>
     <div>
-        <div id="gameInfo">
-            <span id="gameTitle">AI NIBBLES</span>
-        </div>
+        <audio id="apple-audio" src="apple.mp3"></audio>
         <div id="timeLeftInfo">
-            <span id="timeLeftCaption">Time left:</span>
+            <span id="timeLeftCaption">time left:</span>
             <span id="timeLeft"></span>
             <span id="outOfTimeCaption" class="hidden">OUT OF TIME!</span>
         </div>
-        <div class="playerInfo">
-            <span class="player1Color">&nbsp;</span>
-            PLAYER 1:<span id="player1Name" class="playerName">-</span>
-            <span id="player1Winner" class="playerWinner hidden"></span>
-            <span class="playerLengthCaption">Length:</span>
-            <span id="playerLength0" class="playerLength"></span>
+        <div class="playerInfo playerInfoLeft">
+            <div class="playerColor player1Color"></div>
+            <div class="playerSpecsContainer">
+                <span id="player1Name" class="playerName">-</span>
+                <span id="player1Winner" class="playerWinner hidden"></span>
+                <span id="playerLength0" class="playerLength"></span>
+            </div>
+            <div style="clear: both"></div>
         </div>
-        <div class="playerInfo">
-            <span class="player2Color">&nbsp;</span>
-            PLAYER 2:<span id="player2Name" class="playerName">-</span>
-            <span id="player2Winner" class="playerWinner hidden"></span>
-            <span class="playerLengthCaption">Length:</span>
-            <span id="playerLength1" class="playerLength"></span>
+        <div class="playerInfo playerInfoRight">
+            <div class="playerColor player2Color"></div>
+            <div class="playerSpecsContainer">
+                <span id="player2Name" class="playerName">-</span>
+                <span id="player2Winner" class="playerWinner hidden"></span>
+                <span id="playerLength1" class="playerLength"></span>
+            </div>
+            <div style="clear: both"></div>
         </div>
+        <div style="clear: both"></div>
+        <div class="playerInfo playerInfoLeft">
+            <div class="playerColor player3Color"></div>
+            <div class="playerSpecsContainer">
+                <span id="player3Name" class="playerName">-</span>
+                <span id="player3Winner" class="playerWinner hidden"></span>
+                <span id="playerLength2" class="playerLength"></span>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="playerInfo playerInfoRight">
+            <div class="playerColor player4Color"></div>
+            <div class="playerSpecsContainer">
+                <span id="player4Name" class="playerName">-</span>
+                <span id="player4Winner" class="playerWinner hidden"></span>
+                <span id="playerLength3" class="playerLength"></span>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <div style="clear: both"></div>
     </div>
 
     <div id="game">
-    </div>
-
-    <div id="credits">
-        Font credit: <a href="http://www.trueschool.se/html/fonts.html" target="_blank">TopazPlus</a> © dMG/t!s^dS!. Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">CC BY-NC-SA 3.0.</a>
     </div>
 </body>
 

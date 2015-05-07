@@ -46,7 +46,6 @@
               };
 
               $scope.update = function update(player) {
-
                 WormsLadderModel.update(player.id, player).then(
                   function onSuccess(result) {
                     MessageService.success('Update successful', result);
