@@ -24,20 +24,24 @@
               WormsLadderModel,
               FocusOnService, MessageService
             ) {
-              $scope.startEdit = function (player) {
+              $scope.startEdit = function startEdit(player) {
                 //Do nothing if player is already under edit
                 var playerUnderEdit = $scope.playerUnderEdit;
                 if (playerUnderEdit && player.id == playerUnderEdit.id && player.editmode )
                   return;
 
-                _.map($scope.players, $scope.cancelEdit);
+                $scope.cancelAllEdits();
 
                 $scope.playerUnderEdit = angular.copy(player);
                 player.editmode = true;
                 FocusOnService.focus('focusMe');
               };
 
-              $scope.cancelEdit = function (player) {
+              $scope.cancelAllEdits = function cancelAllEdits() {
+                _.map($scope.players, $scope.cancelEdit);
+              };
+
+              $scope.cancelEdit = function cancelEdit(player) {
                 player.editmode = false;
               };
 
@@ -49,8 +53,23 @@
                   }
                 );
                 player.editmode = false;
+              };
 
-              }
+              $scope.deletePlayer = function deletePlayer(player) {
+                WormsLadderModel.delete(player.id);
+              };
+
+              $scope.createPlayer = function createPlayer(player) {
+                WormsLadderModel.create(player);
+                $scope.cancelAllEdits();
+                $scope.newPlayer = {};
+              };
+
+              $scope.shouldShowNewPlayerInputs = function shouldShowNewPlayerInputs() {
+                return $scope.players
+                    && $scope.players.length == 0
+                  || _.any($scope.players, {"editmode": true});
+              };
             }
           ]
         };
