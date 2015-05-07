@@ -23,7 +23,7 @@
                *
                * @type {*[]}
                */
-              $scope.loossit = [
+              $scope.defaultLoossit = [
                 {name: "Sauna", width: 2, type: 'sauna', people: [
                   {"direction":"2","name":"Mynttinen Jari","time":"2015-05-06 16:04:00","usename":"jmy","id":"248"},
                   {"direction":"1","name":"Lajunen Olli","time":"2015-04-17 12:32:00","usename":"oll","id":"257"}
@@ -274,6 +274,8 @@
                 {name: "Villa", width: 1, type: 'normal', people: []}
               ];
 
+              $scope.loossit = $scope.defaultLoossit;
+
               var stop;
 
               /**
@@ -281,6 +283,20 @@
                */
               stop = $interval(function () {
                 $http.get(BackendConfig.url + '/inHouse').success(function (data) {
+
+                  var now = new Date();
+
+                  if((now.getHours() === 9 || now.getHours() === 14) && now.getMinutes() < 15)
+                  {
+                    console.log('coffee')
+                    $.each($scope.loossit, function (number, loossi) {
+                      $scope.loossit[number].people =[];
+                      if(loossi.type == 'lounge'){
+                        $scope.loossit[number].people = data;
+                      }
+                    });
+                    return;
+                  }
 
 
                   //Update scope data employee state and times
