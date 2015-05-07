@@ -30,6 +30,10 @@
           name: 'Protacon video',
           directive: 'widget-protacon-video',
           enableVerticalResize: false
+        },
+        {
+          name: 'Protacon twitter feed',
+          directive: 'widget-twitter'
         }
       ];
     })
