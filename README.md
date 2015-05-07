@@ -101,6 +101,7 @@ Protacon Solutions
 - [Sami Ristinen](https://github.com/ristisami)
 - [Joni Syri](https://github.com/jsyri)
 - [Aki Syri](https://github.com/akisy)
+- [Eemeli Niemelä] (https://github.com/Eniemela)
 
 ## License
 The MIT License (MIT)
