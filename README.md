@@ -59,7 +59,7 @@ be run on http://localhost:1337 and frontend on http://localhost:3001 (developme
 There is an example of backend configuration file on following path.
 
 <pre>
-/backend/config/local_example.js
+/backend/config/local.js
 </pre>
 
 Just copy this to <code>/backend/config/local.js</code> and make necessary changes to it. Note that this 
@@ -95,6 +95,7 @@ Protacon Solutions
 ### People behind this
 - [Tarmo Leppänen](https://github.com/tarlepp)
 - [Jaakko Kaski](https://github.com/ajaskaFIN)
+- [Ville Pelho](https://github.com/vilbertti)
 
 ## License
 The MIT License (MIT)
