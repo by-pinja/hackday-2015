@@ -54,4 +54,22 @@
     .widget-content {
     }
   }
+
+  .dashboard-simple-list {
+    h4 {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+      padding-right: 5px;
+      border-bottom: 1px solid #dedede;
+    }
+
+    li {
+      margin-bottom: 15px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

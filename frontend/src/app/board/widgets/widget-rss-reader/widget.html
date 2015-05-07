@@ -1,0 +1,37 @@
+<div class="widget-rss-reader"
+    data-ng-show="data"
+>
+    <div data-ng-if="data.responseStatus === 200">
+        <ul class="list-unstyled dashboard-simple-list">
+            <li data-ng-repeat="entry in data.responseData.feed.entries">
+                <h4>
+                    {{entry.publishedDate | amDateFormat : 'DD.MM.YYYY HH:mm'}}
+
+                    <span class="text-muted text-medium text-normal pull-right">
+                        <span data-am-time-ago="entry.publishedDate"></span>
+                    </span>
+                </h4>
+
+                <span data-ng-bind-html="getContent(entry) | htmlLinky"></span>
+
+                <br />
+
+                <a href="{{entry.link}}" target="_blank">Lue lisää</a>
+            </li>
+        </ul>
+    </div>
+    <div data-ng-if="data.responseStatus !== 200">
+        <div class="alert alert-danger no-bottom-margin">
+            <h4>Virhe RSS Feedin latauksessa</h4>
+
+            <p>
+                Tarkista RSS feedin osoite mahdollisilta virheiltä.
+            </p>
+
+            <p>
+                Response status: {{data.responseStatus}}<br />
+                Details: {{data.responseDetails}}<br />
+            </p>
+        </div>
+    </div>
+</div>

@@ -12,6 +12,7 @@
     'angular-loading-bar',
     'ngAnimate',
     'ngStorage',
+    'ngSanitize',
     'sails.io',
     'toastr',
     'ui.bootstrap',

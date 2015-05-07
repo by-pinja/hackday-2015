@@ -53,6 +53,20 @@
           enableVerticalResize: false
         },
         {
+          name: 'RSS reader',
+          directive: 'widget-rss-reader',
+          dataAttrName: 'data',
+          dataModelTypeRR: 'WidgetRssReaderModel',
+          dataModelOptions: {
+            refreshInterval: 30,
+            feedUrl: 'https://twitrss.me/twitter_user_to_rss/?user=protacon',
+            feedItems: 5
+          },
+          settingsModalOptions: {
+            partialTemplateUrl: '/frontend/board/widgets/widget-rss-reader/settings.html'
+          }
+        },
+        {
           name: 'Weather Information',
           directive: 'widget-weather-information',
           settingsModalOptions: {
