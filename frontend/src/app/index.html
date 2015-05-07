@@ -2,7 +2,8 @@
 <html data-ng-app="frontend">
     <head>
         <meta charset="utf-8"/>
-        <title>HackDay!</title>
+        <title>iTV 2020</title>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
         <!-- inject:vendor:css -->
         <!-- endinject -->
@@ -10,17 +11,8 @@
         <!-- inject:css -->
         <!-- endinject -->
     </head>
-    <body class="container-fluid"
-        data-ng-cloak class="ng-cloak"
-    >
-        <div data-ui-view="header"></div>
-
-        <div id="container" class="main-container">
-            <div data-ui-view="pageNavigation"></div>
-            <div data-ui-view="content"></div>
-        </div>
-
-        <div data-ui-view="footer"></div>
+    <body data-ng-cloak class="ng-cloak">
+        <div data-ui-view="content"></div>
 
         <script>
             (function onLoad() {

@@ -1,5 +1,5 @@
 // Configuration
-var host = "http://hackday.protacon.com:3939/";
+var host = "http://localhost:3000/";
 var squareSize = 5;
 
 // Globals
@@ -11,6 +11,8 @@ var levelG = mainSvg.append("g").attr("id", "level");
 var appleG = mainSvg.append("g").attr("id", "apple");
 var snakeAG = mainSvg.append("g").attr("id", "snakeA");
 var snakeBG = mainSvg.append("g").attr("id", "snakeB");
+var snakeCG = mainSvg.append("g").attr("id", "snakeC");
+var snakeDG = mainSvg.append("g").attr("id", "snakeD");
 var timeSpan = d3.select("#timeLeft");
 
 var socket = io(host);
@@ -19,11 +21,15 @@ socket.on('connect', function () {
 
     socket.on('start', function(data) {
         players = data.players;
-        console.log("Start. Players 1: " + players[0].name + ' Player 2: ' + players[1].name);
+        console.log("Start. Players 1: " + players[0].name + ' Player 2: ' + players[1].name + ' Player 3: ' + players[2].name + ' Player 4: ' + players[3].name);
         d3.select("#player1Name").text(players[0].name);
         d3.select("#player2Name").text(players[1].name);
+        d3.select("#player3Name").text(players[2].name);
+        d3.select("#player4Name").text(players[3].name);
         d3.select("#player1Winner").classed("hidden", true);
         d3.select("#player2Winner").classed("hidden", true);
+        d3.select("#player3Winner").classed("hidden", true);
+        d3.select("#player4Winner").classed("hidden", true);
         d3.select("#outOfTimeCaption").classed("hidden", true);
         console.log(data);
         var level = data.level;
@@ -37,6 +43,10 @@ socket.on('connect', function () {
     });
 
     socket.on('apple', function(apple) {
+        if (apple) {
+            document.getElementById('apple-audio').play();
+
+        }
         console.log("Apple: " + apple);
         refreshApple(apple);
     });
@@ -50,12 +60,20 @@ socket.on('connect', function () {
             console.log("TIE.");
             d3.select("#player1Winner").classed("hidden", false).text("TIE!");
             d3.select("#player2Winner").classed("hidden", false).text("TIE!");
+            d3.select("#player3Winner").classed("hidden", false).text("TIE!");
+            d3.select("#player4Winner").classed("hidden", false).text("TIE!");
         } else if(winners[0] == 1) {
             console.log(players[1].name + " won! (Player 2)");
             d3.select("#player2Winner").text("WINNER!").classed("hidden", false);
         } else if(winners[0] == 0) {
             console.log(players[0].name + " won! (Player 1)");
             d3.select("#player1Winner").text("WINNER!").classed("hidden", false);
+        } else if(winners[0] == 2) {
+            console.log(players[0].name + " won! (Player 3)");
+            d3.select("#player3Winner").text("WINNER!").classed("hidden", false);
+        } else if(winners[0] == 3) {
+            console.log(players[0].name + " won! (Player 4)");
+            d3.select("#player4Winner").text("WINNER!").classed("hidden", false);
         }
     })
 
@@ -68,7 +86,7 @@ socket.on('connect', function () {
 function refreshLevel(level) {
 
     mainSvg.attr("width", level.width * squareSize)
-           .attr("height", level.height * squareSize);
+        .attr("height", level.height * squareSize);
 
     var map = level.map;
     // Always re-create the whole level because it isn't done often and it's the simplest way.
@@ -102,6 +120,8 @@ function refreshLevel(level) {
 function refreshSnakes(snakes) {
     refreshSnake("snakeA", snakes[0].body, "rgb(255,255,0)", snakeAG);
     refreshSnake("snakeB", snakes[1].body, "rgb(0,255,255)", snakeBG);
+    refreshSnake("snakeC", snakes[2].body, "rgb(12,255,0)", snakeCG);
+    refreshSnake("snakeD", snakes[3].body, "rgb(255,87,230)", snakeDG);
 }
 
 /**

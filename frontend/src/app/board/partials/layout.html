@@ -1,43 +1,117 @@
-<ul class="nav nav-tabs layout-tabs"
-    data-ui-sortable="sortableOptions"
-    data-ng-model="layouts"
->
-    <li
-        data-ng-repeat="layout in layouts"
-        data-ng-class="{active: layout.active}"
-    >
-        <a data-ng-click="makeLayoutActive(layout)">
-            <span
-                data-ng-dblclick="editTitle(layout)"
-                data-ng-show="!layout.editingTitle"
-            >
-                {{layout.title}}
+<div class="header">
+    <div class="container-fluid">
+        <div class="site-title"><strong>i</strong>TV</div>
+
+
+        <div id="settings-button" class="settings-button"
+             data-ng-if="!options.hideToolbar"
+                ></div>
+        <div id="settings" class="btn-toolbar"
+             data-ng-if="!options.hideToolbar"
+                >
+            <div class="btn-group"
+                 data-ng-if="!options.widgetButtons"
+                    >
+            <span class="dropdown"
+                  data-on-toggle="toggled(open)"
+                    >
+                <button type="button" class="btn btn-primary dropdown-toggle"
+                        data-toggle="dropdown"
+                        >
+                    Widgets
+                    <span class="caret"></span>
+                </button>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li data-ng-repeat="widget in widgetDefs">
+                        <a href="#" class="dropdown-toggle"
+                           data-ng-click="addWidgetInternal($event, widget);"
+                                >
+                            {{widget.name}}
+                        </a>
+                    </li>
+                </ul>
             </span>
+            </div>
 
-            <form action="" class="layout-title"
-                data-ng-show="layout.editingTitle"
-                data-ng-submit="saveTitleEdit(layout)"
+            <div class="btn-group"
+                 data-ng-if="options.widgetButtons"
+                    >
+                <button type="button" class="btn btn-primary"
+                        data-ng-repeat="widget in widgetDefs"
+                        data-ng-click="addWidgetInternal($event, widget);"
+                        >
+                    {{widget.name}}
+                </button>
+            </div>
+
+            <button class="btn btn-warning"
+                    data-ng-click="resetWidgetsToDefault()"
+                    >
+                Default Widgets
+            </button>
+
+            <button class="btn btn-success"
+                    data-ng-if="options.storage && options.explicitSave"
+                    data-ng-click="options.saveDashboard()"
+                    data-ng-disabled="!options.unsavedChangeCount"
+                    >
+                {{ !options.unsavedChangeCount ? "all saved" : "save changes (" + options.unsavedChangeCount + ")" }}
+            </button>
+
+            <button type="button" class="btn btn-info"
+                    data-ng-click="clear();"
+                    >
+                Clear
+            </button>
+        </div>
+
+        <ul class="nav nav-tabs layout-tabs"
+            data-ui-sortable="sortableOptions"
+            data-ng-model="layouts"
+        >
+            <li
+                data-ng-repeat="layout in layouts"
+                data-ng-class="{active: layout.active}"
             >
-                <input type="text" class="form-control"
-                    data-layout="{{layout.id}}"
-                    data-ng-model="layout.title"
-                />
-            </form>
+                <a data-ng-click="makeLayoutActive(layout)">
+                    <span
+                        data-ng-dblclick="editTitle(layout)"
+                        data-ng-show="!layout.editingTitle"
+                    >
+                        {{layout.title}}
+                    </span>
 
-            <i class="fa fa-times remove-layout-icon"
-                data-ng-if="!layout.locked"
-                data-ng-click="removeLayout(layout)"
-            ></i>
-        </a>
-    </li>
-    <li>
-        <a data-ng-click="createNewLayout()">
-            <i class="fa fa-plus"></i>
-        </a>
-    </li>
-</ul>
+                    <form action="" class="layout-title"
+                        data-ng-show="layout.editingTitle"
+                        data-ng-submit="saveTitleEdit(layout)"
+                    >
+                        <input type="text" class="form-control"
+                            data-layout="{{layout.id}}"
+                            data-ng-model="layout.title"
+                        />
+                    </form>
 
-<div dashboard="layout.dashboard"
-    data-ng-repeat="layout in layouts | filter: isActive"
-    data-template-url="/frontend/board/partials/dashboard.html"
-></div>
+                    <i class="fa fa-times remove-layout-icon"
+                        data-ng-if="!layout.locked"
+                        data-ng-click="removeLayout(layout)"
+                    ></i>
+                </a>
+            </li>
+            <li>
+                <a data-ng-click="createNewLayout()">
+                    <i class="fa fa-plus"></i>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
+
+
+<div id="container" class="container-fluid main-container">
+    <div class="row" dashboard="layout.dashboard"
+        data-ng-repeat="layout in layouts | filter: isActive"
+        data-template-url="/frontend/board/partials/dashboard.html"
+    ></div>
+</div>

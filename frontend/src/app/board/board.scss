@@ -1,6 +1,7 @@
 @import "../styles/mixins";
 
 .widget-container {
+  padding-bottom: 30px;
   &.widget-no-resize {
     .widget-ew-resizer,
     .widget-s-resizer {
@@ -9,8 +10,10 @@
   }
 
   .widget {
-    @include box-shadow(1px, 1px, 10px, #666666);
-    border: 1px solid #666666;
+    @include box-shadow(1px, 1px, 10px, #333);
+    border: 0;
+    border-radius: 0;
+    margin: 0;
 
     &:hover {
       .widget-header {
