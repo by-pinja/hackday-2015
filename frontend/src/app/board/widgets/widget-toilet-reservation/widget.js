@@ -36,6 +36,10 @@
                 return moment(reservation.reservationEndTime) > moment();
               }
 
+              $scope.showDouble = function(reservation) {
+                return reservation.type === 3 && $scope.isReserved(reservation);
+              }
+
               $scope.isAvoiding = function(reservation) {
                 return (reservation.type === 2 && reservation.avoidingWork);
               }

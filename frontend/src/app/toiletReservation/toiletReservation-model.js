@@ -27,6 +27,7 @@
                     addOrUpdate(result, 3, 2);
                     addOrUpdate(result, 4, 2);
                     addOrUpdate(result, 5, 1);
+                    addOrUpdate(result, 6, 3);
 
                   }, function (err) {
                     console.log(err);

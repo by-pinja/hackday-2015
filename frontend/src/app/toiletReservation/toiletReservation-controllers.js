@@ -66,6 +66,10 @@
                         $scope.canReservePoo = false;
                     }
                 };
+
+                $scope.reserveDouble = function() {
+                  ToiletReservationModel.update(6, {id: 6, avoidingWork:false, reservationEndTime: moment().add(2, 'minutes')});
+                }
             }
         ])
     ;
