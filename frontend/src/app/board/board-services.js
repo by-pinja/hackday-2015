@@ -42,6 +42,11 @@
           directive: 'widget-toilet-reservation',
           enableVerticalResize: true
         },
+          {
+              name: 'Muster map',
+              directive: 'widget-muster',
+              enableVerticalResize: true
+          },
         {
           name: 'Protacon twitter feed',
           directive: 'widget-twitter',
