@@ -153,7 +153,7 @@ CoolClock.prototype = {
             return {timeSpanType: 4, timeDiff: -1*(this.timeBonus/2 - (dayStartMs - (this.times[i].end + this.timeBonus/2)))};
           }
         }
-        this.timeMotion = "none";
+        this.motion = "none";
         return {timeSpanType: 0, timeDiff: 0};
       }
     },
