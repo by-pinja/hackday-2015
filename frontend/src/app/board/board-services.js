@@ -39,6 +39,11 @@
           name: 'LiukkoClock',
           directive: 'widget-liukko-clock',
           enableVerticalResize: false
+        },
+        {
+          name: 'Weather Information',
+          directive: 'widget-weather-information',
+          enableVerticalResize: true
         }
       ];
     })
