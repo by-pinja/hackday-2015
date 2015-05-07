@@ -38,31 +38,7 @@ CoolClock.config = {
             secondHand1: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.5 },
             secondHand2: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.2 },
       secondDecoration: { lineWidth: 1, startAt: 70, radius: 4, fillColor: "red", color: "red", alpha: 1 }
-    },
-    chunkySwiss: {
-      outerBorder: { lineWidth: 4, radius:97, color: "black", alpha: 1 },
-      smallIndicator: { lineWidth: 4, startAt: 89, endAt: 93, color: "black", alpha: 1 },
-      largeIndicator: { lineWidth: 8, startAt: 80, endAt: 93, color: "black", alpha: 1 },
-      hourHand: { lineWidth: 12, startAt: -15, endAt: 60, color: "black", alpha: 1 },
-      minuteHand: { lineWidth: 10, startAt: -15, endAt: 85, color: "black", alpha: 1 },
-      secondHand: { lineWidth: 4, startAt: -20, endAt: 85, color: "red", alpha: 1 },
-            secondHand1: { lineWidth: 3, startAt: -20, endAt: 85, color: "red", alpha: 0.5 },
-
-            secondHand2: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.2 },
-      secondDecoration: { lineWidth: 2, startAt: 70, radius: 8, fillColor: "red", color: "red", alpha: 1 }
-    },
-    chunkySwissOnBlack: {
-      outerBorder: { lineWidth: 4, radius:97, color: "white", alpha: 1 },
-      smallIndicator: { lineWidth: 4, startAt: 89, endAt: 93, color: "white", alpha: 1 },
-      largeIndicator: { lineWidth: 8, startAt: 80, endAt: 93, color: "white", alpha: 1 },
-      hourHand: { lineWidth: 12, startAt: -15, endAt: 60, color: "white", alpha: 1 },
-      minuteHand: { lineWidth: 10, startAt: -15, endAt: 85, color: "white", alpha: 1 },
-      secondHand: { lineWidth: 4, startAt: -20, endAt: 85, color: "red", alpha: 1 },
-      secondHand1: { lineWidth: 3, startAt: -20, endAt: 85, color: "red", alpha: 0.5 },
-      secondHand2: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.2 },
-      secondDecoration: { lineWidth: 2, startAt: 70, radius: 8, fillColor: "red", color: "red", alpha: 1 }
     }
-
   },
 
   // Test for IE so we can nurse excanvas in a couple of places
@@ -109,6 +85,7 @@ CoolClock.prototype = {
     this.ctx = this.canvas.getContext("2d");
     this.ctx.scale(this.scale,this.scale);
 
+    this.timeMotionEnabled = false;
     // Keep track of this object
     CoolClock.config.clockTracker[this.canvasId] = this;
 
@@ -138,7 +115,7 @@ CoolClock.prototype = {
         this.timeBonus = timeFields[0]*60*1000;
         while(i+4 <= timeFields.length)
         {
-          ts.setHours(  timeFields[i], timeFields[i+1], 0, 0);
+          ts.setHours(timeFields[i], timeFields[i+1], 0, 0);
           te.setHours(timeFields[i+2], timeFields[i+3], 0, 0);
           this.times.push({start: this.dayStartMs(ts),
             end: this.dayStartMs(te)});
@@ -154,24 +131,29 @@ CoolClock.prototype = {
           if(     dayStartMs >= this.times[i].start-this.timeBonus &&
             dayStartMs <= this.times[i].start-this.timeBonus/2)
           {   // Speeup the time. hurry for coffee break
+            this.timeMotion = "hurry";
             return {timeSpantype: 1, timeDiff: dayStartMs - (this.times[i].start-this.timeBonus) };
           }
           else if(dayStartMs >= this.times[i].start - this.timeBonus/2 &&
             dayStartMs <= this.times[i].start + this.timeBonus/2)
           {
+            this.timeMotion = "slow";
             return {timeSpanType: 2, timeDiff: this.timeBonus/2 - (dayStartMs - (this.times[i].start - this.timeBonus/2))/2};
           }
           else if(dayStartMs >= this.times[i].end - this.timeBonus/2 &&
             dayStartMs < this.times[i].end + this.timeBonus/2)
           {
+            this.timeMotion = "slow";
             return {timeSpantype: 3, timeDiff: (dayStartMs - (this.times[i].end - this.timeBonus/2))/-2};
           }
           else if(dayStartMs >= this.times[i].end + this.timeBonus/2 &&
             dayStartMs <= this.times[i].end + this.timeBonus)
           {
+            this.timeMotion = "hurry"
             return {timeSpanType: 4, timeDiff: -1*(this.timeBonus/2 - (dayStartMs - (this.times[i].end + this.timeBonus/2)))};
           }
         }
+        this.timeMotion = "none";
         return {timeSpanType: 0, timeDiff: 0};
       }
     },
@@ -321,8 +303,17 @@ CoolClock.prototype = {
 
     if (this.showSecondHand && skin.secondHand) {
       this.radialLineAtAngle(this.tickAngle(ms), skin.secondHand);
-      this.radialLineAtAngle(this.tickAngle(ms-400), skin.secondHand1);
-      this.radialLineAtAngle(this.tickAngle(ms-800), skin.secondHand2);
+
+      if(this.timeMotion === "hurry") {
+        this.radialLineAtAngle(this.tickAngle(ms - 400), skin.secondHand1);
+        this.radialLineAtAngle(this.tickAngle(ms - 800), skin.secondHand2);
+      }
+      else if(this.timeMotion === "slow") {
+        this.radialLineAtAngle(this.tickAngle(ms + 400), skin.secondHand1);
+        this.radialLineAtAngle(this.tickAngle(ms + 800), skin.secondHand2);
+     }
+
+
     }
   },
 
