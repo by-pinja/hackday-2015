@@ -9,14 +9,32 @@
         return {
           restrict: 'A',
           scope: {
-            players: '=players'
+            players: '='
           },
           replace: true,
           templateUrl: '/frontend/board/widgets/widget-worms-ladder/widget.html',
           controller: [
             '$scope',
-            function controller($scope) {
-              // TODO: add some controls for actual data!
+            'WormsLadderModel',
+            function controller(
+              $scope,
+              WormsLadderModel
+            ) {
+              // TODO: Focus input when initiaing edit
+              // TODO: edit scores
+
+              $scope.startEdit = function (player) {
+                player.editmode = true;
+              };
+
+              $scope.cancelEdit = function (player) {
+                player.editmode = false;
+              };
+
+              $scope.update = function update(player) {
+                WormsLadderModel.update(player.id, player);
+                player.editmode = false;
+              }
             }
           ]
         };
