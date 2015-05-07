@@ -1,0 +1,13 @@
+<div class="widget-big-brother embed-responsive embed-responsive-16by9">
+
+  <h2 ng-bind="title">bb</h2>
+
+  <div ng-repeat="loossi in loossit">
+
+    <h3 ng-bind="loossi.name"></h3>
+
+    <div ng-repeat="person in loossi.people">
+      <span ng-bind="person.name"></span>
+    </div>
+  </div>
+</div>

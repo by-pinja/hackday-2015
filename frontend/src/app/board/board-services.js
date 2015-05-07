@@ -10,6 +10,11 @@
   angular.module('frontend.board')
     .factory('widgetDefinitions', function factory() {
       return [
+
+        {
+          name: 'Big Brother 2015',
+          directive: 'widget-big-brother'
+        },
         {
           name: 'URL viewer',
           directive: 'widget-url-viewer',
