@@ -7,18 +7,10 @@
         <th>Weather</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody data-ng-repeat="location in locations | orderBy : 'name'">
       <tr>
-        <td>Jyväskylä</td>
-        <td>13c</td>
-      </tr>
-      <tr>
-        <td>Tampere</td>
-        <td>124c</td>
-      </tr>
-      <tr>
-        <td>Oulu</td>
-        <td>1c</td>
+        <td>{{location.name}}</td>
+        <td>{{location.temperature}} C</td>
       </tr>
     </tbody>
   </table>

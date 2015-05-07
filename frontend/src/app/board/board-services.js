@@ -43,6 +43,8 @@
         {
           name: 'Weather Information',
           directive: 'widget-weather-information',
+          dataModelType: 'WidgetWeatherInformationModel',
+          dataAttrName: 'locations',
           settingsModalOptions: {
             partialTemplateUrl: '/frontend/board/widgets/widget-weather-information/settings.html'
           },
