@@ -33,7 +33,14 @@
         },
         {
           name: 'Protacon twitter feed',
-          directive: 'widget-twitter'
+          directive: 'widget-twitter',
+          settingsModalOptions: {
+            partialTemplateUrl: '/frontend/board/widgets/widget-twitter/settings.html'
+          },
+          dataModelOptions: {
+            widget_id: '596256646311104512'
+          }
+
         }
       ];
     })
