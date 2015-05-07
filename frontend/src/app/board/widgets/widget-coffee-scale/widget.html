@@ -1,0 +1,19 @@
+<div class="widget-coffee-scale">
+
+  <h1>Coffee status</h1>
+  <hr>
+  <ul class="pot-list">
+    <li data-ng-repeat="pot in coffee_pots | orderBy : 'scaleId'">
+      <div class="row">
+        <div class="col-md-4">{{pot.scaleId}}</div>
+        <div class="col-md-2"><div class="cup"><div class="text">{{pot.cups}}</div></div></div>
+        <div class="col-md-6">
+          <h2>{{pot.percentage}} % </h2>
+          <div>Brewed: {{pot.fillTime | date : 'dd.MM.yyyy HH:mm'}}</div>
+        </div>
+        <div class=""></div>
+      </div>
+    </li>
+  </ul>
+
+</div>

@@ -1,0 +1,53 @@
+/**
+ * This file contains all necessary CSS overrides/definitions for widget-protacon-video.
+ *
+ * And please don't attach any other CSS rules to this file.
+ */
+.widget-coffee-scale {
+  margin: 15px;
+
+  h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  h2{
+    font-size: 24px;
+    font-family: Menlo, Monaco, Consolas, "Lucida Console", monospace;
+    margin: 5px 0 2px 0px;
+  }
+
+  .pot-list{
+    li {
+      list-style:none;
+      .cup{
+        margin-top:10px;
+        position:relative;
+        .text{
+          color: #fff;
+          position:relative;
+          z-index:99;
+          font-size:18px;
+        }
+
+        &:after{
+          font-size: 50px;
+          color: #333;
+          content: "\f0f4";
+          font-family: FontAwesome;
+          text-decoration: none;
+          top: 50%;
+          left: 50%;
+          position:absolute;
+          margin: -33px 0 0 -80%;
+          z-index:1;
+        }
+      }
+    }
+  }
+
+  hr {
+    margin: 10px 0 5px 0;
+  }
+}
