@@ -5,7 +5,7 @@ export class TitleSvc {
 	}
 
   currentMood() {
-    return 0.83; // Onlu good mood
+    return 1; // Onlu good mood
   }
 
 }
