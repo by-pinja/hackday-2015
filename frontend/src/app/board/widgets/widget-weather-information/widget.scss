@@ -1,0 +1,28 @@
+/**
+ * This file contains all necessary CSS overrides/definitions for widget-weather-information
+ *
+ * And please don't attach any other CSS rules to this file.
+ */
+.widget-weather-information {
+  margin: 15px;
+
+  ol {
+    padding: 0 0 0 25px;
+    margin: 10px 0 -10px 0;
+    font-size: 16px;
+  }
+
+  dl {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  hr {
+    margin: 10px 0 5px 0;
+  }
+}

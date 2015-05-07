@@ -1,0 +1,17 @@
+<div class="widget-weather-information">
+<h1>Weather</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Location</th>
+        <th>Weather</th>
+      </tr>
+    </thead>
+    <tbody data-ng-repeat="location in locations | orderBy : 'name'">
+      <tr>
+        <td>{{location.name}}</td>
+        <td>{{location.temperature}} C</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,16 +1,20 @@
 <div>
-    <div class="btn-toolbar"
-        data-ng-if="!options.hideToolbar"
-    >
-        <div class="btn-group"
-            data-ng-if="!options.widgetButtons"
-        >
-            <span class="dropdown"
-                data-on-toggle="toggled(open)"
+
+    <div id="settings-button" class="settings-button"
+         data-ng-if="!options.hideToolbar"
+            ></div>
+    <div id="settings" class="btn-toolbar"
+         data-ng-if="!options.hideToolbar"
             >
-                <button type="button" class="btn btn-primary dropdown-toggle"
-                    data-toggle="dropdown"
+        <div class="btn-group"
+             data-ng-if="!options.widgetButtons"
                 >
+            <span class="dropdown"
+                  data-on-toggle="toggled(open)"
+                    >
+                <button type="button" class="btn btn-primary dropdown-toggle"
+                        data-toggle="dropdown"
+                        >
                     Widgets
                     <span class="caret"></span>
                 </button>
@@ -18,8 +22,8 @@
                 <ul class="dropdown-menu" role="menu">
                     <li data-ng-repeat="widget in widgetDefs">
                         <a href="#" class="dropdown-toggle"
-                            data-ng-click="addWidgetInternal($event, widget);"
-                        >
+                           data-ng-click="addWidgetInternal($event, widget);"
+                                >
                             {{widget.name}}
                         </a>
                     </li>
@@ -28,42 +32,42 @@
         </div>
 
         <div class="btn-group"
-            data-ng-if="options.widgetButtons"
-        >
+             data-ng-if="options.widgetButtons"
+                >
             <button type="button" class="btn btn-primary"
-                data-ng-repeat="widget in widgetDefs"
-                data-ng-click="addWidgetInternal($event, widget);"
-            >
+                    data-ng-repeat="widget in widgetDefs"
+                    data-ng-click="addWidgetInternal($event, widget);"
+                    >
                 {{widget.name}}
             </button>
         </div>
 
         <button class="btn btn-warning"
-            data-ng-click="resetWidgetsToDefault()"
-        >
+                data-ng-click="resetWidgetsToDefault()"
+                >
             Default Widgets
         </button>
 
         <button class="btn btn-success"
-            data-ng-if="options.storage && options.explicitSave"
-            data-ng-click="options.saveDashboard()"
-            data-ng-disabled="!options.unsavedChangeCount"
-        >
+                data-ng-if="options.storage && options.explicitSave"
+                data-ng-click="options.saveDashboard()"
+                data-ng-disabled="!options.unsavedChangeCount"
+                >
             {{ !options.unsavedChangeCount ? "all saved" : "save changes (" + options.unsavedChangeCount + ")" }}
         </button>
 
         <button type="button" class="btn btn-info"
-            data-ng-click="clear();"
-        >
+                data-ng-click="clear();"
+                >
             Clear
         </button>
     </div>
 
-    <div class="dashboard-widget-area"
+    <div class="dashboard-widget-area row"
         data-ui-sortable="sortableOptions"
         data-ng-model="widgets"
     >
-        <div class="widget-container"
+        <div class="widget-container col-xs-4"
             data-widget
             data-ng-repeat="widget in widgets"
             data-ng-style="widget.containerStyle"

@@ -1,0 +1,15 @@
+<style>
+
+#moodbox {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 40px;
+}
+
+</style>
+<div id="moodbox">
+	<p>
+	  <img (click)="toggle()" src="img/icons_large_{{currentMood}}.png"><br/>
+	  {{currentMood}}
+	</p>
+</div>

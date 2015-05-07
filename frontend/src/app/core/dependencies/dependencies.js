@@ -12,12 +12,14 @@
     'angular-loading-bar',
     'ngAnimate',
     'ngStorage',
+    'ngSanitize',
     'sails.io',
     'toastr',
     'ui.bootstrap',
     'ui.dashboard',
     'ui.router',
     'ui.utils',
-    'youtube-embed'
+    'youtube-embed',
+    'angularMoment'
   ]);
 }());
