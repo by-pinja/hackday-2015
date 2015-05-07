@@ -8,32 +8,20 @@
   padding-top: 25px;
 }
 
-.people {
-  float: left;
-}
-
 .loossi-map {
-  float: right;
-  width: 70%;
   min-height: 600px;
-  height: 100% !important;
   background-color: #dbdbdb;
 }
 
-.left {
-  float: left;
-  clear: left;
-}
-.right {
-  float: right;
-  clear: right;
-}
 
 .loossi {
-
-
-
-  width: 50px;
-  height: 50px;
+  border: 1px solid #99aba5;
+  min-height: 180px;
   background-color: #2fd2db;
+}
+
+.miniloossi {
+  border: 1px solid #99aba5;
+  min-height: 90px;
+  background-color: #41ab71;
 }
