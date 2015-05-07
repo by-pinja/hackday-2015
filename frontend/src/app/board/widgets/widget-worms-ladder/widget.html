@@ -30,7 +30,11 @@
 
           </div>
           <div ng-show="player.editmode">
-            <input id="{{player.playerName}}" type="text" ng-model="player.playerName" ng-keypress="$event.keyCode == 13 ? update(player) : null" />
+            <input autofocus class="text-input" type="text" ng-model="player.playerName" ng-keypress="$event.keyCode == 13 ? update(player) : null" />
+            <input class="number-input" type="number" ng-model="player.gamesWon" ng-keypress="$event.keyCode == 13 ? update(player) : null"/>
+            <input class="number-input" type="number" ng-model="player.gamesAttended" ng-keypress="$event.keyCode == 13 ? update(player) : null"/>
+
+            <button data-ng-click="cancelEdit(player)">Cancel</button>
             <button data-ng-click="update(player)">Save</button>
           </div>
 

@@ -27,10 +27,12 @@
                 player.editmode = true;
               };
 
-              $scope.update = function update(player) {
+              $scope.cancelEdit = function (player) {
+                player.editmode = false;
+              };
 
+              $scope.update = function update(player) {
                 WormsLadderModel.update(player.id, player);
-                console.log(player.editmode);
                 player.editmode = false;
               }
             }
