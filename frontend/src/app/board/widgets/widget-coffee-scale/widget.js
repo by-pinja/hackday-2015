@@ -1,4 +1,3 @@
-// This file contains all necessary for widget-protacon-video
 (function() {
   'use strict';
 
