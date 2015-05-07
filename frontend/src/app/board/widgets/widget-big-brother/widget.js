@@ -16,50 +16,31 @@
             function controller($scope) {
               $scope.title = "Big Brother 2015";
 
+
               $scope.loossit = [
-                {
-                  name: 'sauna',type: 'sauna', people: [
-                  {name: 'Testi 1', in: true},
-                  {name: 'Testi 2', in: false},
-                  {name: 'Testi 3', in: true}
-                ]
-                },
-                {name: 'IT', type: 'it', 'width': 1},
-                {name: 'IT', type: 'it',  'width': 1},
-                {name: 'IT', type: 'it',  'width': 1},
-                {name: 'IT', type: 'it',  'width': 1},
-                {
-                  name: 'Vallu', type: 'development',  'width': 1, people: [
-                  {name: 'Tarmo', in: true},
-                  {name: 'Matti', in: true}
-                ]
-                },
-                {name: 'Janne', type: 'development', 'width': 1},
-                {name: 'Olli', type: 'development', 'width': 1},
-                {name: 'Cella', type: 'meeting', 'width': 1},
-                {name: 'saunatupa', type: 'sauna', width: 2},
-                {name: 'tyhjä', type: 'empty', 'width': 1},
-                {name: 'tyhjä', type: 'empty', 'width': 1},
-                {name: 'Keski 1', type: 'development', 'width': 1},
-                {name: 'tyhjä', type: 'empty', 'width': 1},
-                {name: 'Taukotila', type: 'break', 'width': 2},
-                {
-                  name: 'Keski 2', type: 'development', 'width': 1, people: [
-                  {name: 'Tommi', in: true},
-                  {name: 'Jaakko', in: true}
-                ]
-                },
-                {name: 'tyhjä', type: 'empty', 'width': 1},
-                {name: 'Atrium', type: 'meeting', 'width': 1},
-                {name: 'huoneet', type: 'development', width: 2},
-                {name: 'myynti', type: 'sale', 'width': 1},
-                {name: 'Ohjelmisto 5', type: 'development', 'width': 1},
-                {name: 'Ohjelmisto 4', type: 'development', 'width': 1},
-                {name: 'Ohjelmisto 3', type: 'development', 'width': 1},
-                {name: 'Ohjelmisto 2', type: 'development', 'width': 1},
-                {name: 'Ohjelmisto 1', type: 'development', 'width': 1},
-                {name: 'Toimistopalvelut', type: 'office', 'width': 1},
-                {name: 'Villa', type: 'meeting', 'width': 1}
+                {name: "Sauna", width: 2, type: 'sauna', people: []},
+                {name: "IT", width: 2, type: 'it', people: []},
+                {name: "TUKI", width: 2, type: 'tuki', people: []},
+
+                {name: "Vallu", width: 1, type: 'normal', people: []},
+                {name: "Hallinto", width: 1, type: 'normal', people: []},
+                {name: "Cella", width: 1, type: 'meeting', people: []},
+
+                {name: "Saunatupa", width: 2, type: 'sauna', people: []},
+                {name: "Laitisen poppoo", width: 1, type: 'normal', people: []},
+                {name: "KAHVITILA", width: 3, type: 'lounge', people: []},
+                {name: "Tiimij.", width: 1, type: 'teamleaders', people: []},
+                {name: "Atrium", width: 1, type: 'meeting', people: []},
+
+                {name: "Huoneet", width: 1, type: 'rooms', people: []},
+                {name: "Myynti", width: 1, type: 'normal', people: []},
+                {name: "Muster", width: 1, type: 'normal', people: []},
+                {name: "Cargo", width: 1, type: 'normal', people: []},
+                {name: "Anna", width: 1, type: 'normal', people: []},
+                {name: "Palola", width: 1, type: 'normal', people: []},
+                {name: "Veera", width: 1, type: 'normal', people: []},
+                {name: "Vast.", width: 1, type: 'normal', people: []},
+                {name: "Villa", width: 1, type: 'normal', people: []}
               ];
             }
           ]

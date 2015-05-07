@@ -6,10 +6,11 @@
 
     <h3>Loossit ({{loossit.length}})</h3>l
 
+
     <div id="mapContainer" class="container">
 
       <div class="row">
-        <div ng-repeat="loossi in loossit" class="loossi  {{loossi.type}}">
+        <div ng-repeat="loossi in loossit" ng-class="{'test':$first}" ng-class="{'test':$last}" class="loossi col-sm-{{loossi.width}}  {{loossi.type}}">
 
           <h4 ng-bind="loossi.name"></h4>
 
