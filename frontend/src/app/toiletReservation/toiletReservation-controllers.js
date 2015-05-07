@@ -26,15 +26,15 @@
                     .load()
                     .then(
                     function onSuccess(result) {
-                        var now = moment().add(-moment().utcOffset(), 'minutes');
+                        var now = moment();//.add(-moment().utcOffset(), 'minutes');
 
                         console.log(result);
-                        console.log(now);
+                        console.log(now.format("YYYY-MM-DD hh:mm:ss"));
 
                         _.forEach(result, function(slot) {
 
                             var reservationEnd = moment(slot.reservationEndTime);
-                            console.log(reservationEnd);
+                            console.log(reservationEnd.format("YYYY-MM-DD hh:mm:ss"));
                             console.log(reservationEnd.isBefore(now));
 
                             if (slot.type === 1 && reservationEnd.isBefore(now))
