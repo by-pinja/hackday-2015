@@ -1,17 +1,17 @@
 <div>
     <div class="row">
         <div class="col-xs-12">
-            <button ng-disabled="!canReservePoo" ng-click="reserveToilet(2)" class="btn btn-lg">Varaa paska</button>
+            <button ng-disabled="!canReservePoo" ng-click="reserveToilet(2, false)" class="btn btn-lg">Kakattaa (7 minuuttia)</button>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <button ng-disabled="!canReservePee" ng-click="reserveToilet(1)" class="btn btn-lg">Varaa kusi</button>
+            <button ng-disabled="!canReservePee" ng-click="reserveToilet(1, false)" class="btn btn-lg">Pissittää (2 minuuttia)</button>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <button ng-disabled="!canReservePoo" ng-click="reserveToilet(2)" class="btn btn-lg">Nakkisuoja</button>
+            <button ng-disabled="!canReservePoo" ng-click="reserveToilet(2, true)" class="btn btn-lg">Nakkisuoja (15+ minuuttia)</button>
         </div>
     </div>
 </div>

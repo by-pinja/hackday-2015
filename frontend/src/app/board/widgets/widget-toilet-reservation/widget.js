@@ -4,18 +4,6 @@
 
   // Controller for generic error handling.
   angular.module('frontend.board')
-    .factory('peepooFactory', [function() {
-      return {
-        reservations : [
-          {"type":"Poo", reserved:false},
-          {"type":"Pee", reserved:true},
-          {"type":"Poo", reserved:false},
-          {"type":"Poo", reserved: true},
-          {"type":"Pee", reserved:true},
-          {"type":"Poo", reserved: true}
-        ]
-      }
-    }])
     .directive('widgetToiletReservation', [
       function directive() {
         return {
@@ -24,17 +12,38 @@
           templateUrl: '/frontend/board/widgets/widget-toilet-reservation/widget.html',
           controller: [
             '$scope',
-            'peepooFactory',
-            function controller($scope, peepooFactory) {
-              $scope.reservations = peepooFactory.reservations;
+            'ToiletReservationModel',
+            '$rootScope',
+            function controller($scope, peepooFactory, $rootScope) {
+              $scope.reservations = [];
 
-              $scope.showPee = function (type) {
-                return type === "Pee"
+              peepooFactory.load().then(function(result) {
+                result.forEach(function(x) {
+                  console.log(x);
+                  $scope.reservations.push(x);
+                })
+              }, function(error){
+
+              });
+              window.setInterval(function() {
+                $rootScope.$apply();
+              }, 1000);
+
+              $scope.showPee = function (reservation) {
+                return reservation.type === 1;
               };
 
-              $scope.showShit = function (type) {
-                return type === "Poo"
+              $scope.showPoo = function (reservation) {
+                return reservation.type === 2 && (!reservation.avoidingWork || $scope.isReserved(reservation));
               };
+
+              $scope.isReserved = function(reservation) {
+                return moment(reservation.reservationEndTime) > moment();
+              }
+
+              $scope.isAvoiding = function(reservation) {
+                return (reservation.type === 2 && reservation.avoidingWork && !$scope.isReserved(reservation));
+              }
             }
           ]
         };
