@@ -3,4 +3,9 @@ export class TitleSvc {
 	constructor() {
 		this.title = 'Mood Meter';
 	}
+
+  currentMood() {
+    return 1; // Onlu good mood
+  }
+
 }
