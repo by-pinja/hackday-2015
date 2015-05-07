@@ -21,7 +21,7 @@
               _
             ){
               $scope.$watch('$parent.widget.dataModelOptions.locations', function watcher() {
-                console.log($scope.$parent.widget.dataModelOptions.locations);
+                //console.log($scope.$parent.widget.dataModelOptions.locations);
               },true);
             }
           ]
