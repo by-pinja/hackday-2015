@@ -1,10 +1,10 @@
 ﻿# Hackday 2015
 
 ## What is this?
-todo
+This is a 24 hour coding project aiming for an infoTV with variety of different information sources.
 
 ## Why?
-todo
+This is done to learn new technologies and to create something non-work-related together.
 
 ## Directory structure
 ```
