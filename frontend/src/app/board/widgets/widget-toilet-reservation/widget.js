@@ -7,10 +7,12 @@
     .factory('poopooFactory', [function() {
       return {
         reservations : [
-          {"Type":"Poo"},
-          {"Type":"Pee"},
-          {"Type":"Poo"},
-          {"Type":"Poo"}
+          {"type":"Poo", reserved:false},
+          {"type":"Pee", reserved:true},
+          {"type":"Poo", reserved:false},
+          {"type":"Poo", reserved: true},
+          {"type":"Pee", reserved:true},
+          {"type":"Poo", reserved: true}
         ]
       }
     }])

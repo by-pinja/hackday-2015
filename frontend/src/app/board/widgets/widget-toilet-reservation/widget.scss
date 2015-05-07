@@ -1,10 +1,13 @@
 .widget-toilet-reservation {
   border: 2px;
-  background-color:#8cce3b;
 }
 
 .toilet-image {
   height: 10em;
+}
+
+div .reservation-node {
+  background: #8cce3b;
 }
 
 div .poo {
@@ -25,4 +28,8 @@ div .pee {
   height: 150px;
   margin: 20px;
   float:left;
+}
+
+div .reserved {
+  background: #e9322d;
 }

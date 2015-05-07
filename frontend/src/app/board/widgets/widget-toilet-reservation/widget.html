@@ -1,6 +1,6 @@
 <div class="widget-toilet-reservation">
-  <div class="reservation-node" ng-repeat="reservation in reservations">
-    <div class="pee" ng-show="showPee(reservation.Type)"><img src="board/widgets/widget-toilet-reservation/pee.jpg" class="toilet-image"></div>
-    <div class="poo" ng-show="showShit(reservation.Type)"><img src="board/widgets/widget-toilet-reservation/poo.jpg" class="toilet-image"></div>
+  <div ng-repeat="reservation in reservations">
+    <div ng-class="{reserved: reservation.reserved}" class="pee reservation-node" ng-show="showPee(reservation.type)"><img src="board/widgets/widget-toilet-reservation/pee.jpg" class="toilet-image"></div>
+    <div ng-class="{reserved: reservation.reserved}" class="poo reservation-node" ng-show="showShit(reservation.type)"><img src="board/widgets/widget-toilet-reservation/poo.jpg" class="toilet-image"></div>
   </div>
 </div>
