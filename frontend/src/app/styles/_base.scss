@@ -7,31 +7,78 @@
 @import "angular";
 @import "modal";
 
-header,
-footer {
-  .navbar {
-    height: 40px;
-    min-height: 40px;
-    line-height: 40px;
+html {
+  background: url(/assets/images/layout/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
-    .navbar-brand {
-      height: 40px;
-      line-height: 40px;
-      padding: 0 15px;
+body {
+  background: transparent;
+  font-family: 'Lato', sans-serif;
+}
+
+.header {
+  height: 78px;
+  background: #333;
+  color: #fff;
+
+  .site-title {
+    float: left;
+    height: 78px;
+    margin: 0 20px 0;
+    background: #484848;
+    padding: 0 15px;
+    line-height: 78px;
+    font-size: 18px;
+  }
+
+  .nav-tabs {
+    border: 0;
+    li {
+      margin-right: 10px;
     }
+  }
 
-    .navbar-nav {
-      margin: 0;
+  .nav-tabs > li > a,
+  .nav-tabs > li > a:hover,
+  .nav-tabs > li > a:focus,
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus  {
+    height: 78px;
+    background: transparent;
+    padding: 0 12px;
+    border: 0;
+    text-align: center;
+    color: #787878;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 78px;
+  }
 
-      > li > a {
-        padding: 0;
-      }
-    }
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:hover,
+  .nav-tabs > li.active > a:focus {
+    border-bottom: 5px solid #e59c00;
+    color: #fff;
+  }
 
-    .navbar-toggle {
-      padding: 5px;
-      margin-top: 7px;
-    }
+  #settings-button {
+    display: none;
+    float: right;
+    width: 30px;
+    height: 30px;
+    margin-top: 20px;
+    background: url(/assets/images/layout/icon-settings.png);
+    cursor: pointer;
+  }
+
+  #settings {
+    margin-top: 20px;
+    float: right;
   }
 }
 
