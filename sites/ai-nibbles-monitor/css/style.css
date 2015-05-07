@@ -1,0 +1,62 @@
+@font-face {
+		   font-family:TopazPlus_a1200;
+		   src: url(../fonts/TopazPlus_a1200_v1.0.ttf) format("truetype");
+}
+
+body {
+	margin: 15px;
+}
+
+* {
+	font-family: TopazPlus_a1200, monospace; font-size:12pt; font-weight:normal;
+	line-height: 16px;
+	margin: 0; padding: 0;
+	color:#000000; background-color:#9B9B9B;
+}
+
+#game {
+	clear: both;
+	min-height: 800px;
+}
+
+#timeLeft {
+	display: inline-block;
+	width: 178px;
+}
+
+#outOfTimeCaption {
+	color: rgb(255,0,0);
+}
+
+.playerName {
+	display: inline-block;
+	width: 180px;
+}
+
+.playerWinner {
+	display: inline-block;
+	width: 70px;
+}
+
+.player1Color {
+	background-color: rgb(255,255,0);
+	color: rgb(255,255,0);
+}
+
+#player1Winner {
+	color: rgb(255,255,0);
+
+}
+
+.player2Color {
+	background-color: rgb(0,255,255);
+	color: rgb(0,255,255);
+}
+
+#player2Winner {
+	color: rgb(0,255,255);
+}
+
+.hidden {
+	visibility: hidden;
+}
