@@ -56,7 +56,7 @@
                 $scope.intervalPromise = $interval(function interval() {
                   $scope.fetch();
                 }, _this.dataModelOptions.refreshInterval * 60 * 1000);
-              }
+              };
             }
           ]
         };
