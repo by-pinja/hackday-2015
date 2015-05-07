@@ -7,10 +7,10 @@
     .factory('poopooFactory', [function() {
       return {
         reservations : [
-          {"Type":"Shit"},
+          {"Type":"Poo"},
           {"Type":"Pee"},
-          {"Type":"Shit"},
-          {"Type":"Shit"}
+          {"Type":"Poo"},
+          {"Type":"Poo"}
         ]
       }
     }])
@@ -19,7 +19,6 @@
         return {
           restrict: 'A',
           scope: {},
-          replace: true,
           templateUrl: '/frontend/board/widgets/widget-toilet-reservation/widget.html',
           controller: [
             '$scope',
@@ -32,7 +31,7 @@
               };
 
               $scope.showShit = function (type) {
-                return type === "Shit"
+                return type === "Poo"
               };
             }
           ]
