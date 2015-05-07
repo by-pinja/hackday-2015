@@ -15,7 +15,8 @@
             '$scope',
             '$http',
             'BackendConfig',
-            function controller($scope, $http, BackendConfig) {
+            '$interval',
+            function controller($scope, $http, BackendConfig, $interval) {
 
               $scope.loossit = [
                 {name: "Sauna", width: 2, type: 'sauna', people: []},
@@ -81,7 +82,7 @@
                   },
                   {
                     "id": "275",
-                    "direction": "1",
+                    "direction": "2",
                     "usename": "tle",
                     "name": "Lepp\u00e4nen Tarmo",
                     "time": "2015-05-07 14:44:00"
@@ -92,14 +93,14 @@
                   name: "Hallinto", width: 1, type: 'normal', people: [
                   {
                     "id": "238",
-                    "direction": "1",
+                    "direction": "2",
                     "usename": "opo",
                     "name": "Porkholm Olli",
                     "time": "2015-05-06 14:50:00"
                   },
                   {
                     "id": "40",
-                    "direction": "1",
+                    "direction": "2",
                     "usename": "jmhr",
                     "name": "Hakala-Ranta Janne",
                     "time": "2015-05-07 11:34:00"
@@ -113,7 +114,7 @@
                   name: "Laitisen poppoo", width: 1, type: 'normal', people: [
                   {
                     "id": "113",
-                    "direction": "1",
+                    "direction": "2",
                     "usename": "tila",
                     "name": "Laitinen Timo",
                     "time": "2015-05-07 13:34:00"
@@ -125,7 +126,7 @@
                   name: "Tiimij.", width: 1, type: 'teamleaders', people: [
                   {
                     "id": "358",
-                    "direction": "1",
+                    "direction": "2",
                     "usename": "jaka",
                     "name": "Kaski Jaakko",
                     "time": "2015-05-07 14:50:00"
@@ -175,7 +176,7 @@
                   name: "Cargo", width: 1, type: 'normal', people: [
                   {
                     "id": "531",
-                    "direction": "1",
+                    "direction": "2",
                     "usename": "vti",
                     "name": "Tielinen Vili",
                     "time": "2015-05-07 13:33:00"
@@ -187,7 +188,7 @@
                     "name": "Holopainen Tanja",
                     "time": "2015-05-07 07:55:00"
                   },
-                  {"direction":"1","name":"Ristinen Sami","time":"2015-05-07 11:34:00","usename":"risa","id":"213"}
+                  {"direction":"2","name":"Ristinen Sami","time":"2015-05-07 11:34:00","usename":"risa","id":"213"}
                 ]
                 },
                 {
@@ -230,14 +231,14 @@
                   },
                   {
                     "id": "184",
-                    "direction": "1",
+                    "direction": "2",
                     "usename": "lije",
                     "name": "Rossi Jenni",
                     "time": "2015-05-07 11:10:00"
                   },
                   {
                     "id": "450",
-                    "direction": "1",
+                    "direction": "2",
                     "usename": "ane",
                     "name": "Nevala Antti ",
                     "time": "2015-05-06 17:17:00"
@@ -259,31 +260,46 @@
                 {name: "Villa", width: 1, type: 'normal', people: []}
               ];
 
-              $http.get(BackendConfig.url + '/inHouse').success(function (data) {
+              var stop;
+
+              stop = $interval(function() {
+                console.log('timeout');
+                $http.get(BackendConfig.url + '/inHouse').success(function (data) {
 
 
-                $.each($scope.loossit, function (number, loossi) {
-                  $.each(loossi.people, function (index, person) {
-                    for (var i = 0, max = data.length; i < max; ++i) {
-                      if (data[i].id == person.id) {
-                        $scope.loossit[number].people[index] = data[i];
-                        data.splice(i, 1);
-                        break;
+                  $.each($scope.loossit, function (number, loossi) {
+                    $.each(loossi.people, function (index, person) {
+                      for (var i = 0, max = data.length; i < max; ++i) {
+                        if (data[i].id == person.id) {
+
+                          $scope.loossit[number].people[index] = data[i];
+                          data.splice(i, 1);
+                          break;
+                        }
                       }
+                    })
+                  });
+
+                  if(data.length == 0) return;
+
+                  $.each($scope.loossit, function (number, loossi) {
+                    if (loossi.type == 'lounge') {
+
+                      $scope.loossit[number].people = data;
+                      return;
                     }
-                  })
+                  });
+
                 });
+              }, 10000, false);
 
-                $.each($scope.loossit, function (number, loossi) {
-                  if (loossi.type == 'lounge') {
 
-                    $scope.loossit[number].people = data;
-                    return;
-                  }
-                });
-
+              $scope.$on('$destroy', function(){
+                if(angular.isDefined(stop)) {
+                  $interval.cancel(stop);
+                  stop = undefined;
+                }
               });
-
             }
           ]
         };
