@@ -99,7 +99,7 @@ Protacon Solutions
 - [Mika Vilpas](https://github.com/sp3ctum)
 - [Ville Pelho](https://github.com/vilbertti)
 - [Sami Ristinen](https://github.com/ristisami)
-
+- [Joni Syri](https://github.com/jsyri)
 
 ## License
 The MIT License (MIT)
