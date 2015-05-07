@@ -3,13 +3,14 @@
   <h1>Coffee status</h1>
   <hr>
   <ul class="pot-list">
-    <li data-ng-repeat="pot in coffee_pots | orderBy : 'scaleId'">
+    <li data-ng-repeat="pot in pots | orderBy : 'scaleId'">
+      <hr ng-if="$index > 0" />
       <div class="row">
         <div class="col-lg-3"><div class="name">{{pot.scaleId}}</div></div>
         <div class="col-lg-4"><div class="cups"><span class="text">{{pot.cups}}</span><i class="fa fa-coffee fa-lg fa-2x"></i></div></div>
         <div class="col-lg-4">
-          <h2>{{pot.percentage }}{{pot.percentage? '%':''}}</h2>
-          <div><span ng-show="pot.fillTime">Brewed:</span> {{pot.fillTime | date : 'dd.MM.yyyy HH:mm'}}</div>
+          <h2>{{pot.percentage ? (pot.percentage + '%') :''}} {{pot.temperature ? ' | ' + pot.temperature + '&deg;C' : ''}}</h2>
+          <div><span ng-show="pot.fillTime">Brewed:</span> <span am-time-ago="pot.fillTime"></span></div>
         </div>
         <div class=""></div>
       </div>
