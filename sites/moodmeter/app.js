@@ -14,7 +14,8 @@ var angular2_1 = require("angular2/angular2");
 var service_1 = require('service');
 var MoodComponent = (function () {
     function MoodComponent(svc) {
-        this.currentMood = Math.min(Math.floor(svc.currentMood() * 4 + 1), 4);
+        var _this = this;
+        this.timer = setInterval(function () { _this.currentMood = Math.min(Math.floor(svc.currentMood() * 4 + 1), 4); }, 2000);
     }
     MoodComponent.prototype.toggle = function () {
         this.currentMood = Math.floor((Math.random() * (5 - 1) + 1));
