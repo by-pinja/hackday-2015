@@ -29,7 +29,7 @@
         {
           name: 'Coffee Status',
           directive: 'widget-coffee-scale',
-          dataAttrName: 'coffee_pots',
+          dataAttrName: 'pots',
           dataModelType: 'widgetCoffeeScaleModel'
         },
         {

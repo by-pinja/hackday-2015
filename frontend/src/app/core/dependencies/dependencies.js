@@ -18,6 +18,7 @@
     'ui.dashboard',
     'ui.router',
     'ui.utils',
-    'youtube-embed'
+    'youtube-embed',
+    'angularMoment'
   ]);
 }());

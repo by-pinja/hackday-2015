@@ -7,7 +7,9 @@
       function directive() {
         return {
           restrict: 'A',
-          scope: {},
+          scope: {
+pots: '='
+		},
           replace: true,
           templateUrl: '/frontend/board/widgets/widget-coffee-scale/widget.html',
           controller: [
@@ -54,6 +56,9 @@ angular.module('frontend.board')
         ;
       };
 
+
+
+
       DataModel.prototype.destroy = function destroy() {
         var _this = this;
 
@@ -64,6 +69,19 @@ angular.module('frontend.board')
       CoffeeScaleModel.handlerCreated = function handlerCreated(message) {
         data.push(message.data);
       };
+
+
+// Custom handler for updated objects
+        CoffeeScaleModel.handlerUpdated = function handlerUpdated(message) {
+          var match = _.find(data, function iterator(item) {
+            return item.id === message.id;
+          });
+
+          if (match) {
+            _.merge(match, message.data);
+          }
+        };
+
 
       // Custom handler for destroyed objects
       CoffeeScaleModel.handlerDestroyed = function handlerDestroyed(message) {
@@ -84,4 +102,4 @@ angular.module('frontend.board')
     function factory(DataModel) {
       return new DataModel('coffee-scale');
     }
-  ])
+  ]);
