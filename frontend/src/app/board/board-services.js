@@ -43,7 +43,12 @@
         {
           name: 'Weather Information',
           directive: 'widget-weather-information',
-          enableVerticalResize: true
+          settingsModalOptions: {
+            partialTemplateUrl: '/frontend/board/widgets/widget-weather-information/settings.html'
+          },
+          dataModelOptions: {
+            locations: ['Jyväskylä', 'Tampere']
+          }
         }
       ];
     })
