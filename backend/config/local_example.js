@@ -48,4 +48,10 @@ module.exports = {
   log: {
     level: 'info'
   }
+  //valueframe: {
+  //      apiKey: '',
+  //      url: '',
+  //      user: ''
+  //  }
+
 };

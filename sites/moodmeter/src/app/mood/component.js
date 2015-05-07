@@ -13,10 +13,14 @@ import {HoverHeader} from 'mood/decorator';
 })
 
 export class Mood {
-	title: string;
+		title: string;
 
 	constructor(svc: TitleSvc) {
 		this.title = svc.title;
-    this.currentMood = Math.min(Math.floor(svc.currentMood()*4+1), 4);
+		this.currentMood = Math.min(Math.floor(svc.currentMood()*4+1), 4);
+	}
+
+	toggle() {
+		this.currentMood = Math.floor((Math.random() * (5-1)+1));
 	}
 }

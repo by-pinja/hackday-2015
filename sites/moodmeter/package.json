@@ -2,7 +2,7 @@
   "name": "moodmeter ",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "quickstart.sh",
+    "postinstall": "./quickstart.sh",
     "start": "gulp"
   },
   "dependencies": {
