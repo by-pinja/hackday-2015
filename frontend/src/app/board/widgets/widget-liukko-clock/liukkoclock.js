@@ -38,31 +38,7 @@ CoolClock.config = {
             secondHand1: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.5 },
             secondHand2: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.2 },
       secondDecoration: { lineWidth: 1, startAt: 70, radius: 4, fillColor: "red", color: "red", alpha: 1 }
-    },
-
-    chunkySwiss: {
-      outerBorder: { lineWidth: 4, radius:97, color: "black", alpha: 1 },
-      smallIndicator: { lineWidth: 4, startAt: 89, endAt: 93, color: "black", alpha: 1 },
-      largeIndicator: { lineWidth: 8, startAt: 80, endAt: 93, color: "black", alpha: 1 },
-      hourHand: { lineWidth: 12, startAt: -15, endAt: 60, color: "black", alpha: 1 },
-      minuteHand: { lineWidth: 10, startAt: -15, endAt: 85, color: "black", alpha: 1 },
-      secondHand: { lineWidth: 4, startAt: -20, endAt: 85, color: "red", alpha: 1 },
-            secondHand1: { lineWidth: 3, startAt: -20, endAt: 85, color: "red", alpha: 0.5 },
-            secondHand2: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.2 },
-      secondDecoration: { lineWidth: 2, startAt: 70, radius: 8, fillColor: "red", color: "red", alpha: 1 }
-    },
-    chunkySwissOnBlack: {
-      outerBorder: { lineWidth: 4, radius:97, color: "white", alpha: 1 },
-      smallIndicator: { lineWidth: 4, startAt: 89, endAt: 93, color: "white", alpha: 1 },
-      largeIndicator: { lineWidth: 8, startAt: 80, endAt: 93, color: "white", alpha: 1 },
-      hourHand: { lineWidth: 12, startAt: -15, endAt: 60, color: "white", alpha: 1 },
-      minuteHand: { lineWidth: 10, startAt: -15, endAt: 85, color: "white", alpha: 1 },
-      secondHand: { lineWidth: 4, startAt: -20, endAt: 85, color: "red", alpha: 1 },
-      secondHand1: { lineWidth: 3, startAt: -20, endAt: 85, color: "red", alpha: 0.5 },
-      secondHand2: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.2 },
-      secondDecoration: { lineWidth: 2, startAt: 70, radius: 8, fillColor: "red", color: "red", alpha: 1 }
     }
-
   },
 
   // Test for IE so we can nurse excanvas in a couple of places
@@ -77,7 +53,6 @@ CoolClock.config = {
 
 // Define the CoolClock object's methods
 CoolClock.prototype = {
-
   // Initialise using the parameters parsed from the colon delimited class
   init: function(options) {
     // Parse and store the options
@@ -109,6 +84,8 @@ CoolClock.prototype = {
     this.ctx = this.canvas.getContext("2d");
     this.ctx.scale(this.scale,this.scale);
 
+
+
     // Keep track of this object
     CoolClock.config.clockTracker[this.canvasId] = this;
 
@@ -116,7 +93,7 @@ CoolClock.prototype = {
     this.coffeeBreak = {
       // Start and end times of coffeebreaks
       times:  [],
-
+      motion: "none",
       // How much time we want more
       timeBonus: 0,
 
@@ -138,7 +115,7 @@ CoolClock.prototype = {
         this.timeBonus = timeFields[0]*60*1000;
         while(i+4 <= timeFields.length)
         {
-          ts.setHours(  timeFields[i], timeFields[i+1], 0, 0);
+          ts.setHours(timeFields[i], timeFields[i+1], 0, 0);
           te.setHours(timeFields[i+2], timeFields[i+3], 0, 0);
           this.times.push({start: this.dayStartMs(ts),
             end: this.dayStartMs(te)});
@@ -154,24 +131,29 @@ CoolClock.prototype = {
           if(     dayStartMs >= this.times[i].start-this.timeBonus &&
             dayStartMs <= this.times[i].start-this.timeBonus/2)
           {   // Speeup the time. hurry for coffee break
+            this.motion = "hurry";
             return {timeSpantype: 1, timeDiff: dayStartMs - (this.times[i].start-this.timeBonus) };
           }
           else if(dayStartMs >= this.times[i].start - this.timeBonus/2 &&
             dayStartMs <= this.times[i].start + this.timeBonus/2)
           {
+            this.motion = "slow";
             return {timeSpanType: 2, timeDiff: this.timeBonus/2 - (dayStartMs - (this.times[i].start - this.timeBonus/2))/2};
           }
           else if(dayStartMs >= this.times[i].end - this.timeBonus/2 &&
             dayStartMs < this.times[i].end + this.timeBonus/2)
           {
+            this.motion = "slow";
             return {timeSpantype: 3, timeDiff: (dayStartMs - (this.times[i].end - this.timeBonus/2))/-2};
           }
           else if(dayStartMs >= this.times[i].end + this.timeBonus/2 &&
             dayStartMs <= this.times[i].end + this.timeBonus)
           {
+            this.motion = "hurry";
             return {timeSpanType: 4, timeDiff: -1*(this.timeBonus/2 - (dayStartMs - (this.times[i].end + this.timeBonus/2)))};
           }
         }
+        this.motion = "none";
         return {timeSpanType: 0, timeDiff: 0};
       }
     },
@@ -233,20 +215,7 @@ CoolClock.prototype = {
   },
 
   tickAngle: function(ms) {
-    // Log algorithm by David Bradshaw
-    var second = ms;
-    var tweak = 3; // If it's lower the one second mark looks wrong (?)
-    if (this.logClock) {
-      return second == 0 ? 0 : (Math.log(second*tweak) / Math.log(60*tweak));
-    }
-    else if (this.logClockRev) {
-      // Flip the seconds then flip the angle (trickiness)
-      second = (60 - second) % 60;
-      return 1.0 - (second == 0 ? 0 : (Math.log(second*tweak) / Math.log(60*tweak)));
-    }
-    else {
-      return second/60000.0;
-    }
+      return ms/60000.0;
   },
 
   timeText: function(hour,min,sec) {
@@ -303,26 +272,26 @@ CoolClock.prototype = {
       !(i%5) && skin.largeIndicator && this.radialLineAtAngle(this.tickAngle(i*1000),skin.largeIndicator);
     }
 
-    // Write the time
-    if (this.showDigital) {
-      this.drawTextAt(
-        this.timeText(hour,min,sec),
-        this.renderRadius,
-        this.renderRadius+this.renderRadius/2
-      );
-    }
-
     // Draw the hands
     if (skin.hourHand)
       this.radialLineAtAngle(this.tickAngle(((hour%12)*5 + min/12.0)*1000),skin.hourHand);
 
     if (skin.minuteHand)
-      this.radialLineAtAngle(this.tickAngle((min + ms/60000.0)*1000),skin.minuteHand);
+      this.radialLineAtAngle(this.tickAngle(1000*min),skin.minuteHand);
 
     if (this.showSecondHand && skin.secondHand) {
       this.radialLineAtAngle(this.tickAngle(ms), skin.secondHand);
-      this.radialLineAtAngle(this.tickAngle(ms-400), skin.secondHand1);
-      this.radialLineAtAngle(this.tickAngle(ms-800), skin.secondHand2);
+
+      if(this.coffeeBreak.motion === "hurry") {
+        this.radialLineAtAngle(this.tickAngle(ms - 400), skin.secondHand1);
+        this.radialLineAtAngle(this.tickAngle(ms - 800), skin.secondHand2);
+        console.log("hurry")
+      }
+      else if(this.coffeeBreak.motion === "slow") {
+        this.radialLineAtAngle(this.tickAngle(ms + 400), skin.secondHand1);
+        this.radialLineAtAngle(this.tickAngle(ms + 800), skin.secondHand2);
+        console.log("slow")
+     }
     }
   },
 
