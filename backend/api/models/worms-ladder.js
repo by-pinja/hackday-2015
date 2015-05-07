@@ -6,6 +6,7 @@
 */
 
 module.exports = {
+  schema: true,
   attributes: {
     playerName: {
       type: 'string',
@@ -14,10 +15,12 @@ module.exports = {
     },
     gamesAttended: {
       type: 'integer',
+      required: true,
       defaultsTo: 0
     },
     gamesWon: {
       type: 'integer',
+      required: true,
       defaultsTo: 0
     }
   }

@@ -1,0 +1,14 @@
+.widget-liukko-clock {
+  background-color: #fff;
+  text-align: center;
+  padding: 10px;
+  background: url('/assets/images/widget-liukko-clock/coffeemug.png') center top;
+
+  canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
