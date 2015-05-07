@@ -15,16 +15,25 @@
           templateUrl: '/frontend/board/widgets/widget-worms-ladder/widget.html',
           controller: [
             '$scope',
+            '_',
             'WormsLadderModel',
+            'FocusOnService', 'MessageService',
             function controller(
               $scope,
-              WormsLadderModel
+              _,
+              WormsLadderModel,
+              FocusOnService, MessageService
             ) {
-              // TODO: Focus input when initiaing edit
-              // TODO: edit scores
-
               $scope.startEdit = function (player) {
+                var playerUnderEdit = $scope.playerUnderEdit;
+                if (playerUnderEdit && player.id == playerUnderEdit.id && player.editmode )
+                  return;
+
+                _.map($scope.players, $scope.cancelEdit);
+
+                $scope.playerUnderEdit = angular.copy(player);
                 player.editmode = true;
+                FocusOnService.focus('focusMe');
               };
 
               $scope.cancelEdit = function (player) {
@@ -32,8 +41,14 @@
               };
 
               $scope.update = function update(player) {
-                WormsLadderModel.update(player.id, player);
+
+                WormsLadderModel.update(player.id, player).then(
+                  function onSuccess(result) {
+                    MessageService.success('Update successful', result);
+                  }
+                );
                 player.editmode = false;
+
               }
             }
           ]
@@ -67,6 +82,10 @@
             .then(
               function onSuccess(result) {
                 data = result;
+
+                _.map(result, function iterator(item) {
+                    item.editmode = false;
+                });
 
                 _this.updateScope(result);
               }

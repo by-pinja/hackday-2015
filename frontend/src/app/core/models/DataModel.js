@@ -7,11 +7,11 @@
 
   angular.module('frontend.core.models')
     .factory('DataModel', [
-      '$sailsSocket', '$log',
+      '$sailsSocket', '$log', '$q',
       '_',
       'DataService',
       function(
-        $sailsSocket, $log,
+        $sailsSocket, $log,$q,
         _,
         DataService
       ) {
@@ -395,6 +395,7 @@
               },
               function onError(error) {
                 $log.error('DataModel.update() failed.', error, self.endpoint, identifier, data);
+                return $q.reject(error);
               }
             )
           ;
