@@ -17,10 +17,10 @@ window.CoolClock = function(options) {
 CoolClock.config = {
   tickDelay: 100,
   longTickDelay: 15000,
-  defaultRadius: 85,
+  defaultRadius: 150,
   renderRadius: 100,
-  defaultSkin: "chunkySwiss",
-  // Should be in skin probably...
+  defaultSkin: "swissRail",
+  // Should be in skin probably... 
   // (TODO: allow skinning of digital display)
   showSecs: true,
   showAmPm: false,
@@ -29,7 +29,7 @@ CoolClock.config = {
     // There are more skins in moreskins.js
     // Try making your own skin by copy/pasting one of these and tweaking it
     swissRail: {
-      outerBorder: { lineWidth: 2, radius:95, color: "black", alpha: 1 },
+      outerBorder: { lineWidth: 2, radius:150, color: "black", alpha: 1, fillColor: "#fff" },
       smallIndicator: { lineWidth: 2, startAt: 88, endAt: 92, color: "black", alpha: 1 },
       largeIndicator: { lineWidth: 4, startAt: 79, endAt: 92, color: "black", alpha: 1 },
       hourHand: { lineWidth: 8, startAt: -15, endAt: 50, color: "black", alpha: 1 },
@@ -39,6 +39,7 @@ CoolClock.config = {
             secondHand2: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.2 },
       secondDecoration: { lineWidth: 1, startAt: 70, radius: 4, fillColor: "red", color: "red", alpha: 1 }
     },
+
     chunkySwiss: {
       outerBorder: { lineWidth: 4, radius:97, color: "black", alpha: 1 },
       smallIndicator: { lineWidth: 4, startAt: 89, endAt: 93, color: "black", alpha: 1 },
@@ -47,7 +48,6 @@ CoolClock.config = {
       minuteHand: { lineWidth: 10, startAt: -15, endAt: 85, color: "black", alpha: 1 },
       secondHand: { lineWidth: 4, startAt: -20, endAt: 85, color: "red", alpha: 1 },
             secondHand1: { lineWidth: 3, startAt: -20, endAt: 85, color: "red", alpha: 0.5 },
-
             secondHand2: { lineWidth: 1, startAt: -20, endAt: 85, color: "red", alpha: 0.2 },
       secondDecoration: { lineWidth: 2, startAt: 70, radius: 8, fillColor: "red", color: "red", alpha: 1 }
     },
