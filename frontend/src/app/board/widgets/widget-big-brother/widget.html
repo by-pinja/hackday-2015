@@ -1,13 +1,40 @@
-<div class="widget-big-brother embed-responsive embed-responsive-16by9">
+<div class="widget-big-brother">
 
-  <h2 ng-bind="title">bb</h2>
+  <div class="people">
 
-  <div ng-repeat="loossi in loossit">
+    <h2 ng-bind="title">bb</h2>
 
-    <h3 ng-bind="loossi.name"></h3>
+    <div ng-repeat="loossi in loossit">
 
-    <div ng-repeat="person in loossi.people">
-      <span ng-bind="person.name"></span>
+      <h3 ng-bind="loossi.name"></h3>
+
+      <table class="table table-bordered-table-striped">
+        <thead>
+        <tr>
+          <th>Henkilö</th>
+          <th>Paikalla</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="person in loossi.people">
+          <td ng-bind="person.name"></td>
+          <td ng-bind="person.in"></td>
+        </tr>
+        </tbody>
+      </table>
+
     </div>
+
+
   </div>
+
+
+  <!-- 20 loossia -->
+  <div class="loossi-map">
+    <h3>Protacon Solutions Oy</h3>
+
+  </div>
+
+
 </div>
+
