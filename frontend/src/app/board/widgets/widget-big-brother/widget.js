@@ -1,4 +1,4 @@
-// This file contains all necessary for widget-worms-ladder
+// This file contains all necessary for widget-big-brother
 (function () {
   'use strict';
 
@@ -18,8 +18,15 @@
             '$interval',
             function controller($scope, $http, BackendConfig, $interval) {
 
+              /**
+               * Initial data schema
+               *
+               * @type {*[]}
+               */
               $scope.loossit = [
-                {name: "Sauna", width: 2, type: 'sauna', people: []},
+                {name: "Sauna", width: 2, type: 'sauna', people: [
+                  {"direction":"2","name":"Mynttinen Jari","time":"2015-05-06 16:04:00","usename":"jmy","id":"248"}
+                ]},
                 {
                   name: "IT", width: 2, type: 'it', people: [
                   {
@@ -188,7 +195,13 @@
                     "name": "Holopainen Tanja",
                     "time": "2015-05-07 07:55:00"
                   },
-                  {"direction":"2","name":"Ristinen Sami","time":"2015-05-07 11:34:00","usename":"risa","id":"213"}
+                  {
+                    "direction": "2",
+                    "name": "Ristinen Sami",
+                    "time": "2015-05-07 11:34:00",
+                    "usename": "risa",
+                    "id": "213"
+                  }
                 ]
                 },
                 {
@@ -262,11 +275,14 @@
 
               var stop;
 
-              stop = $interval(function() {
-                console.log('timeout');
+              /**
+               * make a new update request to server every 10 seconds
+               */
+              stop = $interval(function () {
                 $http.get(BackendConfig.url + '/inHouse').success(function (data) {
 
 
+                  //Update scope data employee state and times
                   $.each($scope.loossit, function (number, loossi) {
                     $.each(loossi.people, function (index, person) {
                       for (var i = 0, max = data.length; i < max; ++i) {
@@ -280,8 +296,10 @@
                     })
                   });
 
-                  if(data.length == 0) return;
+                  //all employees are accounted for
+                  if (data.length == 0) return;
 
+                  //assume personel without designated place to be on a coffee break
                   $.each($scope.loossit, function (number, loossi) {
                     if (loossi.type == 'lounge') {
 
@@ -294,8 +312,8 @@
               }, 10000, false);
 
 
-              $scope.$on('$destroy', function(){
-                if(angular.isDefined(stop)) {
+              $scope.$on('$destroy', function () {
+                if (angular.isDefined(stop)) {
                   $interval.cancel(stop);
                   stop = undefined;
                 }
