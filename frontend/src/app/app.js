@@ -10,7 +10,8 @@
   angular.module('frontend', [
     'frontend-templates',
     'frontend.core',
-    'frontend.board'
+    'frontend.board',
+    'frontend.toiletReservation'
   ]);
 
   /**
