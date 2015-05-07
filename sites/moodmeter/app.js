@@ -15,8 +15,12 @@ var service_1 = require('service');
 var MoodComponent = (function () {
     function MoodComponent(svc) {
         var _this = this;
-        this.timer = setInterval(function () { _this.currentMood = Math.min(Math.floor(svc.currentMood() * 4 + 1), 4); }, 2000);
+        this.moodSvc = svc;
+        this.timer = setInterval(function () { _this.updateMood(); }, 2000);
     }
+    MoodComponent.prototype.updateMood = function () {
+        this.currentMood = Math.min(Math.floor(this.moodSvc.currentMood() * 4 + 1), 4);
+    };
     MoodComponent.prototype.toggle = function () {
         this.currentMood = Math.floor((Math.random() * (5 - 1) + 1));
     };
