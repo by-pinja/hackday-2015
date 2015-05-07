@@ -16,31 +16,39 @@
                 ToiletReservationModel,
                 $scope) {
 
-                $scope.canReservePee = true;
-                $scope.canReservePoo = true;
+                $scope.canReservePee = false;
+                $scope.canReservePoo = false;
 
-                var slots = [];
+                var freePooSlot = null;
+                var freePeeSlot = null;
 
                 ToiletReservationModel
                     .load()
                     .then(
                     function onSuccess(result) {
-                        var now = moment();
+                        var now = moment().add(-moment().utcOffset(), 'minutes');
 
-                        slots = result;
+                        console.log(result);
+                        console.log(now);
 
                         _.forEach(result, function(slot) {
 
                             var reservationEnd = moment(slot.reservationEndTime);
+                            console.log(reservationEnd);
+                            console.log(reservationEnd.isBefore(now));
 
-                            if (slot.type === 1 && reservationEnd <= now)
+                            if (slot.type === 1 && reservationEnd.isBefore(now))
                             {
+                                freePeeSlot = slot;
                                 $scope.canReservePee = true;
-                            } else (reservationEnd <= now)
-                            {
+                            } else if (reservationEnd.isBefore(now)) {
+                                freePooSlot = slot;
                                 $scope.canReservePoo = true;
                             }
                         });
+
+                        console.log(freePeeSlot);
+                        console.log(freePooSlot);
                     }
                 );
 
@@ -48,10 +56,12 @@
                     var endTime = moment();
 
                     if (type === 1) {
-                        ToiletReservationModel.create({index: 0, type: 1, reservationEndTime: endTime.add(7, 'minutes').toDate()});
-
+                        freePeeSlot.reservationEndTime = endTime.add(2, 'minutes').toDate();
+                        ToiletReservationModel.update(freePeeSlot.id, freePeeSlot);
                         $scope.canReservePee = false;
                     } else {
+                        freePooSlot.reservationEndTime = endTime.add(7, 'minutes').toDate();
+                        ToiletReservationModel.update(freePooSlot.id, freePooSlot);
                         $scope.canReservePoo = false;
                     }
                 };
