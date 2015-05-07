@@ -26,16 +26,12 @@
                     .load()
                     .then(
                     function onSuccess(result) {
-                        var now = moment();//.add(-moment().utcOffset(), 'minutes');
-
+                        var now = moment();
                         console.log(result);
-                        console.log(now.format("YYYY-MM-DD hh:mm:ss"));
 
                         _.forEach(result, function(slot) {
 
                             var reservationEnd = moment(slot.reservationEndTime);
-                            console.log(reservationEnd.format("YYYY-MM-DD hh:mm:ss"));
-                            console.log(reservationEnd.isBefore(now));
 
                             if (slot.type === 1 && reservationEnd.isBefore(now))
                             {
@@ -46,9 +42,6 @@
                                 $scope.canReservePoo = true;
                             }
                         });
-
-                        console.log(freePeeSlot);
-                        console.log(freePooSlot);
                     }
                 );
 
@@ -59,8 +52,14 @@
                         freePeeSlot.reservationEndTime = endTime.add(2, 'minutes').toDate();
                         ToiletReservationModel.update(freePeeSlot.id, freePeeSlot);
                         $scope.canReservePee = false;
-                    } else {
+                    } else if (type === 2) {
                         freePooSlot.reservationEndTime = endTime.add(7, 'minutes').toDate();
+                        freePooSlot.avoidingWork = false;
+                        ToiletReservationModel.update(freePooSlot.id, freePooSlot);
+                        $scope.canReservePoo = false;
+                    } else {
+                        freePooSlot.reservationEndTime = endTime.add(15, 'minutes').toDate();
+                        freePooSlot.avoidingWork = true;
                         ToiletReservationModel.update(freePooSlot.id, freePooSlot);
                         $scope.canReservePoo = false;
                     }
