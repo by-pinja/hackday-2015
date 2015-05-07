@@ -1,4 +1,4 @@
-# Hackday 2015
+﻿# Hackday 2015
 
 ## What is this?
 todo
@@ -96,6 +96,11 @@ Protacon Solutions
 - [Tarmo Leppänen](https://github.com/tarlepp)
 - [Jaakko Kaski](https://github.com/ajaskaFIN)
 - [Heikki-Jussi Niemi](https://github.com/Hekku2)
+- [Mika Vilpas](https://github.com/sp3ctum)
+- [Ville Pelho](https://github.com/vilbertti)
+- [Sami Ristinen](https://github.com/ristisami)
+- [Joni Syri](https://github.com/jsyri)
+- [Aki Syri](https://github.com/akisy)
 
 ## License
 The MIT License (MIT)
