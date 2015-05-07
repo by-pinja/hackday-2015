@@ -33,13 +33,17 @@
             <input class="text-input" type="text" ng-model="playerUnderEdit.playerName" ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null" data-focus-on="focusMe"/>
             <input class="number-input" type="number" ng-model="playerUnderEdit.gamesWon" ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null"/>
             <input class="number-input" type="number" ng-model="playerUnderEdit.gamesAttended" ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null"/>
-
-            <button data-ng-click="cancelEdit(player)">Cancel</button>
             <button data-ng-click="update(playerUnderEdit)">Save</button>
+            <button data-ng-click="cancelEdit(player)">Cancel</button>
+            <button data-ng-click="deletePlayer(player)">Delete</button>
           </div>
-
-            <div class="clearfix"></div>
+          <div class="clearfix"></div>
         </li>
+      <li ng-show="shouldShowNewPlayerInputs()">
+        <input class="text-input" type="text" ng-model="newPlayer.playerName" ng-keypress="$event.keyCode == 13 ? createPlayer(newPlayer) : null" placeholder="Add new..."/>
+        <button data-ng-click="createPlayer(newPlayer)">Save</button>
+      </li>
+
     </ol>
 
 </div>
