@@ -4,7 +4,7 @@
 
   // Controller for generic error handling.
   angular.module('frontend.board')
-    .factory('poopooFactory', [function() {
+    .factory('peepooFactory', [function() {
       return {
         reservations : [
           {"type":"Poo", reserved:false},
@@ -24,9 +24,9 @@
           templateUrl: '/frontend/board/widgets/widget-toilet-reservation/widget.html',
           controller: [
             '$scope',
-            'poopooFactory',
-            function controller($scope, poopooFactory) {
-              $scope.reservations = poopooFactory.reservations;
+            'peepooFactory',
+            function controller($scope, peepooFactory) {
+              $scope.reservations = peepooFactory.reservations;
 
               $scope.showPee = function (type) {
                 return type === "Pee"
