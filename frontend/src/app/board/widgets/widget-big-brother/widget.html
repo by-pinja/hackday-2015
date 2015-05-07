@@ -1,4 +1,5 @@
 <div class="widget-big-brother">
+  <script src="js/bootstrap.js"></script>
 
   <div class="loossi-map">
     <h3>Protacon Solutions Oy</h3>
@@ -8,7 +9,7 @@
     <div id="mapContainer" class="container">
 
       <div class="row">
-        <div ng-repeat="loossi in loossit" class="loossi">
+        <div ng-repeat="loossi in loossit" class="loossi  {{loossi.type}}">
 
           <h4 ng-bind="loossi.name"></h4>
 
