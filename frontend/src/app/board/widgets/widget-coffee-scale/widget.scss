@@ -1,0 +1,36 @@
+.widget-coffee-scale {
+  margin: 15px;
+
+  h1 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  h2{
+    font-size: 24px;
+    font-family: Menlo, Monaco, Consolas, "Lucida Console", monospace;
+    margin: 5px 0 2px 0px;
+  }
+
+  .pot-list{
+    li {
+      list-style:none;
+      .name{
+        margin-top:5px;
+      }
+      .cups{
+        font-size: 30px;
+        .text{
+          margin-right:10px;
+          color: #333;
+          font-weight:bold;
+        }
+      }
+    }
+  }
+
+  hr {
+    margin: 10px 0 5px 0;
+  }
+}

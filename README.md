@@ -1,10 +1,10 @@
-# Hackday 2015
+﻿# Hackday 2015
 
 ## What is this?
-todo
+This is a 24 hour coding project aiming for an infoTV with variety of different information sources.
 
 ## Why?
-todo
+This is done to learn new technologies and to create something non-work-related together.
 
 ## Directory structure
 ```
@@ -97,6 +97,13 @@ Protacon Solutions
 - [Jaakko Kaski](https://github.com/ajaskaFIN)
 - [Heikki-Jussi Niemi](https://github.com/Hekku2)
 - [Tommi Kaura-Aho](https://github.com/tomkarho)
+- [Mika Vilpas](https://github.com/sp3ctum)
+- [Ville Pelho](https://github.com/vilbertti)
+- [Sami Ristinen](https://github.com/ristisami)
+- [Joni Syri](https://github.com/jsyri)
+- [Aki Syri](https://github.com/akisy)
+- [Eemeli Niemelä] (https://github.com/Eniemela)
+- [Lasse Särkilä](https://github.com/lassesarkila)
 
 ## License
 The MIT License (MIT)

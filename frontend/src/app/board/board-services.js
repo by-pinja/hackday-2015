@@ -32,8 +32,29 @@
           dataModelType: 'WidgetWormsLadderModel'
         },
         {
+          name: 'Coffee Status',
+          directive: 'widget-coffee-scale',
+          dataAttrName: 'coffee_pots',
+          dataModelType: 'widgetCoffeeScaleModel'
+        },
+        {
           name: 'Protacon video',
           directive: 'widget-protacon-video',
+          enableVerticalResize: false
+        },
+        {
+          name: 'Protacon twitter feed',
+          directive: 'widget-twitter',
+          settingsModalOptions: {
+            partialTemplateUrl: '/frontend/board/widgets/widget-twitter/settings.html'
+          },
+          dataModelOptions: {
+            widget_id: '596256646311104512'
+          }
+        },
+        {
+          name: 'LiukkoClock',
+          directive: 'widget-liukko-clock',
           enableVerticalResize: false
         }
       ];

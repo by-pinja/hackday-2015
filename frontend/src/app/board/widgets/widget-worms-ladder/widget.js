@@ -9,14 +9,67 @@
         return {
           restrict: 'A',
           scope: {
-            players: '=players'
+            players: '='
           },
           replace: true,
           templateUrl: '/frontend/board/widgets/widget-worms-ladder/widget.html',
           controller: [
             '$scope',
-            function controller($scope) {
-              // TODO: add some controls for actual data!
+            '_',
+            'WormsLadderModel',
+            'FocusOnService', 'MessageService',
+            function controller(
+              $scope,
+              _,
+              WormsLadderModel,
+              FocusOnService, MessageService
+            ) {
+              $scope.startEdit = function startEdit(player) {
+                //Do nothing if player is already under edit
+                var playerUnderEdit = $scope.playerUnderEdit;
+                if (playerUnderEdit && player.id == playerUnderEdit.id && player.editmode )
+                  return;
+
+                $scope.cancelAllEdits();
+
+                $scope.playerUnderEdit = angular.copy(player);
+                player.editmode = true;
+                FocusOnService.focus('focusMe');
+              };
+
+              $scope.cancelAllEdits = function cancelAllEdits() {
+                _.map($scope.players, $scope.cancelEdit);
+              };
+
+              $scope.cancelEdit = function cancelEdit(player) {
+                player.editmode = false;
+              };
+
+              $scope.update = function update(player) {
+
+                WormsLadderModel.update(player.id, player).then(
+                  function onSuccess(result) {
+                    MessageService.success('Update successful', result);
+                  }
+                );
+                player.editmode = false;
+              };
+
+              $scope.deletePlayer = function deletePlayer(player) {
+                WormsLadderModel.delete(player.id);
+              };
+
+              $scope.createPlayer = function createPlayer(player) {
+                WormsLadderModel.create(player);
+                $scope.cancelAllEdits();
+                $scope.newPlayer = {};
+              };
+
+              $scope.shouldShowNewPlayerInputs = function shouldShowNewPlayerInputs() {
+                return $scope.players
+                    && $scope.players.length == 0
+                  || _.any($scope.players, {"editmode": true});
+              };
             }
           ]
         };
@@ -49,6 +102,10 @@
             .then(
               function onSuccess(result) {
                 data = result;
+
+                _.map(result, function iterator(item) {
+                    item.editmode = false;
+                });
 
                 _this.updateScope(result);
               }
