@@ -215,20 +215,7 @@ CoolClock.prototype = {
   },
 
   tickAngle: function(ms) {
-    // Log algorithm by David Bradshaw
-    var second = ms;
-    var tweak = 3; // If it's lower the one second mark looks wrong (?)
-    if (this.logClock) {
-      return second == 0 ? 0 : (Math.log(second*tweak) / Math.log(60*tweak));
-    }
-    else if (this.logClockRev) {
-      // Flip the seconds then flip the angle (trickiness)
-      second = (60 - second) % 60;
-      return 1.0 - (second == 0 ? 0 : (Math.log(second*tweak) / Math.log(60*tweak)));
-    }
-    else {
-      return second/60000.0;
-    }
+      return ms/60000.0;
   },
 
   timeText: function(hour,min,sec) {
@@ -285,21 +272,12 @@ CoolClock.prototype = {
       !(i%5) && skin.largeIndicator && this.radialLineAtAngle(this.tickAngle(i*1000),skin.largeIndicator);
     }
 
-    // Write the time
-    if (this.showDigital) {
-      this.drawTextAt(
-        this.timeText(hour,min,sec),
-        this.renderRadius,
-        this.renderRadius+this.renderRadius/2
-      );
-    }
-
     // Draw the hands
     if (skin.hourHand)
       this.radialLineAtAngle(this.tickAngle(((hour%12)*5 + min/12.0)*1000),skin.hourHand);
 
     if (skin.minuteHand)
-      this.radialLineAtAngle(this.tickAngle((min + ms/60000.0)*1000),skin.minuteHand);
+      this.radialLineAtAngle(this.tickAngle(1000*min),skin.minuteHand);
 
     if (this.showSecondHand && skin.secondHand) {
       this.radialLineAtAngle(this.tickAngle(ms), skin.secondHand);
