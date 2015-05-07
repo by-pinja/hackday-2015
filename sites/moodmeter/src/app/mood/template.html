@@ -24,11 +24,20 @@ h1.title {
 	padding: 0 16px;
 	width: 100%;
 }
+
+#moodbox {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 40px;
+}
+
 </style>
 <div decor class="toolbar">
 	<h1 class="title">{{title}}</h1>
 </div>
-<div>
-  <p><img src="Images/icons_large_{{currentMood}}.png">
-  <p>Mood for today is {{currentMood}}
+<div id="moodbox">
+	<p>
+	  <img (click)="toggle()" src="Images/icons_large_{{currentMood}}.png"><br/>
+	  {{currentMood}}
+	</p>
 </div>
