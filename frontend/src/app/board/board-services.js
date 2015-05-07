@@ -30,6 +30,17 @@
           name: 'Protacon video',
           directive: 'widget-protacon-video',
           enableVerticalResize: false
+        },
+        {
+          name: 'Protacon twitter feed',
+          directive: 'widget-twitter',
+          settingsModalOptions: {
+            partialTemplateUrl: '/frontend/board/widgets/widget-twitter/settings.html'
+          },
+          dataModelOptions: {
+            widget_id: '596256646311104512'
+          }
+
         }
       ];
     })
