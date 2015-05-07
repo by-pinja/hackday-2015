@@ -8,85 +8,47 @@
       function directive() {
         return {
           restrict: 'A',
-          scope: {
-            locations: '='
-          },
+          scope: {          },
           replace: true,
           templateUrl: '/frontend/board/widgets/widget-weather-information/widget.html',
           controller: [
             '$scope',
-            '_',
+            '$interval','$http',
             function controller(
               $scope,
-              _
+              $interval,$http
             ){
-              $scope.$watch('$parent.widget.dataModelOptions.locations', function watcher() {
-                //console.log($scope.$parent.widget.dataModelOptions.locations);
-              },true);
-            }
-          ]
-        };
-      }
-    ])
-  ;
+              $scope.locations = [];
 
-  // Widget data model factory
-  angular.module('frontend.board')
-    .factory('WidgetWeatherInformationModel', [
-      'WidgetDataModel',
-      '_',
-      '$interval','$http',
-      function factory(
-        WidgetDataModel,
-        _,
-        $interval, $http
-      ) {
-        var data = [];
-
-        function DataModel() {}
-
-        DataModel.prototype = Object.create(WidgetDataModel.prototype);
-
-        DataModel.prototype.init = function init() {
-          this.fetch();
-          this.startInterval();
-        };
-
-        DataModel.prototype.fetch = function fetch(){
-          var _this = this;
-          var split = _.words(this.dataModelOptions.locations);
-
-          var results = [];
-          var queries = _.map(split, function fetchData(item){
-            return $http.get( 'http://api.openweathermap.org/data/2.5/find?units=metric&q='+item).success(function( data ) {
-              results.push({
-                name: data.list[0].name,
-                temperature: data.list[0].main.temp
+              $scope.$watch('$parent.widget.dataModelOptions.selected', function watcher(newValue) {
+                $scope.fetch();
               });
 
-              _this.updateScope(results);
-            });
-          });
+              $scope.fetch = function(){
+                var split = _.words(this.$parent.widget.dataModelOptions.selected);
+
+                var results = [];
+                var queries = _.map(split, function fetchData(item){
+                  return $http.get( 'http://api.openweathermap.org/data/2.5/find?units=metric&q='+item).success(function( data ) {
+                    results.push({
+                      name: data.list[0].name,
+                      temperature: data.list[0].main.temp
+                    });
+
+                    $scope.locations = results;
+                  });
+                });
+              };
+
+              $scope.startFetching = function(){
+                $interval.cancel(this.intervalPromise);
+                this.intervalPromise = $interval(function() {
+                  _this.fetch();
+                }, 100000);
+              };
+              }
+          ]
         };
-
-
-        DataModel.prototype.startInterval = function () {
-          var _this = this;
-
-          $interval.cancel(this.intervalPromise);
-          this.intervalPromise = $interval(function() {
-            _this.fetch();
-          }, 100000);
-        };
-
-        DataModel.prototype.destroy = function destroy() {
-          var _this = this;
-
-          WidgetDataModel.prototype.destroy.call(_this);
-          $interval.cancel(this.intervalPromise);
-        };
-
-        return DataModel;
       }
     ])
   ;
