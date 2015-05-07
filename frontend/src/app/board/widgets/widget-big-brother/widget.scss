@@ -13,11 +13,23 @@
   background-color: #dbdbdb;
 }
 
+.empty {
+  background-color: #FFFFFF;
+}
+
+.widget-big-brother h3 {
+  font-size: 100%;
+}
 
 .loossi {
+  font-size: 80%;
+  float: left;
   border: 1px solid #99aba5;
   min-height: 180px;
+  min-width: 100px;
+  width: 11%;
   background-color: #2fd2db;
+  padding: 5px;
 }
 
 .miniloossi {
@@ -26,8 +38,13 @@
   background-color: #41ab71;
 }
 
+.persons {
+  list-style-type: none;
+  padding: 0;
+}
+.persons li{
+  margin: 2px 0;
+}
 
 #mapContainer {
-  height: 1280px;
-  width: 768px;
 }

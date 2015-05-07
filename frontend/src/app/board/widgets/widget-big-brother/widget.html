@@ -4,104 +4,29 @@
   <div class="loossi-map">
     <h3>Protacon Solutions Oy</h3>
 
-    <div class="container">
+    <h3>Loossit ({{loossit.length}})</h3>
 
+    <div id="mapContainer" class="container">
 
-      <h3>Actual</h3>
+      <div class="row">
+        <div ng-repeat="loossi in loossit" class="loossi">
 
-      <div id="mapContainer" class="container">
-        <div ng-repeat="rivi in rivit" class="row">
-            <div ng-repeat="loossi in rivi.loossit" class="loossi col-sm-{{loossi.koko}}">
-              <h4 ng-bind="loossi.nimi"></h4>
-              <ul>
-                <li>
-                  <!--Todo: print people associated with this loossi-->
-                </li>
-              </ul>
-            </div>
+          <h4 ng-bind="loossi.name"></h4>
+
+          <ul class="persons">
+            <li class="btn {{person.in ? 'btn-success' : 'btn-danger'}}" ng-repeat="person in loossi.people">
+              <span ng-bind="person.name"></span>
+              <span> <i class="glyphicon glyphicon-ok" ng-show="person.in"></i></span>
+              <span> <i class="glyphicon glyphicon-ban-circle" ng-show="!person.in"></i></span>
+            </li>
+          </ul>
         </div>
-      </div>
-
-      <h3>Mock</h3>
-      <div class="row">
-
-        <div class="col-sm-2 loossi">Sauna</div>
-        <div class="col-sm-1 loossi">Takaovi</div>
-        <div class="col-sm-1 loossi">IT</div>
-        <div class="col-sm-1 loossi">IT</div>
-        <div class="col-sm-1 loossi">IT</div>
-        <div class="col-sm-1 loossi">IT</div>
-     l   <div class="col-sm-1 loossi">Tarmo | Matti | Seppo</div>
-        <div class="col-sm-1 loossi" style="background-color: #4367ab;">Janne</div>
-        <div class="col-sm-1 loossi" style="background-color: #39ab4c;">Olli</div>
-        <div class="col-sm-1 loossi">Cella</div>
-
-
-      </div>
-      <div class="row">
-
-        <div class="col-sm-2 loossi">Saunatupa</div>
-        <div class="col-sm-2 loossi col-sm-push-1">Lauri</div>
-        <div class="col-sm-1 loossi col-sm-push-1">KAHVIA</div>
-        <div class="col-sm-2 loossi col-sm-push-1">Jaakko | Tommi</div>
-        <div class="col-sm-1 loossi col-sm-push-3">Atrium</div>
-
-      </div>
-      <div class="row">
-
-        <div class="col-sm-2 loossi">
-          <div class="miniloossi col-sm-12">
-            huone1
-          </div>
-          <div class="miniloossi col-sm-12">
-            huone2
-          </div>
-        </div>
-        <div class="col-sm-1 loossi">Myynti</div>
-        <div class="col-sm-1 loossi">Ohjelmistokehitys</div>
-        <div class="col-sm-1 loossi">Ohjelmistokehitys</div>
-        <div class="col-sm-1 loossi">Ohjelmistokehitys</div>
-        <div class="col-sm-1 loossi">Ohjelmistokehitys</div>
-        <div class="col-sm-1 loossi">Ohjelmistokehitys</div>
-        <div class="col-sm-1 loossi">Toimistopalvelit</div>
-        <div class="col-sm-1 loossi">Pääovi</div>
-        <div class="col-sm-1 loossi">Villa</div>
-
 
       </div>
     </div>
 
-  </div>
-
-  <div class="people">
-
-    <h2 ng-bind="title">bb</h2>
-
-    <div ng-repeat="loossi in loossit">
-
-      <h3 ng-bind="loossi.name"></h3>
-
-      <table class="table table-bordered-table-striped">
-        <thead>
-        <tr>
-          <th>Henkilö</th>
-          <th>Paikalla</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="person in loossi.people">
-          <td ng-bind="person.name"></td>
-          <td ng-bind="person.in"></td>
-        </tr>
-        </tbody>
-      </table>
-
-    </div>
-
 
   </div>
-
-
 
 </div>
 
