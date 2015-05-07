@@ -14,7 +14,6 @@
           controller: [
             '$scope',
             function controller($scope) {
-
             }
           ]
         };

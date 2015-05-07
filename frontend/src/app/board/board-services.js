@@ -33,7 +33,7 @@
         },
         {
           name: 'LiukkoClock',
-          directive: 'widgetLiukkoClock',
+          directive: 'widget-liukko-clock',
           enableVerticalResize: false
         }
       ];
