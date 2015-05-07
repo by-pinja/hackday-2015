@@ -102,6 +102,7 @@ Protacon Solutions
 - [Joni Syri](https://github.com/jsyri)
 - [Aki Syri](https://github.com/akisy)
 - [Eemeli Niemelä] (https://github.com/Eniemela)
+- [Lasse Särkilä](https://github.com/lassesarkila)
 
 ## License
 The MIT License (MIT)
