@@ -17,24 +17,20 @@
             function controller($scope, peepooFactory, $rootScope) {
               $scope.reservations = [];
 
-              peepooFactory.load().then(function(result) {
-                result.forEach(function(x) {
-                  console.log(x);
-                  $scope.reservations.push(x);
-                })
-              }, function(error){
-
-              });
               window.setInterval(function() {
-                $rootScope.$apply();
-              }, 1000);
+                peepooFactory.load().then(function(result) {
+                  $scope.reservations = result;
+                  $scope.$apply();
+                }, function(error){
+                });
+              }, 2000);
 
               $scope.showPee = function (reservation) {
                 return reservation.type === 1;
               };
 
               $scope.showPoo = function (reservation) {
-                return reservation.type === 2 && (!reservation.avoidingWork || $scope.isReserved(reservation));
+                return reservation.type === 2 && (!reservation.avoidingWork);
               };
 
               $scope.isReserved = function(reservation) {
@@ -42,7 +38,7 @@
               }
 
               $scope.isAvoiding = function(reservation) {
-                return (reservation.type === 2 && reservation.avoidingWork && !$scope.isReserved(reservation));
+                return (reservation.type === 2 && reservation.avoidingWork);
               }
             }
           ]
