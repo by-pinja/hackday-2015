@@ -4,7 +4,7 @@
       'angular2/*':'lib/angular2/*.js',
       'rtts_assert/*': 'lib/rtts_assert/*.js',
       'index': 'app/index.js',
-      'starter/*': 'app/starter/*.js',
+      'mood/*': 'app/mood/*.js',
     }
   });
   System.import('index').then(function(module) {

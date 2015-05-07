@@ -1,6 +1,6 @@
 import {bootstrap} from 'angular2/angular2';
-import {Starter} from 'starter/component';
+import {Mood} from 'mood/component';
 
 export function main() {
-  bootstrap(Starter);
+  bootstrap(Mood);
 }
