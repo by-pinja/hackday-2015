@@ -13,6 +13,7 @@ body {
 #game {
 	clear: both;
 	min-height: 200px;
+    margin-left: 15px;
 }
 
 #timeLeft {
@@ -33,6 +34,7 @@ body {
 }
 
 .playerName {
+    margin-left: 2px;
 	display: inline-block;
 }
 
