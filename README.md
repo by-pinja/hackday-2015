@@ -97,6 +97,7 @@ Protacon Solutions
 - [Jaakko Kaski](https://github.com/ajaskaFIN)
 - [Heikki-Jussi Niemi](https://github.com/Hekku2)
 - [Mika Vilpas](https://github.com/sp3ctum)
+- [Sami Ristinen](https://github.com/ristisami)
 
 ## License
 The MIT License (MIT)
