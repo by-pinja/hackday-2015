@@ -25,6 +25,7 @@
               FocusOnService, MessageService
             ) {
               $scope.startEdit = function (player) {
+                //Do nothing if player is already under edit
                 var playerUnderEdit = $scope.playerUnderEdit;
                 if (playerUnderEdit && player.id == playerUnderEdit.id && player.editmode )
                   return;
