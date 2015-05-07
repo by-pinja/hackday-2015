@@ -9,7 +9,6 @@
 }
 
 .loossi-map {
-  min-height: 600px;
   background-color: #dbdbdb;
 }
 
@@ -17,8 +16,9 @@
   background-color: #FFFFFF;
 }
 
-.widget-big-brother h3 {
-  font-size: 100%;
+.widget-big-brother h4 {
+  text-align: center;
+  font-size: 120%;
 }
 
 .loossi {
@@ -42,7 +42,8 @@
   list-style-type: none;
   padding: 0;
 }
-.persons li{
+
+.persons li {
   margin: 2px 0;
 }
 
