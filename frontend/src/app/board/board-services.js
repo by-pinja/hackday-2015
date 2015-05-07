@@ -51,6 +51,16 @@
           name: 'LiukkoClock',
           directive: 'widget-liukko-clock',
           enableVerticalResize: false
+        },
+        {
+          name: 'Weather Information',
+          directive: 'widget-weather-information',
+          settingsModalOptions: {
+            partialTemplateUrl: '/frontend/board/widgets/widget-weather-information/settings.html'
+          },
+          dataModelOptions: {
+            selected: 'Jyväskylä, Tampere'
+          }
         }
       ];
     })
