@@ -10,7 +10,8 @@
   angular.module('frontend', [
     'frontend-templates',
     'frontend.core',
-    'frontend.board'
+    'frontend.board',
+    'frontend.toiletReservation'
   ]);
 
   /**
@@ -29,7 +30,7 @@
       function config(
         $stateProvider, $locationProvider, $urlRouterProvider, $httpProvider, $sailsSocketProvider,
         $tooltipProvider, cfpLoadingBarProvider,
-        toastrConfig
+        toastrConfig, InitialDataToiletReservationFactory
       ) {
         $httpProvider.defaults.useXDomain = true;
 
@@ -88,8 +89,6 @@
           })
         ;
 
-        // For any unmatched url, redirect to /board
-        $urlRouterProvider.otherwise('/board');
       }
     ])
   ;
