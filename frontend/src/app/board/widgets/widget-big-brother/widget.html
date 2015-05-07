@@ -1,26 +1,25 @@
 <div class="widget-big-brother">
-  <script src="js/bootstrap.js"></script>
 
   <div class="loossi-map">
     <h3>Protacon Solutions Oy</h3>
 
-    <h3>Loossit ({{loossit.length}})</h3>l
-
-
     <div id="mapContainer" class="container">
 
       <div class="row">
-        <div ng-repeat="loossi in loossit" ng-class="{'test':$first}" ng-class="{'test':$last}" class="loossi col-sm-{{loossi.width}}  {{loossi.type}}">
+        <div ng-repeat="loossi in loossit" class="loossi col-sm-{{loossi.width}}  {{loossi.type}}">
 
           <h4 ng-bind="loossi.name"></h4>
 
-          <ul class="persons">
-            <li class="btn {{person.in ? 'btn-success' : 'btn-danger'}}" ng-repeat="person in loossi.people">
-              <span ng-bind="person.name"></span>
-              <span> <i class="glyphicon glyphicon-ok" ng-show="person.in"></i></span>
-              <span> <i class="glyphicon glyphicon-ban-circle" ng-show="!person.in"></i></span>
+          <ul  ng-show="loossi.people.length < 9" class="persons">
+            <li class="btn {{person.direction == 1 ? 'btn-success' : 'btn-danger'}}" ng-repeat="person in loossi.people">
+                <span ng-bind="person.name"></span>
+                <span> <i class="glyphicon glyphicon-ok" ng-show="person.direction === 1"></i></span>
+                <span> <i class="glyphicon glyphicon-ban-circle" ng-show="person.direction === 2"></i></span>
             </li>
           </ul>
+
+          <h4 class="alert-danger" ng-show="loossi.people.length > 8"> {{loossi.people.length}} työntekijää kahvilla!</h4>
+
         </div>
 
       </div>
