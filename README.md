@@ -59,7 +59,7 @@ be run on http://localhost:1337 and frontend on http://localhost:3001 (developme
 There is an example of backend configuration file on following path.
 
 <pre>
-/backend/config/local.js
+/backend/config/local_example.js
 </pre>
 
 Just copy this to <code>/backend/config/local.js</code> and make necessary changes to it. Note that this 
