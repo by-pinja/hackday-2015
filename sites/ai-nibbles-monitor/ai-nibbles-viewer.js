@@ -1,5 +1,5 @@
 // Configuration
-var host = "http://localhost:3000/";
+var host = "http://hackday.protacon.com:3939/";
 var squareSize = 5;
 
 // Globals
