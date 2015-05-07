@@ -18,18 +18,6 @@
                   }
                 };
 
-                // Custom handler for updated objects
-                factory.handlerUpdated = function handlerUpdated(message) {
-                  console.log("updated!!!");
-                  var match = _.find(data, function iterator(item) {
-                    return item.id === message.id;
-                  });
-
-                  if (match) {
-                    _.merge(match, message.data);
-                  }
-                };
-
                 var loadInitials = function() {
                   factory.load().then(function(result){
                     console.log(result);
@@ -58,11 +46,9 @@
 
             var addOrUpdate = function(existing, id, type) {
               if(_.some(existing, {id:id})) {
-                console.log("Updating")
                 //factory.update(id, {id: id, type: type, avoidingWork: false, reservationEndTime: new Date()});
               }
               else {
-                console.log("Creating")
                 factory.create({id: id, type: type, avoidingWork: false, reservationEndTime: new Date()});
               }
             };
@@ -76,7 +62,6 @@
                 addOrUpdate(result, 3, 2);
                 addOrUpdate(result, 4, 2);
                 addOrUpdate(result, 5, 1);
-
               }, function (err) {
                 console.log(err);
               })
