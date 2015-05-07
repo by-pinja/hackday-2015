@@ -8,7 +8,6 @@
             '_',
             function factory(DataModel, _) {
                 var factory = new DataModel('toiletReservation');
-/*
                 var addOrUpdate = function(existing, id, type) {
                   if(_.some(existing, {id:id})) {
                     //factory.update(id, {id: id, type: type, avoidingWork: false, reservationEndTime: new Date()});
@@ -35,7 +34,6 @@
                 };
 
                 loadInitials();
-*/
               return factory;
             }
       ]);

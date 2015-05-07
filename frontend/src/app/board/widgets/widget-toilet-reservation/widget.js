@@ -13,8 +13,7 @@
           controller: [
             '$scope',
             'ToiletReservationModel',
-            '$rootScope',
-            function controller($scope, peepooFactory, $rootScope) {
+            function controller($scope, peepooFactory) {
               $scope.reservations = [];
 
               window.setInterval(function() {

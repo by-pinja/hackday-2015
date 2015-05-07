@@ -22,21 +22,6 @@
                 var freePooSlot = null;
                 var freePeeSlot = null;
 
-                // Custom handler for updated objects
-
-              /*
-                ToiletReservationModel.handlerUpdated = function handlerUpdated(message) {
-                  console.log("Whats up mate?");
-                  var match = _.find(data, function iterator(item) {
-                    return item.id === message.id;
-                  });
-
-                  if (match) {
-                    _.merge(match, message.data);
-                  }
-                };
-                */
-
                 ToiletReservationModel
                     .load()
                     .then(
