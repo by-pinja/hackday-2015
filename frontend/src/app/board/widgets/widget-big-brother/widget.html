@@ -6,6 +6,23 @@
 
     <div class="container">
 
+
+      <h3>Actual</h3>
+
+      <div id="mapContainer" class="container">
+        <div ng-repeat="rivi in rivit" class="row">
+            <div ng-repeat="loossi in rivi.loossit" class="loossi col-sm-{{loossi.koko}}">
+              <h4 ng-bind="loossi.nimi"></h4>
+              <ul>
+                <li>
+                  <!--Todo: print people associated with this loossi-->
+                </li>
+              </ul>
+            </div>
+        </div>
+      </div>
+
+      <h3>Mock</h3>
       <div class="row">
 
         <div class="col-sm-2 loossi">Sauna</div>
@@ -14,7 +31,7 @@
         <div class="col-sm-1 loossi">IT</div>
         <div class="col-sm-1 loossi">IT</div>
         <div class="col-sm-1 loossi">IT</div>
-        <div class="col-sm-1 loossi">Tarmo | Matti | Seppo</div>
+     l   <div class="col-sm-1 loossi">Tarmo | Matti | Seppo</div>
         <div class="col-sm-1 loossi" style="background-color: #4367ab;">Janne</div>
         <div class="col-sm-1 loossi" style="background-color: #39ab4c;">Olli</div>
         <div class="col-sm-1 loossi">Cella</div>
