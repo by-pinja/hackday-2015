@@ -96,6 +96,7 @@ Protacon Solutions
 - [Tarmo Leppänen](https://github.com/tarlepp)
 - [Jaakko Kaski](https://github.com/ajaskaFIN)
 - [Heikki-Jussi Niemi](https://github.com/Hekku2)
+- [Tommi Kaura-Aho](https://github.com/tomkarho)
 
 ## License
 The MIT License (MIT)
