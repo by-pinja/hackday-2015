@@ -4,15 +4,15 @@
 module.exports = {
     schema: true,
     attributes: {
-        index: {
-            type: 'integer',
-            required: true,
-            defaultsTo: 0
-        },
         type: {
             type: 'integer',
             required: true,
             defaultsTo: 0
+        },
+        avoidingWork: {
+            type: 'boolean',
+            required: true,
+            defaultsTo: false
         },
         reservationEndTime: {
             type: 'datetime',
