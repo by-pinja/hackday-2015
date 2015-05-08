@@ -48,7 +48,7 @@
           directive: 'widget-message-viewer',
           dataAttrName: 'messages',
           dataModelType: 'widgetMessageViewerModel',
-          title: 'I would like to have some coffeez, plz',
+          title: 'Important messagez',
           showTitle: true
         },
         {
