@@ -1,0 +1,17 @@
+/**
+ * This file contains all necessary CSS overrides/definitions for widget-nibbles-viewer.
+ *
+ * And please don't attach any other CSS rules to this file.
+ */
+.widget-nibbles-viewer {
+  height: 100%;
+  min-height: 100%;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    border: none;
+    overflow: hidden;
+  }
+}

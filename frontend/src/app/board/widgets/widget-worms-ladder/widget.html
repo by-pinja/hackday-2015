@@ -22,7 +22,7 @@
             <div class="col-xs-1 text-right">{{player.gamesWon}}</div>
             <div class="col-xs-2 text-right text-nowrap">
                 <span data-ng-if="player.gamesAttended > 0">
-                    ({{(player.gamesWon / player.gamesAttended) * 100 | number : 1}}%)
+                    {{(player.gamesWon / player.gamesAttended) * 100 | number : 1}}%
                 </span>
             </div>
         </div>

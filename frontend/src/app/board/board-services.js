@@ -48,7 +48,7 @@
           directive: 'widget-message-viewer',
           dataAttrName: 'messages',
           dataModelType: 'widgetMessageViewerModel',
-          title: 'I would like to have some coffeez, plz',
+          title: 'Important messagez',
           showTitle: true
         },
         {
@@ -93,6 +93,12 @@
           },
           title: 'RSS feedz',
           showTitle: true
+        },
+        {
+            name: 'Nibbles viewer',
+            directive: 'widget-nibbles-viewer',
+            size: { height: "438px", width: "351px" },
+            enableVerticalResize: false
         },
         {
           name: 'Weather Information',

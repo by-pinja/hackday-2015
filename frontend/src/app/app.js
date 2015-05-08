@@ -89,6 +89,8 @@
           })
         ;
 
+        // For any unmatched url, redirect to /board
+        $urlRouterProvider.otherwise('/board');
       }
     ])
   ;
