@@ -1,6 +1,6 @@
 <div class="widget-mod">
 
-  <h1>Message of day</h1>
+  <h1>Message of the day</h1>
 
   <div ng-repeat="message in messages">
     <blockquote ng-if="message.type === 'msg'">
@@ -8,6 +8,9 @@
       <footer>{{message.sender}}</footer>
     </blockquote>
 
+    <blockquote ng-if="message.type === 'img'">
     <img ng-if="message.type === 'img'" ng-src="{{message.data}}" class="img-responsive" />
+      <footer>{{message.sender}}</footer>
+    </blockquote>
   </div>
 </div>
