@@ -95,6 +95,12 @@
           showTitle: true
         },
         {
+            name: 'Nibbles viewer',
+            directive: 'widget-nibbles-viewer',
+            size: { height: "438px", width: "351px" },
+            enableVerticalResize: false
+        },
+        {
           name: 'Weather Information',
           directive: 'widget-weather-information',
           settingsModalOptions: {
