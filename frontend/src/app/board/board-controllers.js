@@ -103,6 +103,15 @@
                   name: 'Nibbles viewer'
                 }
               ]
+            },
+            {
+              title: 'Muster',
+              active: false,
+              defaultWigets: [
+                {
+                  name: 'Muster map'
+                }
+              ]
             }
           ],
           settingsModalOptions: {
