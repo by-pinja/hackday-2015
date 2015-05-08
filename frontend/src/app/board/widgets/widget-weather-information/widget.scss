@@ -30,12 +30,17 @@
  }
 
   .temp {
+    white-space: nowrap;
+    
     h1 {
       display: inline-block;
       font-size: 48px;
     }
 
     span {
+      position: relative;
+      top: -15px;
+      left: -3px;
       font-size: 26px;
     }
   }
@@ -45,6 +50,7 @@
   }
 
   .wind {
+    padding-left: 15px;
     h1 {
       font-size: 20px
     }
