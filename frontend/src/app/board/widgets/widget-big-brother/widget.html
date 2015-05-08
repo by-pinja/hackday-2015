@@ -1,0 +1,27 @@
+<div class="widget-big-brother">
+
+  <div class="loossi-map">
+
+    <div id="mapContainer" >
+
+      <div class="row">
+        <div ng-repeat="loossi in loossit" class="loossi col-sm-{{loossi.width}}  {{loossi.type}}">
+
+          <h4 ng-bind="loossi.name"></h4>
+
+          <ul  ng-show="loossi.people.length < 9" class="persons">
+            <li ng-bind="person.name" class="btn {{person.direction == 1 ? 'btn-success' : 'btn-danger'}}" ng-repeat="person in loossi.people"></li>
+          </ul>
+
+          <h4 class="alert-danger" ng-show="loossi.people.length > 8"> {{loossi.people.length}} työntekijää kahvilla!</h4>
+
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
