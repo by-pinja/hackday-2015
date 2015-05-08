@@ -33,6 +33,12 @@
           dataModelType: 'widgetCoffeeScaleModel'
         },
         {
+          name: 'Message viewer',
+          directive: 'widget-message-viewer',
+          dataAttrName: 'messages',
+          dataModelType: 'widgetMessageViewerModel'
+        },
+        {
           name: 'Protacon video',
           directive: 'widget-protacon-video',
           enableVerticalResize: false
