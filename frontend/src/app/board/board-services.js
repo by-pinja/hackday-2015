@@ -45,7 +45,14 @@
           {
               name: 'Muster map',
               directive: 'widget-muster',
-              enableVerticalResize: true
+              enableVerticalResize: true,
+              settingsModalOptions: {
+                  partialTemplateUrl: '/frontend/board/widgets/widget-muster/settings.html'
+              },
+              dataModelOptions: {
+                  musterUrl: 'http://baja12-kika.protacon.com/Baja.Web/SystemStatus/GetMapItems'
+              }
+
           },
         {
           name: 'Protacon twitter feed',
@@ -54,7 +61,7 @@
             partialTemplateUrl: '/frontend/board/widgets/widget-twitter/settings.html'
           },
           dataModelOptions: {
-            widget_id: '596256646311104512'
+              widget_id: '596256646311104512'
           }
         },
         {

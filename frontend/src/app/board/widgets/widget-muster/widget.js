@@ -12,8 +12,15 @@
           replace: true,
           templateUrl: '/frontend/board/widgets/widget-muster/widget.html',
           controller: [
-            '$scope', '$http',
-            function controller($scope, $http) {
+            '$scope', '$sce', '$http',
+            function controller($scope, $sce, $http) {
+                var musterUrl = '';
+
+                $scope.$watch('$parent.widget.dataModelOptions.musterUrl', function watcher() {
+                    // We need to set URL to be as trusted for all to work
+                    musterUrl = $sce.trustAsResourceUrl($scope.$parent.widget.dataModelOptions.musterUrl);
+                    getData();
+                });
 
                 var mapOptions = {
                     disableDefaultUI: true,
@@ -23,7 +30,6 @@
                     scaleControl: false,
                     streetViewControl: false
                 };
-
 
                 var stations = [];
 
@@ -53,10 +59,8 @@
                     }
                 });
 
-                getData();
-
                 function getData() {
-                    $http.get('http://baja12-kika.protacon.com/Baja.Web/SystemStatus/GetMapItems').then(function (result) {
+                    $http.get(musterUrl).then(function (result) {
                         var data = result.data.Data;
 
                         stations = data;
