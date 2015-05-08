@@ -29,13 +29,12 @@
 
                 var map = new google.maps.Map($("#muster-map")[0], mapOptions);
 
-                map.setCenter(new google.maps.LatLng(64.743774, 26.2453809));
+                map.setCenter(new google.maps.LatLng(65.143774, 26.2453809));
 
                 io.socket.on('musterInspection', function (data) {
                     var stationId = parseInt(data);
 
                     var selectedMarker = null;
-                    console.log(stations);
                     for (var i = 0; i < stations.length; i++) {
                         if (stations[i].Id === stationId) {
                             stations[i].marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
