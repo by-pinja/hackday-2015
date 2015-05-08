@@ -1,0 +1,8 @@
+<form>
+    <label for="typeSelect">Type</label>
+    <select id="typeSelect" data-ng-options="type.type as type.label for type in types" data-ng-model="type"></select>
+
+    <input type="text" placeholder="Message" data-ng-model="message"/>
+    <input type="text" placeholder="Sender" data-ng-model="sender"/>
+    <button type="submit" data-ng-disabled="posting || !type || !message || !sender" data-ng-click="sendMessage()">Send</button>
+</form>
