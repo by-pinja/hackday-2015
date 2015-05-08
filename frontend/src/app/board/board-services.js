@@ -14,7 +14,9 @@
         {
           name: 'Big Brother 2015',
           directive: 'widget-big-brother',
-          containerClass: 'nikotupakoimaan'
+          containerClass: 'nikotupakoimaan',
+          width: "1805px",
+          height: "866px"
         },
         {
           name: 'URL viewer',
