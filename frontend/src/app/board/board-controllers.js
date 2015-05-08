@@ -26,7 +26,74 @@
             {
               title: 'Hackday',
               active: true,
-              defaultWidgets: defaultWidgetDefinitions
+              defaultWidgets: [
+                {
+                  name: 'Protacon video'
+                }
+              ]
+            },
+            {
+              title: 'Jypanttimo',
+              active: false,
+              defaultWidgets: [
+                {
+                  name: 'Message of the Day'
+                },
+                {
+                  name: 'Coffee Status'
+                }
+              ]
+            },
+            {
+              title: 'BB',
+              active: false,
+              defaultWidgets: [
+                {
+                  name: 'Big Brother 2015'
+                }
+              ]
+            },
+            {
+              title: 'Pökö',
+              active: false,
+              defaultWidgets: [
+                {
+                  name: 'LiukkoClock'
+                },
+                {
+                  name: 'Toilet reservation',
+                  size: {
+                    width: '600px'
+                  }
+                }
+              ]
+            },
+            {
+              title: 'Hops hill',
+              active: false,
+              defaultWidgets: [
+                {
+                  name: 'Protacon twitter feed'
+                }
+              ]
+            },
+            {
+              title: 'RB',
+              active: false,
+              defaultWidgets: [
+                {
+                  name: 'RSS reader'
+                },
+                {
+                  name: 'Worms Ladder'
+                },
+                {
+                  name: 'URL viewer'
+                },
+                {
+                  name: 'Weather Information'
+                }
+              ]
             }
           ],
           settingsModalOptions: {
