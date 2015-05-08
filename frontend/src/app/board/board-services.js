@@ -13,7 +13,8 @@
 
         {
           name: 'Big Brother 2015',
-          directive: 'widget-big-brother'
+          directive: 'widget-big-brother',
+          containerClass: 'nikotupakoimaan'
         },
         {
           name: 'URL viewer',

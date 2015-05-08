@@ -24,10 +24,11 @@
                * @type {*[]}
                */
               $scope.defaultLoossit = [
-                {name: "Sauna", width: 2, type: 'sauna', people: [
+                {name: "Sauna", width: 1, type: 'meeting', people: [
                   {"direction":"2","name":"Mynttinen Jari","time":"2015-05-06 16:04:00","usename":"jmy","id":"248"},
                   {"direction":"1","name":"Lajunen Olli","time":"2015-04-17 12:32:00","usename":"oll","id":"257"}
                 ]},
+                {name: "", width: 1, type: 'empty', people: []},
                 {
                   name: "IT", width: 2, type: 'it', people: [
                   {
@@ -54,7 +55,7 @@
                 ]
                 },
                 {
-                  name: "TUKI", width: 2, type: 'tuki', people: [
+                  name: "TUKI", width: 2, type: 'support', people: [
                   {
                     "id": "444",
                     "direction": "2",
@@ -98,7 +99,7 @@
                 ]
                 },
                 {
-                  name: "Hallinto", width: 1, type: 'normal', people: [
+                  name: "Hallinto", width: 1, type: 'management', people: [
                   {
                     "id": "238",
                     "direction": "2",
@@ -117,9 +118,9 @@
                 },
                 {name: "Cella", width: 1, type: 'meeting', people: []},
 
-                {name: "Saunatupa", width: 2, type: 'sauna', people: []},
+                {name: "Saunatupa", width: 1, type: 'meeting', people: []},
                 {
-                  name: "Laitisen poppoo", width: 1, type: 'normal', people: [
+                  name: "Laitisen poppoo", width: 1, type: 'management', people: [
                   {
                     "id": "113",
                     "direction": "2",
@@ -129,9 +130,10 @@
                   }
                 ]
                 },
+                {name: "", width: 1, type: 'empty', people: []},
                 {name: "KAHVITILA", width: 3, type: 'lounge', people: []},
                 {
-                  name: "Tiimij.", width: 1, type: 'teamleaders', people: [
+                  name: "Tiimij.", width: 1, type: 'management', people: [
                   {
                     "id": "358",
                     "direction": "2",
@@ -148,11 +150,12 @@
                   }
                 ]
                 },
+                {name: "", width: 1, type: 'empty', people: []},
                 {name: "Atrium", width: 1, type: 'meeting', people: []},
 
-                {name: "Huoneet", width: 1, type: 'rooms', people: []},
+                {name: "Huoneet", width: 1, type: 'management', people: []},
                 {
-                  name: "Myynti", width: 1, type: 'normal', people: [
+                  name: "Myynti", width: 1, type: 'it', people: [
                   {
                     "id": "418",
                     "direction": "2",
@@ -271,7 +274,7 @@
 
                 ]
                 },
-                {name: "Villa", width: 1, type: 'normal', people: []}
+                {name: "Villa", width: 1, type: 'meeting', people: []}
               ];
 
               $scope.loossit = $scope.defaultLoossit;
