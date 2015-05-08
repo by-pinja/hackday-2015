@@ -1,11 +1,13 @@
 <div class="widget-mod">
 
   <h1>Message of day</h1>
-  <hr>
+
   <div ng-repeat="message in messages">
-    <blockquote>
+    <blockquote ng-if="message.type === 'msg'">
       <p>{{message.data}}</p>
       <footer>{{message.sender}}</footer>
     </blockquote>
+
+    <img ng-if="message.type === 'img'" ng-src="{{message.data}}" class="img-responsive" />
   </div>
 </div>
