@@ -2,6 +2,7 @@
 
   <h1>Coffee status</h1>
   <hr>
+  <div data-ng-show="!pots.length">No connection to coffee pots</div>
   <ul class="pot-list">
     <li data-ng-repeat="pot in pots | orderBy : 'scaleId'">
       <hr ng-if="$index > 0" />
@@ -10,7 +11,7 @@
         <div class="col-lg-4"><div class="cups"><span class="text">{{pot.cups}}</span><i class="fa fa-coffee fa-lg fa-2x"></i></div></div>
         <div class="col-lg-4">
           <h2>{{pot.percentage ? (pot.percentage + '%') :''}} {{pot.temperature ? ' | ' + pot.temperature + '&deg;C' : ''}}</h2>
-          <div><span ng-show="pot.fillTime">Brewed:</span> <span am-time-ago="pot.fillTime"></span></div>
+          <div><span data-ng-show="pot.fillTime">Brewed:</span> <span am-time-ago="pot.fillTime"></span></div>
         </div>
         <div class=""></div>
       </div>
