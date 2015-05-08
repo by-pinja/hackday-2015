@@ -44,6 +44,11 @@
           enableVerticalResize: false
         },
         {
+          name: 'Toilet reservation',
+          directive: 'widget-toilet-reservation',
+          enableVerticalResize: true
+        },
+        {
           name: 'Protacon twitter feed',
           directive: 'widget-twitter',
           settingsModalOptions: {
