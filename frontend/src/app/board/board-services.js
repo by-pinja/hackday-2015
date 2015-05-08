@@ -40,7 +40,7 @@
           dataModelType: 'widgetCoffeeScaleModel'
         },
         {
-          name: 'Message viewer',
+          name: 'Message of the Day',
           directive: 'widget-message-viewer',
           dataAttrName: 'messages',
           dataModelType: 'widgetMessageViewerModel'
