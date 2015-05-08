@@ -51,6 +51,20 @@
       }
     }
 
+    .widget-header-large {
+      height: 45px;
+      line-height: 45px;
+      background-color: #e59c00;
+      color: #ffffff;
+      border-bottom: none;
+      border-radius: 0;
+
+      .panel-title {
+        font-size: 18px;
+        line-height: 25px;
+      }
+    }
+
     .widget-content {
     }
   }

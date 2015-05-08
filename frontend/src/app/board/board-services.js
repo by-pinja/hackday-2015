@@ -91,7 +91,10 @@
             partialTemplateUrl: '/frontend/board/widgets/widget-weather-information/settings.html'
           },
           dataModelOptions: {
-            selected: 'Jyväskylä, Tampere'
+            selected: 'Jyväskylä, Tampere, Oulu'
+          },
+          size: {
+            width: '400px'
           }
         }
       ];
