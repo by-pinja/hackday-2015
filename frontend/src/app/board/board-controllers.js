@@ -94,6 +94,15 @@
                   name: 'Weather Information'
                 }
               ]
+            },
+            {
+              title: 'Nibbles',
+              active: false,
+              defaultWidgets: [
+                {
+                  name: 'Nibbles viewer'
+                }
+              ]
             }
           ],
           settingsModalOptions: {

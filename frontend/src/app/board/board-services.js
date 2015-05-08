@@ -97,7 +97,7 @@
         {
             name: 'Nibbles viewer',
             directive: 'widget-nibbles-viewer',
-            size: { height: "438px", width: "351px" },
+            size: { height: "450px", width: "400px" },
             enableVerticalResize: false
         },
         {
