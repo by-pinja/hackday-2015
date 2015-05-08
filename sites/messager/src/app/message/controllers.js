@@ -19,7 +19,7 @@ angular
 
         $scope.sendMessage = function () {
             // TODO url from conf
-                $http.post('http://localhost:1337/message-viewer-message',
+                $http.post(window.messageApp.sailsUrl + '/message-viewer-message',
                     {
                         type: $scope.type,
                         data: $scope.message,
