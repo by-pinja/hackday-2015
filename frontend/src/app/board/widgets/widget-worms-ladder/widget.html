@@ -1,9 +1,11 @@
 <div class="widget-worms-ladder">
-
-    <h1 class="pull-left">Player ranking</h1>
-    <h1 class="pull-right">won / played</h1>
-
-    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-xs-1 title">#</div>
+        <div class="col-xs-7 title">Player</div>
+        <div class="col-xs-1 title text-right">G</div>
+        <div class="col-xs-1 title text-right">W</div>
+        <div class="col-xs-2 title text-right">W%</div>
+    </div>
     <hr />
 
     <div class="text-muted text-center"
@@ -12,38 +14,59 @@
         <em>Oh noes, there isn't any data to show...</em>
     </div>
 
-    <ol>
-        <li data-ng-repeat="player in players | orderBy : '-gamesWon'" data-ng-dblclick="startEdit(player)">
-          <div ng-hide="player.editmode">
-
-            <span class="text-nowrap pull-right">
-                {{player.gamesWon}} / {{player.gamesAttended}}
-
+    <div class="row" data-ng-repeat="player in players | orderBy : '-gamesWon'" data-ng-dblclick="startEdit(player)">
+        <div ng-hide="player.editmode">
+            <div class="col-xs-1">{{ $index + 1 }}.</div>
+            <div class="col-xs-7">{{player.playerName}}</div>
+            <div class="col-xs-1 text-right">{{player.gamesAttended}}</div>
+            <div class="col-xs-1 text-right">{{player.gamesWon}}</div>
+            <div class="col-xs-2 text-right text-nowrap">
                 <span data-ng-if="player.gamesAttended > 0">
                     ({{(player.gamesWon / player.gamesAttended) * 100 | number : 1}}%)
                 </span>
-            </span>
+            </div>
+        </div>
 
-            <h1>
-                {{player.playerName}}
-            </h1>
+        <div class="row"
+            data-ng-show="player.editmode"
+        >
+            <div class="col-xs-7 col-xs-offset-1">
+                <input class="text-input" type="text"
+                    data-ng-model="playerUnderEdit.playerName"
+                    data-ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null"
+                    data-focus-on="focusMe"
+                />
+                <input class="number-input" type="number"
+                    ng-model="playerUnderEdit.gamesAttended"
+                    ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null"
+                />
+                <input class="number-input" type="number"
+                    data-ng-model="playerUnderEdit.gamesWon"
+                    data-ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null"
+                />
+            </div>
+            <div class="col-xs-4">
+                <button class="btn btn-sm" data-ng-click="update(playerUnderEdit)">Save</button>
+                <button class="btn btn-sm" data-ng-click="cancelEdit(player)">Cancel</button>
+                <button class="btn btn-sm" data-ng-click="deletePlayer(player)">Delete</button>
+            </div>
+        </div>
+    </div>
+    <div class="row"
+        data-ng-show="shouldShowNewPlayerInputs()"
+    >
+        <hr />
 
-          </div>
-          <div ng-show="player.editmode">
-            <input class="text-input" type="text" ng-model="playerUnderEdit.playerName" ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null" data-focus-on="focusMe"/>
-            <input class="number-input" type="number" ng-model="playerUnderEdit.gamesWon" ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null"/>
-            <input class="number-input" type="number" ng-model="playerUnderEdit.gamesAttended" ng-keypress="$event.keyCode == 13 ? update(playerUnderEdit) : null"/>
-            <button data-ng-click="update(playerUnderEdit)">Save</button>
-            <button data-ng-click="cancelEdit(player)">Cancel</button>
-            <button data-ng-click="deletePlayer(player)">Delete</button>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-      <li ng-show="shouldShowNewPlayerInputs()">
-        <input class="text-input" type="text" ng-model="newPlayer.playerName" ng-keypress="$event.keyCode == 13 ? createPlayer(newPlayer) : null" placeholder="Add new..."/>
-        <button data-ng-click="createPlayer(newPlayer)">Save</button>
-      </li>
-
-    </ol>
-
+        <div class="row">
+            <div class="col-xs-7 col-xs-offset-1">
+                <input class="text-input" type="text" placeholder="Add new..."
+                    data-ng-model="newPlayer.playerName"
+                    data-ng-keypress="$event.keyCode == 13 ? createPlayer(newPlayer) : null"
+                />
+            </div>
+            <div class="col-xs-4">
+                <button class="btn btn-sm" data-ng-click="createPlayer(newPlayer)">Add player</button>
+            </div>
+        </div>
+    </div>
 </div>

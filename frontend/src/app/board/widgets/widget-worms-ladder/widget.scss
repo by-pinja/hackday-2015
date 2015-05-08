@@ -4,19 +4,9 @@
  * And please don't attach any other CSS rules to this file.
  */
 .widget-worms-ladder {
-  margin: 15px;
+  margin: 10px 25px 10px 15px;
 
-  ol {
-    padding: 0 0 0 25px;
-    margin: 10px 0 -10px 0;
-    font-size: 16px;
-  }
-
-  dl {
-    margin-bottom: 0;
-  }
-
-  h1 {
+  .title {
     margin: 0;
     font-size: 16px;
     font-weight: bold;
@@ -31,6 +21,6 @@
   }
 
   .text-input {
-    width: 200px;
+    width: 240px;
   }
 }
