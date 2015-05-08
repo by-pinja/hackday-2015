@@ -107,7 +107,7 @@
             {
               title: 'Muster',
               active: false,
-              defaultWigets: [
+              defaultWidgets: [
                 {
                   name: 'Muster map'
                 }
