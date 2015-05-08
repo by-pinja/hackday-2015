@@ -4,25 +4,53 @@
  * And please don't attach any other CSS rules to this file.
  */
 .widget-weather-information {
-  margin: 15px;
+  margin-top: 15px;
 
-  ol {
-    padding: 0 0 0 25px;
-    margin: 10px 0 -10px 0;
-    font-size: 16px;
-  }
-
-  dl {
-    margin-bottom: 0;
+  .col-xs-4,
+  .col-xs-5,
+  .col-xs-6,
+  .col-xs-7,
+  .col-xs-8 {
+    padding: 0
   }
 
   h1 {
     margin: 0;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 24px;
   }
 
-  hr {
-    margin: 10px 0 5px 0;
+ .image {
+   width: 140px;
+   position: relative;
+   top: -25px;
+   left: -10px;
+   margin-bottom: -60px;
+   -webkit-filter: grayscale(100%);
+   filter: grayscale(100%);
+ }
+
+  .temp {
+    h1 {
+      display: inline-block;
+      font-size: 48px;
+    }
+
+    span {
+      font-size: 26px;
+    }
+  }
+
+  .location {
+    margin-bottom: 15px;
+  }
+
+  .wind {
+    h1 {
+      font-size: 20px
+    }
+
+    i {
+      font-size: 24px;
+    }
   }
 }

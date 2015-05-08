@@ -1,29 +1,41 @@
 <div>
 
     <div id="settings-button" class="settings-button"
-         data-ng-if="!options.hideToolbar"
-            ></div>
+        data-ng-if="!options.hideToolbar"
+    ></div>
     <div id="settings" class="btn-toolbar"
-         data-ng-if="!options.hideToolbar"
-            >
+        data-ng-if="!options.hideToolbar"
+    >
+
+        <i class="fa fa-cog pull-right"
+           data-ng-click="buttonsVisible = !buttonsVisible"
+        ></i>
+
+        <div class="setting-buttons"
+            data-ng-show="buttonsVisible"
+        >
+
+
+
         <div class="btn-group"
-             data-ng-if="!options.widgetButtons"
-                >
+            data-ng-if="!options.widgetButtons"
+        >
             <span class="dropdown"
-                  data-on-toggle="toggled(open)"
-                    >
-                <button type="button" class="btn btn-primary dropdown-toggle"
-                        data-toggle="dropdown"
-                        >
+                data-on-toggle="toggled(open)"
+            >
+                <button type="button" class="btn dropdown-toggle"
+                    data-toggle="dropdown"
+                >
                     Widgets
+
                     <span class="caret"></span>
                 </button>
 
                 <ul class="dropdown-menu" role="menu">
                     <li data-ng-repeat="widget in widgetDefs">
                         <a href="#" class="dropdown-toggle"
-                           data-ng-click="addWidgetInternal($event, widget);"
-                                >
+                            data-ng-click="addWidgetInternal($event, widget);"
+                        >
                             {{widget.name}}
                         </a>
                     </li>
@@ -32,35 +44,37 @@
         </div>
 
         <div class="btn-group"
-             data-ng-if="options.widgetButtons"
-                >
-            <button type="button" class="btn btn-primary"
-                    data-ng-repeat="widget in widgetDefs"
-                    data-ng-click="addWidgetInternal($event, widget);"
-                    >
+            data-ng-if="options.widgetButtons"
+        >
+            <button type="button" class="btn"
+                data-ng-repeat="widget in widgetDefs"
+                data-ng-click="addWidgetInternal($event, widget);"
+            >
                 {{widget.name}}
             </button>
         </div>
 
-        <button class="btn btn-warning"
-                data-ng-click="resetWidgetsToDefault()"
-                >
+        <button class="btn"
+            data-ng-click="resetWidgetsToDefault()"
+        >
             Default Widgets
         </button>
 
-        <button class="btn btn-success"
-                data-ng-if="options.storage && options.explicitSave"
-                data-ng-click="options.saveDashboard()"
-                data-ng-disabled="!options.unsavedChangeCount"
-                >
+        <button class="btn"
+            data-ng-if="options.storage && options.explicitSave"
+            data-ng-click="options.saveDashboard()"
+            data-ng-disabled="!options.unsavedChangeCount"
+        >
             {{ !options.unsavedChangeCount ? "all saved" : "save changes (" + options.unsavedChangeCount + ")" }}
         </button>
 
-        <button type="button" class="btn btn-info"
-                data-ng-click="clear();"
-                >
+        <button type="button" class="btn"
+            data-ng-click="clear();"
+        >
             Clear
         </button>
+
+        </div>
     </div>
 
     <div class="dashboard-widget-area row"
@@ -108,6 +122,16 @@
                                 data-ng-model="widget.title"
                             />
                         </form>
+                    </h3>
+                </div>
+
+                <div class="panel-heading widget-header-large"
+                    data-ng-if="widget.showTitle"
+                >
+                    <h3 class="panel-title">
+                        <span class="widget-title">
+                            {{widget.title}}
+                        </span>
                     </h3>
                 </div>
 

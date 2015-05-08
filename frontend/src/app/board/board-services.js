@@ -15,7 +15,7 @@
           name: 'Big Brother 2015',
           directive: 'widget-big-brother',
           containerClass: 'nikotupakoimaan',
-          size: {width: "1805px", height: "866px"}
+          size: {width: "1900px", height: "675px"}
         },
         {
           name: 'URL viewer',
@@ -31,19 +31,25 @@
           name: 'Worms Ladder',
           directive: 'widget-worms-ladder',
           dataAttrName: 'players',
-          dataModelType: 'WidgetWormsLadderModel'
+          dataModelType: 'WidgetWormsLadderModel',
+          title: 'OG Worms ladders, yo',
+          showTitle: true
         },
         {
           name: 'Coffee Status',
           directive: 'widget-coffee-scale',
           dataAttrName: 'pots',
-          dataModelType: 'widgetCoffeeScaleModel'
+          dataModelType: 'widgetCoffeeScaleModel',
+          title: 'I would like to have some coffeez, plz',
+          showTitle: true
         },
         {
           name: 'Message of the Day',
           directive: 'widget-message-viewer',
           dataAttrName: 'messages',
-          dataModelType: 'widgetMessageViewerModel'
+          dataModelType: 'widgetMessageViewerModel',
+          title: 'I would like to have some coffeez, plz',
+          showTitle: true
         },
         {
           name: 'Protacon video',
@@ -63,7 +69,9 @@
           },
           dataModelOptions: {
             widget_id: '596256646311104512'
-          }
+          },
+          title: 'Protacon @ twitter',
+          showTitle: true
         },
         {
           name: 'LiukkoClock',
@@ -82,7 +90,9 @@
           },
           settingsModalOptions: {
             partialTemplateUrl: '/frontend/board/widgets/widget-rss-reader/settings.html'
-          }
+          },
+          title: 'RSS feedz',
+          showTitle: true
         },
         {
           name: 'Weather Information',
@@ -91,8 +101,13 @@
             partialTemplateUrl: '/frontend/board/widgets/widget-weather-information/settings.html'
           },
           dataModelOptions: {
-            selected: 'Jyväskylä, Tampere'
-          }
+            selected: 'Jyväskylä, Tampere, Oulu'
+          },
+          size: {
+            width: '400px'
+          },
+          title: 'Sää',
+          showTitle: true
         }
       ];
     })

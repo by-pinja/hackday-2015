@@ -9,8 +9,14 @@ $green: rgb(84,170,61);
 $yellow: rgb(229,156,0);
 
 .widget-big-brother {
-  margin: 15px;
-  padding-top: 0px;
+  margin: 0;
+  padding-top: 0;
+}
+
+#mapContainer {
+  position: relative;
+  left: 20px;
+  top: 10px;
 }
 
 .loossi-map {
