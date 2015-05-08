@@ -42,7 +42,6 @@
                   .jsonp('//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=' + options.feedItems + '&callback=JSON_CALLBACK&q=' + encodeURIComponent(options.feedUrl))
                   .then(
                     function onSuccess(results) {
-                      console.log(results.data);
                       $scope.data = results.data;
                     }
                   )
@@ -57,7 +56,7 @@
                 $scope.intervalPromise = $interval(function interval() {
                   $scope.fetch();
                 }, _this.dataModelOptions.refreshInterval * 60 * 1000);
-              }
+              };
             }
           ]
         };

@@ -10,6 +10,13 @@
   angular.module('frontend.board')
     .factory('widgetDefinitions', function factory() {
       return [
+
+        {
+          name: 'Big Brother 2015',
+          directive: 'widget-big-brother',
+          containerClass: 'nikotupakoimaan',
+          size: {width: "1805px", height: "866px"}
+        },
         {
           name: 'URL viewer',
           directive: 'widget-url-viewer',
