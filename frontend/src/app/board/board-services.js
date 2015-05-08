@@ -61,6 +61,18 @@
           directive: 'widget-toilet-reservation',
           enableVerticalResize: true
         },
+          {
+              name: 'Muster map',
+              directive: 'widget-muster',
+              enableVerticalResize: true,
+              settingsModalOptions: {
+                  partialTemplateUrl: '/frontend/board/widgets/widget-muster/settings.html'
+              },
+              dataModelOptions: {
+                  musterUrl: 'http://baja12-kika.protacon.com/Baja.Web/SystemStatus/GetMapItems'
+              }
+
+          },
         {
           name: 'Protacon twitter feed',
           directive: 'widget-twitter',
