@@ -40,8 +40,18 @@ body {
 
   .nav-tabs {
     border: 0;
+
     li {
       margin-right: 10px;
+    }
+
+    .dropdown-menu {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+
+      li {
+        margin: 0;
+      }
     }
   }
 
@@ -118,7 +128,6 @@ body {
     width: 30px;
     height: 30px;
     margin-top: 20px;
-    background: url(/assets/images/layout/icon-settings.png);
     cursor: pointer;
   }
 

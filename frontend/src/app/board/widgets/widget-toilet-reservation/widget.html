@@ -1,9 +1,30 @@
 <div class="widget-toilet-reservation">
-  <div ng-repeat="reservation in reservations">
-    <div ng-class="{reserved: isReserved(reservation)}" class="pee reservation-node" ng-show="showPee(reservation)"><img src="/assets/images/pee.jpg" class="toilet-image"></div>
-    <div ng-class="{reserved: isReserved(reservation)}" class="poo reservation-node" ng-show="showPoo(reservation)"><img src="/assets/images/poo.jpg" class="toilet-image"></div>
-    <div ng-class="{reserved: isReserved(reservation)}" class="poo reservation-node" ng-show="isAvoiding(reservation)"><img src="./assets/images/nakkisuoja.jpg" class="toilet-image nakkisuoja"></div>
-    <div class="double reservation-node reserved" ng-show="showDouble(reservation)"><img src="/assets/images/double.jpg" class="toilet-image"></div>
+    <div data-ng-repeat="reservation in reservations">
+        <div class="pee reservation-node"
+            data-ng-class="{reserved: isReserved(reservation)}"
+            data-ng-show="showPee(reservation)"
+        >
+            <img src="/assets/images/pee.jpg" class="toilet-image" />
+        </div>
 
-  </div>
+        <div class="poo reservation-node"
+            data-ng-class="{reserved: isReserved(reservation)}"
+            data-ng-show="showPoo(reservation)"
+        >
+            <img src="/assets/images/poo.jpg" class="toilet-image" />
+        </div>
+
+        <div class="poo reservation-node"
+            data-ng-class="{reserved: isReserved(reservation)}"
+            data-ng-show="isAvoiding(reservation)"
+        >
+            <img src="/assets/images/nakkisuoja.jpg" class="toilet-image nakkisuoja" />
+        </div>
+
+        <div class="double reservation-node reserved"
+            data-ng-show="showDouble(reservation)"
+        >
+            <img src="/assets/images/double.jpg" class="toilet-image" />
+        </div>
+    </div>
 </div>

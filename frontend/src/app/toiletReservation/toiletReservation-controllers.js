@@ -3,68 +3,75 @@
  *
  * Note that this file should only contain controllers and nothing else.
  */
-(function () {
-    'use strict';
+(function() {
+  'use strict';
 
-    // Main dashboard controller
-    angular.module('frontend.toiletReservation')
-        .controller('ToiletReservationController', [
-            '_',
-            'ToiletReservationModel',
-            '$scope',
-            function controller(_,
-                ToiletReservationModel,
-                $scope) {
+  // Main dashboard controller
+  angular.module('frontend.toiletReservation')
+    .controller('ToiletReservationController', [
+      '$scope', '$modalInstance',
+      '_', 'moment',
+      'ToiletReservationModel',
+      '_reservations',
+      function controller(
+        $scope, $modalInstance,
+        _, moment,
+        ToiletReservationModel,
+        _reservations
+      ) {
+        $scope.canReservePee = false;
+        $scope.canReservePoo = false;
+        $scope.reservations = _reservations;
 
-                $scope.canReservePee = false;
-                $scope.canReservePoo = false;
+        var freePooSlot = null;
+        var freePeeSlot = null;
+        var now = moment();
 
-                var freePooSlot = null;
-                var freePeeSlot = null;
+        _.forEach($scope.reservations, function iterator(slot) {
+          var reservationEnd = moment(slot.reservationEndTime);
 
-                ToiletReservationModel
-                    .load()
-                    .then(
-                    function onSuccess(result) {
-                        var now = moment();
-                        console.log(result);
+          if (slot.type === 1 && reservationEnd.isBefore(now)) {
+            freePeeSlot = slot;
 
-                        _.forEach(result, function(slot) {
+            $scope.canReservePee = true;
+          } else if (reservationEnd.isBefore(now) && slot.type === 2) {
+            freePooSlot = slot;
 
-                            var reservationEnd = moment(slot.reservationEndTime);
+            $scope.canReservePoo = true;
+          }
+        });
 
-                            if (slot.type === 1 && reservationEnd.isBefore(now))
-                            {
-                                freePeeSlot = slot;
-                                $scope.canReservePee = true;
-                            } else if (reservationEnd.isBefore(now) && slot.type === 2) {
-                                freePooSlot = slot;
-                                $scope.canReservePoo = true;
-                            }
-                        });
-                    }
-                );
+        $scope.reserveToilet = function(type, nakkisuoja) {
+          var endTime = moment();
 
-                $scope.reserveToilet = function(type, nakkisuoja) {
-                    var endTime = moment();
+          if (type === 1) {
+            freePeeSlot.reservationEndTime = endTime.add(2, 'minutes').toDate();
+            freePeeSlot.avoidingWork = false;
+            $scope.canReservePee = false;
 
-                    if (type === 1) {
-                        freePeeSlot.reservationEndTime = endTime.add(2, 'minutes').toDate();
-                        ToiletReservationModel.update(freePeeSlot.id, freePeeSlot);
-                        freePeeSlot.avoidingWork = false;
-                        $scope.canReservePee = false;
-                    } else if (type === 2) {
-                        freePooSlot.reservationEndTime = endTime.add(7, 'minutes').toDate();
-                        freePooSlot.avoidingWork = nakkisuoja;
-                        ToiletReservationModel.update(freePooSlot.id, freePooSlot);
-                        $scope.canReservePoo = false;
-                    }
-                };
+            ToiletReservationModel.update(freePeeSlot.id, freePeeSlot);
+          } else if (type === 2) {
+            freePooSlot.reservationEndTime = endTime.add(7, 'minutes').toDate();
+            freePooSlot.avoidingWork = nakkisuoja;
+            $scope.canReservePoo = false;
 
-                $scope.reserveDouble = function() {
-                  ToiletReservationModel.update(6, {id: 6, avoidingWork:false, reservationEndTime: moment().add(2, 'minutes')});
-                }
-            }
-        ])
-    ;
+            ToiletReservationModel.update(freePooSlot.id, freePooSlot);
+          } else if (type === 3) {
+            ToiletReservationModel
+              .update(6, {
+                avoidingWork: false,
+                reservationEndTime: moment().add(2, 'minutes')
+              })
+            ;
+          }
+
+          $modalInstance.dismiss();
+        };
+
+        $scope.close = function close() {
+          $modalInstance.dismiss('cancel');
+        };
+      }
+    ])
+  ;
 }());

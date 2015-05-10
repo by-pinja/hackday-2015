@@ -9,12 +9,38 @@
   // Main dashboard controller
   angular.module('frontend.board')
     .controller('BoardController', [
-      '$scope',
+      '$scope', '$modal',
       'widgetDefinitions', 'defaultWidgetDefinitions',
       function controller(
-        $scope,
+        $scope, $modal,
         widgetDefinitions, defaultWidgetDefinitions
       ) {
+        $scope.actionItems = [
+          {
+            title: 'Go to toilet',
+            action: $scope.openToilet
+          }
+        ];
+
+        $scope.openToilet = function openToilet() {
+          $modal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: '/frontend/toiletReservation/partials/index.html',
+            controller: 'ToiletReservationController',
+            size: 'sm',
+            resolve: {
+              _reservations: [
+                'ToiletReservationModel',
+                function(ToiletReservationModel) {
+                  return ToiletReservationModel
+                    .load()
+                  ;
+                }
+              ]
+            }
+          });
+        };
+
         $scope.dashboardOptions = {
           storageId: 'hack-vision',
           storage: localStorage,
