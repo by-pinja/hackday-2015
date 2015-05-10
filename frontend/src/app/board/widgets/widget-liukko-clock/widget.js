@@ -12,8 +12,13 @@
           replace: true,
           templateUrl: '/frontend/board/widgets/widget-liukko-clock/widget.html',
           controller: [
-            '$scope',
-            function controller($scope) {
+            '$scope', '$window',
+            function controller($scope, $window) {
+              $scope.initialize = function initialize() {
+                $window.CoolClock.findAndCreateClocks();
+
+                return true;
+              };
             }
           ]
         };
