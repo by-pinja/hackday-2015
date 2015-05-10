@@ -61,6 +61,19 @@ body {
     text-transform: uppercase;
     line-height: 78px;
     cursor: pointer;
+
+    i {
+      display: none;
+
+      &.fa-plus {
+        display: inline-block;
+      }
+    }
+
+    &:hover {
+      color: #fff;
+      opacity: .7;
+    }
   }
 
   .nav-tabs > li.active > a,
@@ -68,6 +81,35 @@ body {
   .nav-tabs > li.active > a:focus {
     border-bottom: 5px solid #e59c00;
     color: #fff;
+
+    i {
+      display: inline-block;
+    }
+  }
+
+  .page-tabs {
+    border-left: 4px solid #484848;
+    margin: 25px 0;
+
+    & > li > a,
+    & > li > a:hover,
+    & > li > a:focus,
+    & > li.active > a,
+    & > li.active > a:hover,
+    & > li.active > a:focus {
+      height: 28px;
+      line-height: 28px;
+    }
+  }
+
+  .page-tabs > li > a,
+  .page-tabs > li > a:hover,
+  .page-tabs > li > a:focus,
+  .page-tabs > li.active > a,
+  .page-tabs > li.active > a:hover,
+  .page-tabs > li.active > a:focus  {
+    font-size: 14px;
+    text-transform: none;
   }
 
   #settings-button {

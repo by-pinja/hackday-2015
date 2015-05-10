@@ -7,12 +7,13 @@
   width: 350px;
 
   i {
-    color: #787878;
+    color: #ffffff;
     font-size: 36px;
-    opacity: .7;
+    opacity: .3;
+    cursor: pointer;
 
     &:hover {
-      opacity: 1;
+      opacity: .8;
     }
   }
 
@@ -32,6 +33,7 @@
 
 .widget-container {
   padding-bottom: 30px;
+
   &.widget-no-resize {
     .widget-ew-resizer,
     .widget-s-resizer {

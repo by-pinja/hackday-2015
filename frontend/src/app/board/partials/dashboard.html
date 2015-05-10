@@ -1,12 +1,11 @@
 <div>
-
     <div id="settings-button" class="settings-button"
         data-ng-if="!options.hideToolbar"
     ></div>
+
     <div id="settings" class="btn-toolbar"
         data-ng-if="!options.hideToolbar"
     >
-
         <i class="fa fa-cog pull-right"
            data-ng-click="buttonsVisible = !buttonsVisible"
         ></i>
@@ -14,66 +13,62 @@
         <div class="setting-buttons"
             data-ng-show="buttonsVisible"
         >
-
-
-
-        <div class="btn-group"
-            data-ng-if="!options.widgetButtons"
-        >
-            <span class="dropdown"
-                data-on-toggle="toggled(open)"
+            <div class="btn-group"
+                data-ng-if="!options.widgetButtons"
             >
-                <button type="button" class="btn dropdown-toggle"
-                    data-toggle="dropdown"
+                <span class="dropdown"
+                    data-on-toggle="toggled(open)"
                 >
-                    Widgets
+                    <button type="button" class="btn dropdown-toggle"
+                        data-toggle="dropdown"
+                    >
+                        Widgets
 
-                    <span class="caret"></span>
-                </button>
+                        <span class="caret"></span>
+                    </button>
 
-                <ul class="dropdown-menu" role="menu">
-                    <li data-ng-repeat="widget in widgetDefs">
-                        <a href="#" class="dropdown-toggle"
-                            data-ng-click="addWidgetInternal($event, widget);"
-                        >
-                            {{widget.name}}
-                        </a>
-                    </li>
-                </ul>
-            </span>
-        </div>
+                    <ul class="dropdown-menu" role="menu">
+                        <li data-ng-repeat="widget in widgetDefs | orderBy: 'name'">
+                            <a href="#" class="dropdown-toggle"
+                                data-ng-click="addWidgetInternal($event, widget);"
+                            >
+                                {{widget.name}}
+                            </a>
+                        </li>
+                    </ul>
+                </span>
+            </div>
 
-        <div class="btn-group"
-            data-ng-if="options.widgetButtons"
-        >
-            <button type="button" class="btn"
-                data-ng-repeat="widget in widgetDefs"
-                data-ng-click="addWidgetInternal($event, widget);"
+            <div class="btn-group"
+                data-ng-if="options.widgetButtons"
             >
-                {{widget.name}}
+                <button type="button" class="btn"
+                    data-ng-repeat="widget in widgetDefs"
+                    data-ng-click="addWidgetInternal($event, widget);"
+                >
+                    {{widget.name}}
+                </button>
+            </div>
+
+            <button class="btn"
+                data-ng-click="resetWidgetsToDefault()"
+            >
+                Default Widgets
             </button>
-        </div>
 
-        <button class="btn"
-            data-ng-click="resetWidgetsToDefault()"
-        >
-            Default Widgets
-        </button>
+            <button class="btn"
+                data-ng-if="options.storage && options.explicitSave"
+                data-ng-click="options.saveDashboard()"
+                data-ng-disabled="!options.unsavedChangeCount"
+            >
+                {{ !options.unsavedChangeCount ? "all saved" : "save changes (" + options.unsavedChangeCount + ")" }}
+            </button>
 
-        <button class="btn"
-            data-ng-if="options.storage && options.explicitSave"
-            data-ng-click="options.saveDashboard()"
-            data-ng-disabled="!options.unsavedChangeCount"
-        >
-            {{ !options.unsavedChangeCount ? "all saved" : "save changes (" + options.unsavedChangeCount + ")" }}
-        </button>
-
-        <button type="button" class="btn"
-            data-ng-click="clear();"
-        >
-            Clear
-        </button>
-
+            <button type="button" class="btn"
+                data-ng-click="clear();"
+            >
+                Clear
+            </button>
         </div>
     </div>
 

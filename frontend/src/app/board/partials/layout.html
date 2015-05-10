@@ -1,8 +1,10 @@
 <div class="header">
     <div class="container-fluid">
-        <div class="site-title"><strong>i</strong>TV</div>
+        <div class="site-title">
+            <strong>i</strong>TV
+        </div>
 
-        <ul class="nav nav-tabs layout-tabs"
+        <ul class="nav nav-tabs layout-tabs pull-left"
             data-ui-sortable="sortableOptions"
             data-ng-model="layouts"
         >
@@ -31,16 +33,32 @@
                     <i class="fa fa-times remove-layout-icon"
                         data-ng-if="!layout.locked"
                         data-ng-click="removeLayout(layout)"
+                        data-tooltip="Poista tämä layout"
+                        data-tooltip-placement="right"
+                        data-tooltip-append-to-body="true"
+                        data-tooltip-popup-delay="250"
                     ></i>
                 </a>
             </li>
             <li>
                 <a data-ng-click="createNewLayout()">
-                    <i class="fa fa-plus"></i>
+                    <i class="fa fa-plus"
+                        data-tooltip="Lisää uusi layout"
+                        data-tooltip-placement="right"
+                        data-tooltip-append-to-body="true"
+                        data-tooltip-popup-delay="250"
+                    ></i>
                 </a>
             </li>
         </ul>
 
+        <ul class="nav nav-tabs page-tabs pull-left">
+            <li class="">
+                <a data-ui-sref="toiletReservation">
+                    Go to toilet...
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
 

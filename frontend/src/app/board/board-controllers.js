@@ -61,10 +61,7 @@
                   name: 'LiukkoClock'
                 },
                 {
-                  name: 'Toilet reservation',
-                  size: {
-                    width: '600px'
-                  }
+                  name: 'Toilet reservation'
                 }
               ]
             },

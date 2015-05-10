@@ -10,12 +10,14 @@
   angular.module('frontend.board')
     .factory('widgetDefinitions', function factory() {
       return [
-
         {
           name: 'Big Brother 2015',
           directive: 'widget-big-brother',
-          containerClass: 'nikotupakoimaan',
-          size: {width: "1900px", height: "675px"}
+          containerClass: 'nikotupakoimaan widget-no-resize',
+          size: {
+            width: "1900px",
+            height: "680px"
+          }
         },
         {
           name: 'URL viewer',
@@ -59,7 +61,12 @@
         {
           name: 'Toilet reservation',
           directive: 'widget-toilet-reservation',
-          enableVerticalResize: true
+          enableVerticalResize: true,
+          size: {
+            width: '950px'
+          },
+          title: 'Toilet reservation status',
+          showTitle: true
         },
           {
               name: 'Muster map',
@@ -88,7 +95,12 @@
         {
           name: 'LiukkoClock',
           directive: 'widget-liukko-clock',
-          enableVerticalResize: false
+          enableVerticalResize: false,
+          size: {
+            width: '270px'
+          },
+          title: 'Current "time"',
+          showTitle: true
         },
         {
           name: 'RSS reader',
