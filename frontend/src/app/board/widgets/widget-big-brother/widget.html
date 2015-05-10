@@ -1,27 +1,59 @@
 <div class="widget-big-brother">
+    <div class="loossi-map">
+        <div id="mapContainer">
+            <div class="row">
+                <div class="loossi col-xs-{{loossi.width}}"
+                    data-ng-repeat="loossi in loossiData"
+                    data-ng-class="loossi.type"
+                >
+                    <h4 data-ng-class="loossi.type">
+                        <span data-ng-bind="loossi.name"></span>
 
-  <div class="loossi-map">
+                        <span class="small"
+                            data-ng-show="loossi.peoplePresent.length"
+                        >
+                            ({{(loossi.peoplePresent | filter: {inHouse: true}).length}}/{{loossi.peoplePresent.length}})
+                        </span>
+                    </h4>
 
-    <div id="mapContainer" >
+                    <ul class="persons"
+                        data-ng-show="loossi.peoplePresent && canShowPersons(loossi)"
+                    >
+                        <li class="btn"
+                            data-ng-repeat="person in loossi.peoplePresent | orderBy: 'name'"
+                            data-ng-class="getPersonClass(person)"
+                        >
+                            <span
+                                data-ng-bind="person.name"
+                                data-tooltip-html-unsafe="{{getPersonTooltip(person)}}"
+                                data-tooltip-placement="top"
+                                data-tooltip-append-to-body="true"
+                                data-tooltip-popup-delay="300"
+                            ></span>
+                        </li>
+                    </ul>
 
-      <div class="row">
-        <div ng-repeat="loossi in loossit" class="loossi col-sm-{{loossi.width}}  {{loossi.type}}">
+                    <h4 class="lots-of-people"
+                        data-ng-show="loossi.peoplePresent && !canShowPersons(loossi)"
+                    >
+                        {{loossi.peoplePresent.length}}
 
-          <h4 ng-bind="loossi.name"></h4>
-
-          <ul  ng-show="loossi.people.length < 9" class="persons">
-            <li ng-bind="person.name" class="btn {{person.direction == 1 ? 'btn-success' : 'btn-danger'}}" ng-repeat="person in loossi.people"></li>
-          </ul>
-
-          <h4 class="alert-danger" ng-show="loossi.people.length > 8"> {{loossi.people.length}} työntekijää kahvilla!</h4>
-
+                        <span data-ng-if="loossi.type === 'lounge'">
+                            työntekijää kahvilla!
+                        </span>
+                        <span
+                            data-ng-if="loossi.type !== 'lounge'"
+                            data-tooltip-html-unsafe="{{getLoossiTooltip(loossi.peoplePresent)}}"
+                            data-tooltip-placement="top"
+                            data-tooltip-append-to-body="false"
+                            data-tooltip-popup-delay="300"
+                        >
+                            henkeä loossissa
+                        </span>
+                    </h4>
+                </div>
+            </div>
         </div>
-
-      </div>
     </div>
-
-
-  </div>
-
 </div>
 

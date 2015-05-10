@@ -3,146 +3,135 @@
  *
  * And please don't attach any other CSS rules to this file.
  */
-$red: rgb(181,43,0);
-$blue: rgb(61,116,170);
-$green: rgb(84,170,61);
-$yellow: rgb(229,156,0);
+$red: rgb(181, 43, 0);
+$blue: rgb(61, 116, 170);
+$green: rgb(84, 170, 61);
+$yellow: rgb(229, 156, 0);
 
 .widget-big-brother {
   margin: 0;
-  padding-top: 0;
-}
+  padding: 0;
 
-#mapContainer {
-  position: relative;
-  left: 20px;
-  top: 10px;
-}
-
-.loossi-map {
-  .btn {
-    display: inline-block;
-    padding: 0;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-align: center;
+  .tooltip {
     white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 0;
-    border-radius: 0;
-    float: left;
   }
 
-  .btn-danger {
-    color: $red;
-    background-color: transparent;
-    font-weight: bold;
+  #mapContainer {
+    position: relative;
+    left: 20px;
+    top: 10px;
   }
 
-  .btn-success {
-    background-color: transparent;
-    color: #333;
-  }
+  .loossi-map {
+    .btn {
+      border: none;
+      background-color: transparent;
+      cursor: default;
+    }
 
-  .col-sm-1 {
-    width: 9.8% !important;
-  }
-  .col-sm-2 {
-    width: 20.66% !important;
-  }
-  .col-sm-3 {
-    width: 31.66% !important;
-  }
+    .btn-danger {
+      color: $red;
+      font-weight: bold;
+    }
 
-}
+    .btn-success {
+      color: $green;
+      font-weight: bold;
+    }
 
-.widget-big-brother h4 {
-  text-align: center;
-  font-size: 160%;
-  width: 100%;
-  background-color: rgb(12, 129, 200);
-  margin: 0;
-  color: #fff;
+    .col-xs-1 {
+      width: 9.8% !important;
 
+      li {
+        display: inline-block;
+        width: 100%;
+        text-align: left;
+      }
+    }
 
-}
+    .col-xs-2 {
+      width: 20.66% !important;
 
-.loossi {
-  font-size: 80%;
-  background-color: #fff;
-  min-height: 200px;
-  margin: 10px;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0px;
-  padding-bottom: 0px;
+      li {
+        display: inline-block;
+        width: 28%;
+        text-align: left;
+      }
+    }
 
-  .persons {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    .col-xs-3 {
+      width: 31.66% !important;
+
+      li {
+        display: inline-block;
+        width: 22%;
+        text-align: left;
+      }
+    }
   }
 
   h4 {
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    text-align: center;
+    font-size: 160%;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+    color: #ffffff;
     background-color: $blue;
-    color: #fff;
+
+    .small {
+      color: #ffffff;
+      opacity: .7;
+    }
+
+    &.it,
+    &.sales,
+    &.support {
+      background-color: $green;
+    }
+
+    &.management {
+      background-color: $red;
+    }
+
+    &.meeting {
+      background-color: $yellow;
+    }
+
+    &.lots-of-people {
+      color: $blue;
+      background-color: transparent;
+      margin-top: 55px;
+    }
   }
 
+  .loossi {
+    font-size: 80%;
+    background-color: #fff;
+    min-height: 200px;
+    margin: 10px;
+    padding: 0;
+
+    ul {
+      padding: 15px 0 0 20px;
+      margin: 0;
+
+      li {
+        margin: 0 15px 3px 0;
+        padding: 0;
+      }
+    }
+  }
+
+  .empty {
+    opacity: 0;
+  }
 }
-
-.it h4 {
-  background-color: $green;
-}
-
-.support h4 {
-  background-color: $green;
-}
-
-.management h4 {
-  background-color: $red;
-}
-
-.meeting h4 {
-  background-color: $yellow;
-}
-
-.persons {
-  list-style-type: none;
-  padding: 0;
-}
-
-.persons li {
-  margin: 2px 0;
-  clear: left;
-}
-
-.empty {
-  opacity: 0;
-}
-
-
-
 
 .nikotupakoimaan {
   background: transparent;
 
   .panel-default {
-
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, .1);
   }
 }
