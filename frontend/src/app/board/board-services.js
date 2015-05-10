@@ -99,7 +99,8 @@
           directive: 'widget-liukko-clock',
           enableVerticalResize: false,
           size: {
-            width: '270px'
+            width: '230px',
+            height: '200px'
           },
           title: 'Current "time"',
           showTitle: true

@@ -11,7 +11,7 @@
 // Constructor for CoolClock objects
 window.CoolClock = function(options) {
   return this.init(options);
-}
+};
 
 // Config contains some defaults, and clock skins
 CoolClock.config = {
@@ -20,7 +20,7 @@ CoolClock.config = {
   defaultRadius: 150,
   renderRadius: 100,
   defaultSkin: "swissRail",
-  // Should be in skin probably... 
+  // Should be in skin probably...
   // (TODO: allow skinning of digital display)
   showSecs: true,
   showAmPm: false,
@@ -29,7 +29,7 @@ CoolClock.config = {
     // There are more skins in moreskins.js
     // Try making your own skin by copy/pasting one of these and tweaking it
     swissRail: {
-      outerBorder: { lineWidth: 2, radius:150, color: "black", alpha: 1, fillColor: "#fff" },
+      outerBorder: { lineWidth: 2, radius:150, color: "black", alpha: 1, fillColor: "rgba(255, 255, 255, .7)" },
       smallIndicator: { lineWidth: 2, startAt: 88, endAt: 92, color: "black", alpha: 1 },
       largeIndicator: { lineWidth: 4, startAt: 79, endAt: 92, color: "black", alpha: 1 },
       hourHand: { lineWidth: 8, startAt: -15, endAt: 50, color: "black", alpha: 1 },
@@ -71,8 +71,8 @@ CoolClock.prototype = {
     this.canvas = document.getElementById(this.canvasId);
 
     // Make the canvas the requested size. It's always square.
-    this.canvas.setAttribute("width",this.displayRadius*2);
-    this.canvas.setAttribute("height",this.displayRadius*2);
+    this.canvas.setAttribute("width", (this.displayRadius * 2).toString());
+    this.canvas.setAttribute("height", (this.displayRadius * 2).toString());
     this.canvas.style.width = this.displayRadius*2 + "px";
     this.canvas.style.height = this.displayRadius*2 + "px";
 
@@ -156,7 +156,7 @@ CoolClock.prototype = {
         this.motion = "none";
         return {timeSpanType: 0, timeDiff: 0};
       }
-    },
+    };
 
       this.coffeeBreak.setCoffeeBreakTimes(options.coffeeBreak || '');
 
@@ -189,7 +189,7 @@ CoolClock.prototype = {
     }
 
     if (skin.fillColor) {
-      this.ctx.fillStyle = skin.fillColor
+      this.ctx.fillStyle = skin.fillColor;
       this.ctx.fill();
     }
     else {
@@ -247,7 +247,7 @@ CoolClock.prototype = {
     }
     else {
       this.ctx.beginPath();
-      this.ctx.moveTo(skin.startAt,0)
+      this.ctx.moveTo(skin.startAt,0);
       this.ctx.lineTo(skin.endAt,0);
       this.ctx.stroke();
     }
@@ -330,7 +330,7 @@ CoolClock.prototype = {
   // Main tick handler. Refresh the clock then setup the next tick
   tick: function() {
     if (this.stillHere()) {
-      this.refreshDisplay()
+      this.refreshDisplay();
       this.nextTick();
     }
   }
