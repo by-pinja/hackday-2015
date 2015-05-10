@@ -61,7 +61,9 @@
         {
           name: 'Toilet reservation',
           directive: 'widget-toilet-reservation',
-          enableVerticalResize: true,
+          enableVerticalResize: false,
+          dataAttrName: 'reservations',
+          dataModelType: 'WidgetToiletReservationModel',
           size: {
             width: '950px'
           },
