@@ -114,7 +114,7 @@
                 data = _.map(data, function iterator(person) {
                   person.id = parseInt(person.id, 10);
                   person.direction = parseInt(person.direction, 10);
-                  person.time = person.id === 275 ? moment() : moment(person.time);
+                  person.time = moment(person.time);
                   person.inHouse = person.time.isSame(moment(), 'day');
 
                   return person;
