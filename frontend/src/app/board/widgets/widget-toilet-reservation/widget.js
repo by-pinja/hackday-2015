@@ -15,10 +15,13 @@
           controller: [
             '$scope',
             'moment',
+            'ToiletReservationModel',
             function controller(
               $scope,
-              moment
+              moment,
+              ToiletReservationModel
             ) {
+              ToiletReservationModel.setScope($scope, false, 'reservations');
 
               $scope.showPee = function showPee(reservation) {
                 return reservation.type === 1;
@@ -76,22 +79,6 @@
               }
             )
           ;
-        };
-
-        // Custom handler for updated objects
-        ToiletReservationModel.handlerUpdated = function handlerUpdated(message) {
-          var match = _.find(data, function iterator(item) {
-            return item.id === message.id;
-          });
-
-          if (match) {
-            _.merge(match, message.data);
-          }
-        };
-
-        // Custom handler for created objects
-        ToiletReservationModel.handlerCreated = function handlerCreated(message) {
-          data.push(message.data);
         };
 
         return DataModel;
