@@ -39,7 +39,7 @@
                 name: 'Vallu',
                 width: 1,
                 type: 'normal',
-                people: [117, 546, 313, 344, 275, 513]
+                people: [376, 546, 313, 344, 275, 513]
               },
               {
                 name: 'Hallinto',
