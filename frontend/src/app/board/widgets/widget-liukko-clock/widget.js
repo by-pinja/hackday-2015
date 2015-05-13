@@ -1,8 +1,8 @@
-// This file contains all necessary for widget-protacon-video
+// This file contains all necessary for widget-liukko-clock
 (function() {
   'use strict';
 
-  // Controller for generic error handling.
+  // Actual directive code
   angular.module('frontend.board')
     .directive('widgetLiukkoClock', [
       function directive() {

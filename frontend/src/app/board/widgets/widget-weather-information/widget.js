@@ -13,8 +13,10 @@
           templateUrl: '/frontend/board/widgets/widget-weather-information/widget.html',
           controller: [
             '$scope', '$interval','$http', '$q',
+            '_',
             function controller(
-              $scope, $interval, $http, $q
+              $scope, $interval, $http, $q,
+              _
             ) {
               $scope.locations = [];
 
@@ -64,7 +66,7 @@
                   '-webkit-transform': rotate,
                   'transform': rotate
                 };
-              }
+              };
             }
           ]
         };

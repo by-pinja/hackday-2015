@@ -2,11 +2,10 @@
 (function() {
   'use strict';
 
-  // Controller for generic error handling.
+  // Actual directive code
   angular.module('frontend.board')
     .directive('widgetProtaconVideo', [
       function directive() {
-        console.log("Widget directive protacon video");
         return {
           restrict: 'A',
           scope: {},

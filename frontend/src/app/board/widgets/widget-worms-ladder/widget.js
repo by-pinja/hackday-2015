@@ -27,8 +27,10 @@
               $scope.startEdit = function startEdit(player) {
                 //Do nothing if player is already under edit
                 var playerUnderEdit = $scope.playerUnderEdit;
-                if (playerUnderEdit && player.id == playerUnderEdit.id && player.editmode )
+
+                if (playerUnderEdit && player.id === playerUnderEdit.id && player.editmode) {
                   return;
+                }
 
                 $scope.cancelAllEdits();
 
@@ -65,9 +67,7 @@
               };
 
               $scope.shouldShowNewPlayerInputs = function shouldShowNewPlayerInputs() {
-                return $scope.players
-                    && $scope.players.length == 0
-                  || _.any($scope.players, {"editmode": true});
+                return $scope.players && $scope.players.length === 0 || _.any($scope.players, {'editmode': true});
               };
             }
           ]

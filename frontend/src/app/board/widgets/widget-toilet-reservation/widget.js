@@ -1,8 +1,8 @@
-// This file contains all necessary for widget-protacon-video
+// This file contains all necessary for widget-toilet-reservation
 (function() {
   'use strict';
 
-  // Controller for generic error handling.
+  // Actual directive code
   angular.module('frontend.board')
     .directive('widgetToiletReservation', [
       function directive() {
@@ -49,7 +49,7 @@
     ])
   ;
 
-// Widget data model factory
+  // Widget data model factory
   angular.module('frontend.board')
     .factory('WidgetToiletReservationModel', [
       '_',
@@ -89,8 +89,12 @@
   // Backend (sails.js) data model factory
   angular.module('frontend.board')
     .factory('ToiletReservationModel', [
+      '_',
       'DataModel',
-      function factory(DataModel) {
+      function factory(
+        _,
+        DataModel
+      ) {
         var model = new DataModel('toiletreservation');
 
         var addOrUpdate = function(existing, id, type) {

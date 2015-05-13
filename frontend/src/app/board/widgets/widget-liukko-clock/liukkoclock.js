@@ -1,3 +1,5 @@
+// jshint ignore: start
+
 /**
  * CoolClock 2.1.4
  * Copyright 2010, Simon Baird

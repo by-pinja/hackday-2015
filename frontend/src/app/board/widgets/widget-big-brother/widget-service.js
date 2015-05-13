@@ -1,4 +1,6 @@
 (function () {
+  'use strict';
+
   angular.module('frontend.board')
     .factory('BBDataService', [
       '$http',

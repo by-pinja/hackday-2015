@@ -1,7 +1,8 @@
+// This file contains all necessary for widget-message-viewer
 (function() {
   'use strict';
 
-  // Controller for generic error handling.
+  // Actual directive code
   angular.module('frontend.board')
     .directive('widgetMessageViewer', [
       function directive() {
@@ -27,7 +28,7 @@
                */
               $scope.getImageUrl = function getImageUrl(image) {
                 return BackendConfig.url + '/message-viewer-message/showImage?image=' + image.data;
-              }
+              };
             }
           ]
         };
@@ -114,13 +115,13 @@
   angular.module('frontend.board')
     .controller('MessageAdminController', [
       '$scope', '$modalInstance',
-      'Upload',
+      'Upload', '_',
       'BackendConfig',
       'MessageViewerModel',
       '_messages',
       function controller(
         $scope, $modalInstance,
-        Upload,
+        Upload, _,
         BackendConfig,
         MessageViewerModel,
         _messages

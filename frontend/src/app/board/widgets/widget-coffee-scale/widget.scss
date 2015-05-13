@@ -7,25 +7,28 @@
     font-weight: bold;
   }
 
-  h2{
+  h2 {
     font-size: 24px;
     font-family: Menlo, Monaco, Consolas, "Lucida Console", monospace;
-    margin: 5px 0 2px 0px;
+    margin: 5px 0 2px 0;
   }
 
-  .pot-list{
+  .pot-list {
     li {
-      list-style:none;
-      .name{
-        margin-top:5px;
+      list-style: none;
+
+      .name {
+        margin-top: 5px;
       }
-      .cups{
+
+      .cups {
         font-size: 30px;
-        .text{
-          margin-right:10px;
+
+        .text {
+          margin-right: 10px;
           color: #333;
-          font-weight:bold;
-          display:inline-block;
+          font-weight: bold;
+          display: inline-block;
           min-width: 38px;
         }
       }

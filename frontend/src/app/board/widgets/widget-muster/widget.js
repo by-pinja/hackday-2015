@@ -1,8 +1,8 @@
-// This file contains all necessary for widget-protacon-video
+// This file contains all necessary for widget-muster
 (function() {
   'use strict';
 
-  // Controller for generic error handling.
+  // Actual directive code
   angular.module('frontend.board')
     .directive('widgetMuster', [
       function directive() {
@@ -12,71 +12,83 @@
           replace: true,
           templateUrl: '/frontend/board/widgets/widget-muster/widget.html',
           controller: [
-            '$scope', '$sce', '$http',
-            function controller($scope, $sce, $http) {
-                var musterUrl = '';
+            '$scope', '$sce', '$http', '$window', '$timeout',
+            function controller($scope, $sce, $http, $window, $timeout) {
+              var musterUrl = '';
 
-                $scope.$watch('$parent.widget.dataModelOptions.musterUrl', function watcher() {
-                    // We need to set URL to be as trusted for all to work
-                    musterUrl = $sce.trustAsResourceUrl($scope.$parent.widget.dataModelOptions.musterUrl);
-                    getData();
-                });
+              $scope.$watch('$parent.widget.dataModelOptions.musterUrl', function watcher() {
+                  // We need to set URL to be as trusted for all to work
+                  musterUrl = $sce.trustAsResourceUrl($scope.$parent.widget.dataModelOptions.musterUrl);
 
-                var mapOptions = {
-                    disableDefaultUI: true,
-                    zoom: 5,
-                    panControl: false,
-                    zoomControl: true,
-                    scaleControl: false,
-                    streetViewControl: false
-                };
+                  _getData();
+              });
 
-                var stations = [];
+              var mapOptions = {
+                  disableDefaultUI: true,
+                  zoom: 5,
+                  panControl: false,
+                  zoomControl: true,
+                  scaleControl: false,
+                  streetViewControl: false
+              };
 
-                var map = new google.maps.Map($("#muster-map")[0], mapOptions);
+              var stations = [];
+              var map = new $window.google.maps.Map(angular.element('#muster-map')[0], mapOptions);
 
-                map.setCenter(new google.maps.LatLng(65.143774, 26.2453809));
+              map.setCenter(new $window.google.maps.LatLng(65.143774, 26.2453809));
 
-                io.socket.on('musterInspection', function (data) {
-                    var stationId = parseInt(data);
+              $window.io.socket.on('musterInspection', function onSocketMessage(data) {
+                  var stationId = parseInt(data);
+                  var selectedMarker = null;
 
-                    var selectedMarker = null;
-                    for (var i = 0; i < stations.length; i++) {
-                        if (stations[i].Id === stationId) {
-                            stations[i].marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
-                            stations[i].marker.setAnimation(google.maps.Animation.BOUNCE);
+                  for (var i = 0; i < stations.length; i++) {
+                    if (stations[i].Id === stationId) {
+                      stations[i].marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+                      stations[i].marker.setAnimation($window.google.maps.Animation.BOUNCE);
 
-                            selectedMarker = stations[i].marker;
+                      selectedMarker = stations[i].marker;
 
-                            var audio = new Audio('/assets/audio/sound.wav');
-                            audio.play();
+                      var audio = new Audio('/assets/audio/sound.wav');
 
-                            setTimeout(function () {
-                                selectedMarker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
-                                selectedMarker.setAnimation(null);
-                            }, 900);
-                        }
+                      audio.play();
+
+                      _showMarker(selectedMarker);
                     }
-                });
+                  }
+              });
 
-                function getData() {
-                    $http.get(musterUrl).then(function (result) {
-                        var data = result.data.Data;
+              function _showMarker(marker) {
+                $timeout(function () {
+                  marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+                  marker.setAnimation(null);
+                }, 900);
+              }
 
-                        stations = data;
-                        for (var i = 0; i < data.length; i++) {
-                            var latLng = new google.maps.LatLng(data[i].CoordinateLat, data[i].CoordinateLng);
+              function _getData() {
+                $http
+                  .get(musterUrl)
+                  .then(
+                    function onSuccess(result) {
+                      var data = result.data.Data;
 
-                            var marker = new google.maps.Marker({
-                                position: latLng,
-                                map: map
-                            });
-                            marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png')
+                      stations = data;
 
-                            data[i].marker = marker;
-                        }
-                    });
-                }
+                      for (var i = 0; i < data.length; i++) {
+                        var latLng = new $window.google.maps.LatLng(data[i].CoordinateLat, data[i].CoordinateLng);
+
+                        var marker = new $window.google.maps.Marker({
+                          position: latLng,
+                          map: map
+                        });
+
+                        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+
+                        data[i].marker = marker;
+                      }
+                    }
+                  )
+                ;
+              }
             }
           ]
         };

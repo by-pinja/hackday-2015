@@ -30,7 +30,7 @@
       function config(
         $stateProvider, $locationProvider, $urlRouterProvider, $httpProvider, $sailsSocketProvider,
         $tooltipProvider, cfpLoadingBarProvider,
-        toastrConfig, InitialDataToiletReservationFactory
+        toastrConfig
       ) {
         $httpProvider.defaults.useXDomain = true;
 

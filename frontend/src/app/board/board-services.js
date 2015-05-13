@@ -15,8 +15,8 @@
           directive: 'widget-big-brother',
           containerClass: 'nikotupakoimaan widget-no-resize',
           size: {
-            width: "1900px",
-            height: "680px"
+            width: '1900px',
+            height: '680px'
           }
         },
         {
@@ -70,18 +70,24 @@
           title: 'Toilet reservation status',
           showTitle: true
         },
-          {
-              name: 'Muster map',
-              directive: 'widget-muster',
-              enableVerticalResize: true,
-              settingsModalOptions: {
-                  partialTemplateUrl: '/frontend/board/widgets/widget-muster/settings.html'
-              },
-              dataModelOptions: {
-                  musterUrl: 'http://baja12-kika.protacon.com/Baja.Web/SystemStatus/GetMapItems'
-              }
-
+        {
+          name: 'Muster map',
+          directive: 'widget-muster',
+          enableVerticalResize: true,
+          settingsModalOptions: {
+              partialTemplateUrl: '/frontend/board/widgets/widget-muster/settings.html'
           },
+          dataModelOptions: {
+              musterUrl: 'http://baja12-kika.protacon.com/Baja.Web/SystemStatus/GetMapItems'
+          },
+          size: {
+            height: '600px',
+            width: '350px'
+          },
+          containerClass: 'widget-no-resize',
+          title: 'Muster map',
+          showTitle: true
+        },
         {
           name: 'Protacon twitter feed',
           directive: 'widget-twitter',
@@ -89,7 +95,7 @@
             partialTemplateUrl: '/frontend/board/widgets/widget-twitter/settings.html'
           },
           dataModelOptions: {
-            widget_id: '596256646311104512'
+            widgetId: '596256646311104512'
           },
           title: 'Protacon @ twitter',
           showTitle: true
@@ -124,7 +130,10 @@
         {
             name: 'Nibbles viewer',
             directive: 'widget-nibbles-viewer',
-            size: { height: "450px", width: "400px" },
+            size: {
+              height: '450px',
+              width: '400px'
+            },
             enableVerticalResize: false
         },
         {
