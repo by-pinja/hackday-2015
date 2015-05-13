@@ -1,16 +1,33 @@
-<div class="widget-mod">
+<div class="widget-msg-viewer">
+    <blockquote data-ng-repeat="message in messages | filter: {active: true} | orderBy : '-updatedAt' track by $index">
+        <div
+            data-ng-if="message.type === 'msg'"
+            data-ng-bind-html="message.data"
+        ></div>
 
-  <h1>Message of the day</h1>
+        <img class="img-responsive"
+            data-ng-src="{{getImageUrl(message)}}"
+            data-ng-if="message.type === 'img'"
+        />
 
-  <div ng-repeat="message in messages">
-    <blockquote ng-if="message.type === 'msg'">
-      <p>{{message.data}}</p>
-      <footer>{{message.sender}}</footer>
+        <a target="_blank"
+           data-ng-if="message.type === 'url'"
+           data-ng-href="{{message.data}}"
+        >
+            {{message.data}}
+        </a>
+
+        <footer>
+            <span class="pull-right text-muted"
+                data-am-time-ago="message.updatedAt"
+            ></span>
+            {{message.sender}}
+        </footer>
     </blockquote>
 
-    <blockquote ng-if="message.type === 'img'">
-    <img ng-src="{{message.data}}" class="img-responsive" />
-      <footer>{{message.sender}}</footer>
-    </blockquote>
-  </div>
+    <div class="text-center"
+        data-ng-show="(messages | filter: {active: true}).length === 0"
+    >
+        <em>no messages to show...</em>
+    </div>
 </div>

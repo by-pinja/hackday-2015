@@ -13,12 +13,14 @@
     'ngAnimate',
     'ngStorage',
     'ngSanitize',
+    'ngFileUpload',
     'sails.io',
     'toastr',
     'ui.bootstrap',
     'ui.dashboard',
     'ui.router',
     'ui.utils',
+    'ui.bootstrap.showErrors',
     'youtube-embed',
     'angularMoment'
   ]);

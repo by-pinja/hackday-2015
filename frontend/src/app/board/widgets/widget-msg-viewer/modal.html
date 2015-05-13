@@ -1,0 +1,195 @@
+<div class="message-admin-modal">
+    <div class="modal-header">
+        <i class="fa fa-times pull-right close"
+            data-ng-click="close()"
+        ></i>
+
+        <h3 class="modal-title">Important messagez administration</h3>
+    </div>
+
+    <div class="modal-body">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Type</th>
+                    <th width="100%">Data</th>
+                    <th>Sender</th>
+                    <th>Active</th>
+                    <th class="text-nowrap">Created / Updated</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="message in messages | orderBy: '-id'">
+                    <td>{{message.id}}</td>
+                    <td class="text-center">
+                        <i class="fa"
+                            data-ng-class="{
+                                'fa-image': message.type == 'img',
+                                'fa-file-text-o': message.type == 'msg',
+                                'fa-link': message.type == 'url'
+                            }"
+                        ></i>
+                    </td>
+                    <td>
+                        <span data-ng-if="message.type == 'msg'">
+                            {{message.data}}
+                        </span>
+                        <img class="thumb"
+                            data-ng-if="message.type === 'img'"
+                            data-ng-src="{{getImageUrl(message)}}"
+                            data-tooltip-html-unsafe="{{getImageTooltip(message)}}"
+                            data-tooltip-append-to-body="true"
+                            data-tooltip-placement="left"
+                        />
+                        <a target="_blank"
+                            data-ng-if="message.type === 'url'"
+                            data-ng-href="{{message.data}}"
+                        >
+                            {{message.data}}
+                        </a>
+                    </td>
+                    <td class="text-nowrap">{{message.sender}}</td>
+                    <td>{{message.active}}</td>
+                    <td class="text-nowrap">
+                        <span>{{message.createdAt | amDateFormat:'YYYY.MM.DD HH:mm'}}</span>
+                        <br />
+                        <span>{{message.updatedAt | amDateFormat:'YYYY.MM.DD HH:mm'}}</span>
+                    </td>
+                    <td class="text-nowrap">
+                        <!-- not yet implemented
+                        <i class="fa fa-wrench action-icon text-success"
+                            data-ng-click="edit(message)"
+                        ></i>
+                        -->
+
+                        <i class="fa fa-check action-icon"
+                            data-ng-class="{'text-danger': message.active, 'text-success': !message.active}"
+                            data-ng-click="toggleActive(message)"
+                            data-tooltip="Change message status"
+                        ></i>
+
+                        <i class="fa fa-times action-icon text-danger"
+                            data-ng-click="remove(message)"
+                            data-tooltip="Remove this message"
+                        ></i>
+                    </td>
+                </tr>
+                <tr data-ng-show="!messages || messages.length === 0">
+                    <td colspan="100%" class="text-center">
+                        <em>no data...</em>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>Add new message!</h1>
+
+        <form class="form-horizontal" role="form" name="messageForm" novalidate="novalidate">
+            <div class="form-group">
+                <label for="type" class="col-xs-3 control-label">Type</label>
+                <div class="col-xs-9">
+                    <select id="type" class="form-control"
+                        data-ng-options="messageType.value as messageType.name for messageType in messageTypes"
+                        data-ng-model="newMessage.type"
+                    ></select>
+                </div>
+            </div>
+            <div class="form-group"
+                data-show-errors
+            >
+                <label for="sender" class="col-xs-3 control-label">Sender</label>
+                <div class="col-xs-9">
+                    <input id="sender" name="sender" class="form-control" placeholder="enter sender in" type="text" required="required"
+                       data-ng-model="newMessage.sender"
+                    />
+                </div>
+            </div>
+
+                <span data-ng-if="newMessage.type == 'msg'">
+                    <div class="form-group"
+                         data-show-errors
+                    >
+                        <label for="message" class="col-xs-3 control-label">Message</label>
+
+                        <div class="col-xs-9">
+                            <textarea id="message" name="message" class="form-control" required="required"
+                                data-ng-model="newMessage.data"
+                            ></textarea>
+                        </div>
+                    </div>
+                </span>
+
+                <span data-ng-if="newMessage.type == 'img'">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Select image</label>
+
+                        <div class="col-xs-9">
+                            <div class="drop-box"
+                                data-ngf-select=""
+                                data-ngf-drop=""
+                                data-ng-model="newMessage.files"
+                                data-ng-model-rejected="rejFiles"
+                                data-ng-class="{'dragover-err': noFilesSelected}"
+                                data-ngf-multiple="false"
+                                data-ngf-accept="accept"
+                                accept="image/*"
+                                data-ngf-disabled="disabled"
+                                data-ngf-capture="capture"
+                                data-ngf-drag-over-class="{accept: 'dragover', reject: 'dragover-err', delay:100}"
+                                data-ngf-allow-dir="false"
+                                ngf-drop-available="dropAvailable"
+                            >
+                                Select image file by click
+
+                                <span data-ng-show="dropAvailable">
+                                    <br />
+                                    or just drop image file here
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-9 col-xs-offset-3 text-center">
+                            <img style="max-width: 300px"
+                                 data-ng-show="newMessage.files[0].type.indexOf('image') > -1"
+                                 data-ngf-src="newMessage.files[0]"
+                                 data-ngf-accept="'image/*'"
+                            />
+                        </div>
+                    </div>
+                </span>
+
+                <span data-ng-if="newMessage.type == 'url'">
+                    <label for="url" class="col-xs-3 control-label">URL address</label>
+
+                    <div class="col-xs-9">
+                        <input id="url" class="form-control" placeholder="enter URL" type="url" required="required"
+                            data-ng-model="newMessage.data"
+                        />
+                    </div>
+                </span>
+
+
+            <div class="form-group">
+                <div class="col-xs-9 col-xs-offset-3">
+                    <button class="btn btn-primary"
+                        data-ng-click="submit()"
+                    >
+                        Submit new message
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default pull-left"
+            data-ng-click="close()"
+        >
+            Close
+        </button>
+    </div>
+</div>

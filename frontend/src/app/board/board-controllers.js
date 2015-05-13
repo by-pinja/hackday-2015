@@ -24,7 +24,6 @@
 
         $scope.openToilet = function openToilet() {
           $modal.open({
-            animation: $scope.animationsEnabled,
             templateUrl: '/frontend/toiletReservation/partials/index.html',
             controller: 'ToiletReservationController',
             size: 'sm',
@@ -33,6 +32,24 @@
                 'ToiletReservationModel',
                 function(ToiletReservationModel) {
                   return ToiletReservationModel
+                    .load()
+                  ;
+                }
+              ]
+            }
+          });
+        };
+
+        $scope.openMessageAdmin = function openMessageAdmin() {
+          $modal.open({
+            templateUrl: '/frontend/board/widgets/widget-msg-viewer/modal.html',
+            controller: 'MessageAdminController',
+            size: 'lg',
+            resolve: {
+              _messages: [
+                'MessageViewerModel',
+                function(MessageViewerModel) {
+                  return MessageViewerModel
                     .load()
                   ;
                 }

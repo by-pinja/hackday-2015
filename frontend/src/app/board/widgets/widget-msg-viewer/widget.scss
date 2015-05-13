@@ -1,8 +1,39 @@
-.widget-mod {
-  padding: 0 10px;
+.widget-msg-viewer {
+  padding: 15px 10px 10px 10px;
+
+  blockquote {
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 }
 
-.widget-mod h1 {
-  font-size:20px;
-  font-weight: bold;
+.message-admin-modal {
+  .drop-box {
+    border: 3px dashed #cccccc;
+    padding: 30px 0;
+    text-align: center;
+    cursor: pointer;
+
+    &.dragover {
+      border: 3px dashed blue;
+    }
+
+    &.dragover-err {
+      border: 3px dashed red;
+    }
+  }
+
+  .thumb {
+    max-height: 40px;
+  }
+}
+
+.tooltip-image {
+  max-width: 195px;
+  position: relative;
+  left: -5px;
+  border-radius: 2px;
 }

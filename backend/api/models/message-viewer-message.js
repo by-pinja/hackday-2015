@@ -1,25 +1,34 @@
+'use strict';
+
+/**
+ * message-viewer-message.js
+ *
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @docs        :: http://sailsjs.org/#!documentation/models
+ */
 module.exports = {
   schema: true,
+
   attributes: {
-    id: {
-      type: 'string',
-      required: true,
-      unique: true,
-      defaultsTo: 0
-    },
     type: {
       type: 'string',
-      required: true
+      required: true,
+      enum: ['img', 'msg', 'url']
     },
     data: {
       type: 'string',
       required: true,
-      defaultsTo: ''
+      notEmpty: true
     },
     sender: {
       type: 'string',
       required: true,
-      defaultsTo: ''
+      notEmpty: true
+    },
+    active: {
+      type: 'boolean',
+      required: true,
+      defaultsTo: true
     }
   }
 };
