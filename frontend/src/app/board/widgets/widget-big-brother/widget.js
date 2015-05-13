@@ -49,7 +49,7 @@
                   }
                 }
 
-                return person.name + ' (' + person.usename + ') <br />' + presentText;
+                return person.name + ' (' + person.username + ') <br />' + presentText;
               };
 
               $scope.getLoossiTooltip = function getLoossiTooltip(persons) {
