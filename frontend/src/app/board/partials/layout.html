@@ -72,6 +72,22 @@
                     </li>
                 </ul>
             </li>
+
+            <li>
+                <a href data-ng-click="toggleRotation(layouts, makeLayoutActive)"
+                >
+                    <span data-ng-show="rotation">
+                        Turn rotation off
+
+                        <progressbar class="active"
+                            data-max="145"
+                            data-value="rotationTime"
+                            data-type="primary"
+                        ></progressbar>
+                    </span>
+                    <span data-ng-show="!rotation">Turn rotation on</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

@@ -9,18 +9,15 @@
   // Main dashboard controller
   angular.module('frontend.board')
     .controller('BoardController', [
-      '$scope', '$modal',
+      '$scope', '$modal', '$timeout', '$interval',
+      '_',
       'widgetDefinitions', 'defaultWidgetDefinitions',
       function controller(
-        $scope, $modal,
+        $scope, $modal, $timeout, $interval,
+        _,
         widgetDefinitions, defaultWidgetDefinitions
       ) {
-        $scope.actionItems = [
-          {
-            title: 'Go to toilet',
-            action: $scope.openToilet
-          }
-        ];
+        $scope.rotation = false;
 
         $scope.openToilet = function openToilet() {
           $modal.open({
@@ -156,6 +153,51 @@
           ],
           settingsModalOptions: {
             templateUrl: '/frontend/board/partials/widget-settings.html'
+          }
+        };
+
+        $scope.rotateInterval = null;
+        $scope.timeInterval = null;
+        $scope.rotationTime = 0;
+
+        /**
+         * Function to activate / de-activate layout rotation on dashboard.
+         *
+         * @param   {{}[]}      layouts
+         * @param   {function}  changeLayout
+         */
+        $scope.toggleRotation = function toggleRotation(layouts, changeLayout) {
+          $scope.rotation = !$scope.rotation;
+
+          $scope.rotationTime = 0;
+
+          // Cancel current intervals
+          $interval.cancel($scope.rotateInterval);
+          $interval.cancel($scope.timeInterval);
+
+          if ($scope.rotation) {
+            // Progress bar update interval
+            $scope.timeInterval = $interval(function interval() {
+              $scope.rotationTime++;
+            }, 95);
+
+            // Interval for actual layout change
+            $scope.rotateInterval = $interval(function interval() {
+              // Reset rotation time
+              $scope.rotationTime = 0;
+
+              // Determine "next" layout in layouts array
+              var activeLayout = _.find(layouts, {active: true});
+              var index = layouts.indexOf(activeLayout) + 1;
+
+              // And if index is not "found" return to first index
+              if (layouts[index] === undefined) {
+                index = 0;
+              }
+
+              // And change layout
+              changeLayout(layouts[index]);
+            }, 15000);
           }
         };
       }
