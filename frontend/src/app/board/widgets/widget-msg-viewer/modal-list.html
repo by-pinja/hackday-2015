@@ -1,0 +1,77 @@
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Type</th>
+            <th width="100%">Data</th>
+            <th>Sender</th>
+            <th>Active</th>
+            <th class="text-nowrap">Created / Updated</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="message in messages | orderBy: '-id'">
+            <td>{{message.id}}</td>
+            <td class="text-center">
+                <i class="fa"
+                    data-ng-class="{
+                        'fa-image': message.type == 'img',
+                        'fa-file-text-o': message.type == 'msg',
+                        'fa-link': message.type == 'url'
+                    }"
+                ></i>
+            </td>
+            <td>
+                <span data-ng-if="message.type == 'msg'">
+                    {{message.data}}
+                </span>
+
+                <img class="thumb"
+                    data-ng-if="message.type === 'img'"
+                    data-ng-src="{{getImageUrl(message)}}"
+                    data-tooltip-html-unsafe="{{getImageTooltip(message)}}"
+                    data-tooltip-append-to-body="true"
+                    data-tooltip-placement="left"
+                />
+
+                <a target="_blank"
+                    data-ng-if="message.type === 'url'"
+                    data-ng-href="{{message.data}}"
+                >
+                    {{message.data}}
+                </a>
+            </td>
+            <td class="text-nowrap">{{message.sender}}</td>
+            <td>{{message.active}}</td>
+            <td class="text-nowrap">
+                <span>{{message.createdAt | amDateFormat:'YYYY.MM.DD HH:mm'}}</span>
+                <br />
+                <span>{{message.updatedAt | amDateFormat:'YYYY.MM.DD HH:mm'}}</span>
+            </td>
+            <td class="text-nowrap">
+                <!-- not yet implemented
+                <i class="fa fa-wrench action-icon text-success"
+                    data-ng-click="edit(message)"
+                ></i>
+                -->
+
+                <i class="fa fa-check action-icon"
+                    data-ng-class="{'text-danger': message.active, 'text-success': !message.active}"
+                    data-ng-click="toggleActive(message)"
+                    data-tooltip="Change message status"
+                ></i>
+
+                <i class="fa fa-times action-icon text-danger"
+                    data-ng-click="remove(message)"
+                    data-tooltip="Remove this message"
+                ></i>
+            </td>
+        </tr>
+        <tr data-ng-show="!messages || messages.length === 0">
+            <td colspan="100%" class="text-center">
+                <em>no data...</em>
+            </td>
+        </tr>
+    </tbody>
+</table>

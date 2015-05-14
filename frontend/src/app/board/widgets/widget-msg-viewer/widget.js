@@ -116,18 +116,23 @@
     .controller('MessageAdminController', [
       '$scope', '$modalInstance',
       'Upload', '_',
+      'MessageService',
       'BackendConfig',
       'MessageViewerModel',
       '_messages',
       function controller(
         $scope, $modalInstance,
         Upload, _,
+        MessageService,
         BackendConfig,
         MessageViewerModel,
         _messages
       ) {
         // Store messages
         $scope.messages = _messages;
+
+        // Initialize forms object
+        $scope.forms = {};
 
         // Specify message types
         $scope.messageTypes = [
@@ -175,6 +180,8 @@
             .delete(message.id)
             .then(
               function onSuccess() {
+                MessageService.success('Message removed successfully.');
+
                 var index = $scope.messages.indexOf(message);
 
                 $scope.messages.splice(index, 1);
@@ -197,6 +204,8 @@
             .update(message.id, data)
             .then(
               function onSuccess(result) {
+                MessageService.success('Message active status changed successfully.');
+
                 var index = $scope.messages.indexOf(message);
 
                 $scope.messages.splice(index, 1);
@@ -215,7 +224,7 @@
           $scope.$broadcast('show-errors-check-validity');
 
           // Oh noes, form isn't valid => cannot continue
-          if (!$scope.messageForm.$valid) {
+          if (!$scope.forms.messageForm.$valid) {
             return;
           }
 
@@ -226,6 +235,8 @@
                 .create($scope.newMessage)
                 .then(
                   function onSuccess(result) {
+                    MessageService.success('New message added successfully.');
+
                     $scope.messages.push(result.data);
 
                     $scope.reset();
@@ -241,6 +252,8 @@
                 _upload($scope.newMessage)
                   .then(
                     function onSuccess(result) {
+                      MessageService.success('New message added successfully.');
+
                       $scope.messages.push(result.data);
 
                       $scope.reset();
