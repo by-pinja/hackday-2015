@@ -23,8 +23,13 @@
                 ></i>
             </td>
             <td>
-                <span data-ng-if="message.type == 'msg'">
-                    {{message.data}}
+                <span
+                    data-ng-if="message.type == 'msg'"
+                    data-tooltip-html-unsafe="{{message.data}}"
+                    data-tooltip-append-to-body="true"
+                    data-tooltip-placement="left"
+                >
+                    {{message.data | htmlToPlaintext}}
                 </span>
 
                 <img class="thumb"

@@ -1,1 +1,12 @@
 /** This file contains all necessary CSS overrides/definitions for forms */
+
+.form-control {
+  &.text-editor {
+    height: auto;
+    padding: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}

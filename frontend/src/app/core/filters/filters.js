@@ -51,4 +51,17 @@
       }
     ])
   ;
+
+  /**
+   * Simple filter to remove all HTML tags from specified text. Usage example:
+   *
+   *  <span>{{someHtmlData | htmlToPlaintext}}</span>
+   */
+  angular.module('frontend.core.filters')
+    .filter('htmlToPlaintext', function filter() {
+      return function transform(text) {
+        return angular.element(text).text();
+      };
+    })
+  ;
 }());

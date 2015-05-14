@@ -22,6 +22,7 @@
     'ui.utils',
     'ui.bootstrap.showErrors',
     'youtube-embed',
-    'angularMoment'
+    'angularMoment',
+    'textAngular'
   ]);
 }());
