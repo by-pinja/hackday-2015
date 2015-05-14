@@ -1,4 +1,4 @@
-*.jpg
-*.jpeg
-*.png
-*.gif
+*
+
+!.gitignore
+!.gitkeep
