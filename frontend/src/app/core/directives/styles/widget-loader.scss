@@ -1,0 +1,20 @@
+.widget {
+  &.loader-activated {
+    opacity: .35;
+    min-height: 100px;
+  }
+}
+
+.widget-loader {
+  position: absolute;
+  float: left;
+  z-index: 10;
+  margin: 0 auto;
+  top: 20px;
+  width: 64px;
+  height: 64px;
+
+  .fa {
+    font-size: 64px;
+  }
+}
