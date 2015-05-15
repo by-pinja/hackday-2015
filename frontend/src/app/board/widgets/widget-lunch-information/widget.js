@@ -50,8 +50,6 @@
         DataModel.prototype.fetchData = function fetchData() {
           var _this = this;
 
-          console.log('fetching data...');
-
           // Cancel possible parallel interval
           $interval.cancel(_this.intervalUpdate);
 
@@ -65,7 +63,7 @@
                 // Create new interval to fetch lunch data from backend
                 _this.intervalUpdate = $interval(function interval() {
                   _this.fetchData();
-                }, 5000);
+                }, 15 * 60 * 1000);
               }
             )
           ;

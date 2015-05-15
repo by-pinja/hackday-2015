@@ -122,16 +122,16 @@
                   name: 'RSS reader'
                 },
                 {
-                  name: 'Worms Ladder'
+                  name: 'Lunch information'
                 },
                 {
-                  name: 'URL viewer'
+                  name: 'Worms Ladder'
                 },
                 {
                   name: 'Weather Information'
                 },
                 {
-                  name: 'Lunch information'
+                  name: 'URL viewer'
                 }
               ]
             },

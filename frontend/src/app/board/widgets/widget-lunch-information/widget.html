@@ -16,7 +16,9 @@
                     data-ng-bind-html="restaurant.lunch | nl2br"
                 ></span>
 
-                <em data-ng-if="restaurant.lunch.length === 0">
+                <em class="text-muted"
+                    data-ng-if="restaurant.lunch.length === 0"
+                >
                     Oh noes, nothing here, better luck next time
                 </em>
             </dd>
