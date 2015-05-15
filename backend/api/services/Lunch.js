@@ -48,7 +48,7 @@ module.exports = {
           dishes.push($(this).text());
         });
 
-        next(null, _.compact(dishes).join('<br />'))
+        next(null, _.compact(dishes).join('\n'))
       }
     };
 
@@ -72,7 +72,7 @@ module.exports = {
         // Remove current date
         dishes.shift();
 
-        next(null, _.compact(dishes).join('<br />'))
+        next(null, _.compact(dishes).join('\n'))
       }
     };
 
@@ -109,7 +109,7 @@ module.exports = {
           dishes.pop();
         }
 
-        next(null, _.compact(dishes).join('<br />'))
+        next(null, _.compact(dishes).join('\n'))
       }
     };
 
@@ -185,7 +185,7 @@ module.exports = {
           dishes.push(_.compact(dish).join(' ja '));
         });
 
-        next(null, _.compact(dishes).join('<br />'));
+        next(null, _.compact(dishes).join('\n'));
       }
     };
 
@@ -228,7 +228,7 @@ module.exports = {
           })
         ;
 
-        next(null, _.compact(dishes).join('<br />'))
+        next(null, _.compact(dishes).join('\n'))
       }
     };
 
@@ -310,7 +310,7 @@ module.exports = {
           })
         ;
 
-        next(null, _.compact(dishes).join('<br />'));
+        next(null, _.compact(dishes).join('\n'));
       }
     };
 

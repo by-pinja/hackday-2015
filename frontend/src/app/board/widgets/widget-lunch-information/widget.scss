@@ -1,0 +1,28 @@
+/**
+ * This file contains all necessary CSS overrides/definitions for widget-lunch-information.
+ *
+ * And please don't attach any other CSS rules to this file.
+ */
+.widget-lunch-information {
+  padding: 10px 0 0 0;
+
+  h1 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  hr {
+    margin: 10px 0 5px 0;
+  }
+
+  dl {
+    margin-bottom: 10px;
+
+    dt {
+      font-size: 16px;
+    }
+
+    dd {
+    }
+  }
+}

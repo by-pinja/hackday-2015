@@ -137,6 +137,14 @@
             enableVerticalResize: false
         },
         {
+            name: 'Lunch information',
+            directive: 'widget-lunch-information',
+            dataModelType: 'WidgetLunchInformationModel',
+            dataAttrName: 'places',
+            title: 'Lunch information',
+            showTitle: true
+        },
+        {
           name: 'Weather Information',
           directive: 'widget-weather-information',
           settingsModalOptions: {

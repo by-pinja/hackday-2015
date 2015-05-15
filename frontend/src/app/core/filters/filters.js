@@ -64,4 +64,12 @@
       };
     })
   ;
+
+  angular.module('frontend.core.filters')
+    .filter('nl2br', function filter($sce) {
+      return function (text) {
+        return text ? $sce.trustAsHtml(text.replace(/\n/g, '<br />')) : '';
+      };
+    })
+  ;
 }());

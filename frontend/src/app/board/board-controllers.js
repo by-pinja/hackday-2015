@@ -129,6 +129,9 @@
                 },
                 {
                   name: 'Weather Information'
+                },
+                {
+                  name: 'Lunch information'
                 }
               ]
             },

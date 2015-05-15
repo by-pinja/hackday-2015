@@ -21,8 +21,10 @@
     'ui.router',
     'ui.utils',
     'ui.bootstrap.showErrors',
-    'youtube-embed',
+    'angular.filter',
+    'angular-capitalize-filter',
     'angularMoment',
-    'textAngular'
+    'textAngular',
+    'youtube-embed'
   ]);
 }());

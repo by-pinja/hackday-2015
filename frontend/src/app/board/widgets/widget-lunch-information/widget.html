@@ -1,0 +1,25 @@
+<div class="widget-lunch-information">
+    <widget-loader data-model="places"></widget-loader>
+
+    <div class="col-xs-6"
+        data-ng-repeat="(city, restaurants) in places | groupBy: 'city'"
+    >
+        <h1>{{city}}</h1>
+
+        <hr />
+
+        <dl data-ng-repeat="restaurant in restaurants | orderBy: 'name'">
+            <dt>{{restaurant.name}}</dt>
+            <dd>
+                <span
+                    data-ng-if="restaurant.lunch.length > 0"
+                    data-ng-bind-html="restaurant.lunch | nl2br"
+                ></span>
+
+                <em data-ng-if="restaurant.lunch.length === 0">
+                    Oh noes, nothing here, better luck next time
+                </em>
+            </dd>
+        </dl>
+    </div>
+</div>
