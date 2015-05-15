@@ -15,42 +15,42 @@ module.exports = {
     // Specify restaurants where we want to fetch data
     var restaurants = [
       {
-        restaurant: 'Shalimar',
+        name: 'Shalimar',
         city: 'Jyväskylä',
         method: 'fetchShalimar'
       },
       {
-        restaurant: 'Asemaravintola',
+        name: 'Asemaravintola',
         city: 'Jyväskylä',
         method: 'fetchAsema'
       },
       {
-        restaurant: 'Trattoria',
+        name: 'Trattoria',
         city: 'Jyväskylä',
         method: 'fetchTrattoria'
       },
       {
-        restaurant: 'Best',
+        name: 'Best',
         city: 'Jyväskylä',
         method: 'fetchBest'
       },
       {
-        restaurant: 'Dynamo',
+        name: 'Dynamo',
         city: 'Jyväskylä',
         method: 'fetchDynamo'
       },
       {
-        restaurant: 'Antell',
+        name: 'Antell',
         city: 'Tampere',
         method: 'fetchAntell'
       },
       {
-        restaurant: 'Kirveli',
+        name: 'Kirveli',
         city: 'Tampere',
         method: 'fetchKirveli'
       },
       {
-        restaurant: 'Coriander',
+        name: 'Coriander',
         city: 'Tampere',
         method: 'fetchCoriander'
       }
