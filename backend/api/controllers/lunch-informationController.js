@@ -61,7 +61,7 @@ module.exports = {
       restaurants,
       function runner(restaurant, callback) {
         sails.services.lunch[restaurant.method](function (error, result) {
-          result = result === undefined ? '' : result;
+          result = _.isEmpty(result) ? '' : result;
 
           restaurant.lunch = result.toString().replace(/,/g, ', ');
 
